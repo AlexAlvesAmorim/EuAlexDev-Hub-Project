@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --text: #9ca3af;
@@ -20,17 +18,23 @@
   letter-spacing: 0.18px;
   color-scheme: dark;
   color: var(--text);
-  background: var(--bg);
-
-
 }
 
+
+html {
+  background: var(--bg);
+}
 
 html,
 body,
 #root {
   height: 100%;
   margin: 0;
+}
+
+body,
+#root {
+  background: transparent;
 }
 
 .slider-3d {
@@ -47,7 +51,7 @@ body,
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background: var(--bg);
+  background: transparent;
 }
 
 .banner .slider {

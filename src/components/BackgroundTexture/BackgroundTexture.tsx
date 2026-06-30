@@ -1,5 +1,3 @@
-import { useBackgroundImage } from "../../hooks/useBackgroundTexture"
-
 interface BackgroundTextureProps {
     imagePath: string
     opacity?: number
@@ -7,26 +5,24 @@ interface BackgroundTextureProps {
 
 export function BackgroundTexture({
     imagePath,
-    opacity = 0.08,
+    opacity = 1,
 }: BackgroundTextureProps) {
-
-    const imageLoaded = useBackgroundImage(imagePath);
-
-    console.log('imageLoaded:', imageLoaded);
-
-
-    if (!imageLoaded) {
-        return null;
-    }
-
     return (
         <div
-            className="fixed inset-0 pointer-events-none -z-10"
             style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
                 backgroundImage: `url(${imagePath})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
                 opacity,
+                zIndex: 0,
+                pointerEvents: 'none',
+                opacity: 0.1,
             }}
         />
     )

@@ -5,13 +5,22 @@ export function useBackgroundImage(imagePath: string) {
 
     useEffect(() => {
         const img = new Image();
-        img.src = imagePath;
 
         const handleLoad = () => {
             setImageLoaded(true);
         };
 
         img.addEventListener("load", handleLoad);
+
+        // Set src AFTER adding the listener to avoid race condition
+        // where cached images fire 'load' before the listener is attached
+        img.src = imagePath;
+
+        // Also handle already-cached images
+        if (img.complete) {
+            setImageLoaded(true);
+        }
+
         return () => {
             img.removeEventListener("load", handleLoad);
         };
