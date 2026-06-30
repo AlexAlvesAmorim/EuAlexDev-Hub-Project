@@ -1,12 +1,10 @@
 import type { CSSProperties } from 'react'
 import { projects } from '../../data/project'
 import { ProjectCard } from './ProjectCard'
-import { BackgroundTexture } from '../../components/BackgroundTexture/BackgroundTexture'
 
 export function ProjectSlider() {
     return (
         <section className="banner">
-            <BackgroundTexture imagePath="/texture-background.jpg" opacity={0.06} />
 
             <div className="banner-content">
                 <h1 className="banner-title">PROJETOS</h1>

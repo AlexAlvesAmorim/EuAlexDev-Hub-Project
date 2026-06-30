@@ -7,8 +7,8 @@ export function App() {
     return (
 
         <>
-            <BackgroundTexture imagePath="/texture.jpg" opacity={0.06} />
-            <div className="min-h-screen bg-background text-text">
+            <BackgroundTexture imagePath="/texture.jpg" opacity={1} />
+            <div className="relative z-1 min-h-screen text-text">
                 <Home />
             </div >
         </>
