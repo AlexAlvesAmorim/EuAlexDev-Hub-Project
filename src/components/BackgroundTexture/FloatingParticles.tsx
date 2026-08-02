@@ -18,6 +18,7 @@ function mulberry32(seed: number) {
     }
 }
 
+
 export function FloatingParticles({ count = 100 }: {
     count?: number
 }) {
@@ -30,7 +31,10 @@ export function FloatingParticles({ count = 100 }: {
             duration: rand() * 10 + 10,
             delay: rand() * 10,
         }))
-    }, [count])
+    },
+        [count])
+
+
 
     return (
         <div className="particles-container">
