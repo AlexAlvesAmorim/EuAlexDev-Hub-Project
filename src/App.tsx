@@ -7,13 +7,11 @@ export function App() {
     return (
 
         <>
-            <BackgroundTexture imagePath="/texture.jpg" opacity={1} />
+            <BackgroundTexture imagePath="/texture.jpg" />
             <div className="relative z-1 min-h-screen text-text">
                 <Home />
             </div >
         </>
     )
-
-
 
 }

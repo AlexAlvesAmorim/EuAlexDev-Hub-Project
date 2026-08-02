@@ -8,21 +8,11 @@ export function BackgroundTexture({
     opacity = 1,
 }: BackgroundTextureProps) {
     return (
-        <div
+        <div className="pointer-events-none fixed inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
                 backgroundImage: `url(${imagePath})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
                 opacity,
                 zIndex: 0,
-                pointerEvents: 'none',
-                opacity: 0.1,
             }}
         />
     )
