@@ -45,3 +45,12 @@ __pycache__/
 
 # Agent memory
 memory/
+
+# Workspace de agente (fica só local, fora do repo público)
+AGENTS.md
+HEARTBEAT.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+USER.md
+.claude/

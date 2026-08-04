@@ -1,12 +1,19 @@
 import { ProjectSlider } from "../../components/ProjectSlider/ProjectSlider.tsx";
+import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { FaGithub, FaEnvelope, FaLinkedin } from "react-icons/fa6";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export function Home() {
+    const isMobile = useMediaQuery('(max-width: 768px)')
+    const sectionParticles = isMobile ? 15 : 40
+
     return (
         <main className="w-full min-h-screen">
             <ProjectSlider />
 
             <section id="sobre" className="section">
+                <FloatingParticles count={sectionParticles} />
+
                 <div className="section-container">
                     <h2 className="section-title">
                         Sobre <span className="highlight">mim</span>
@@ -47,6 +54,8 @@ export function Home() {
             </section>
 
             <section id="contato" className="section">
+                <FloatingParticles count={sectionParticles} />
+
                 <div className="section-container">
                     <h2 className="section-title">
                         Fala <span className="highlight">comigo</span>
@@ -58,18 +67,18 @@ export function Home() {
                     <div className="contact-card">
                         <h3>Bora conversar?</h3>
                         <p>
-                            Respondo mais rápido pelo GitHub, mas dá pra me achar nos links abaixo.
+                            Respondo mais rápido pelo LinkedIn, mas dá pra me achar nos links abaixo.
                         </p>
 
                         <div className="contact-links">
+                            <a href="https://www.linkedin.com/in/alex-a-amorim/" target="_blank" rel="noopener noreferrer">
+                                <FaLinkedin /> LinkedIn
+                            </a>
                             <a href="https://github.com/AlexAlvesAmorim" target="_blank" rel="noopener noreferrer">
                                 <FaGithub /> GitHub
                             </a>
                             <a href="mailto:alex.a.amorim@outlook.com">
                                 <FaEnvelope /> E-mail
-                            </a>
-                            <a href="https://www.linkedin.com/in/alex-a-amorim/" target="_blank" rel="noopener noreferrer">
-                                <FaLinkedin /> LinkedIn
                             </a>
                         </div>
                     </div>

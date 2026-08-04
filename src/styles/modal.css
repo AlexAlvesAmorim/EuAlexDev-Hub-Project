@@ -1,0 +1,191 @@
+/* ─────────────────────────────────────────────────────────────────
+ * modal.css
+ *
+ * Modal de detalhes do projeto (aberto ao clicar em um card do
+ * carrossel). Renderizado via portal em `document.body`, então
+ * não herda containing-block dos ancestrais (`.banner.scrolled`
+ * usa `backdrop-filter`, que quebraria `position: fixed`).
+ *
+ * Estrutura: `.project-modal` (backdrop) > `.project-modal__card`.
+ * Acessibilidade: `role="dialog"`, `aria-modal`, fecha no Escape,
+ * clique no backdrop e foco retorna ao card ao fechar.
+ * ───────────────────────────────────────────────────────────────── */
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(22, 23, 29, 0.75);
+  backdrop-filter: blur(8px);
+  animation: modalFadeIn 0.2s ease;
+}
+
+.project-modal__card {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: min(85vh, 720px);
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow:
+    var(--shadow),
+    0 0 60px rgba(192, 132, 252, 0.15);
+  animation: modalSlideUp 0.25s ease;
+}
+
+.project-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(22, 23, 29, 0.7);
+  color: var(--text-h);
+  font-size: 1.05em;
+  cursor: pointer;
+  z-index: 1;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.project-modal__close:hover {
+  background: var(--accent-bg);
+  transform: rotate(90deg);
+}
+
+.project-modal__close:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.project-modal__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center top;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.project-modal__body {
+  padding: 24px 24px 8px;
+}
+
+.project-modal__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0 0 8px;
+}
+
+.project-modal__description {
+  margin: 0 0 12px;
+  font-size: 0.95em;
+  color: var(--text-h);
+  opacity: 0.9;
+}
+
+.project-modal__story {
+  margin: 0 0 16px;
+  font-size: 0.92em;
+  line-height: 1.7;
+}
+
+.project-modal__highlights {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.project-modal__highlights li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.9em;
+}
+
+.project-modal__highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.project-modal__techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-modal__techs span {
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--text-h);
+  font-size: 0.8em;
+}
+
+.project-modal__footer {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px 24px 24px;
+}
+
+.project-modal__footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--text-h);
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.project-modal__footer a:hover {
+  background: rgba(192, 132, 252, 0.25);
+  transform: translateY(-2px);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

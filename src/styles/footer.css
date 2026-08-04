@@ -1,0 +1,16 @@
+/* ─────────────────────────────────────────────────────────────────
+ * footer.css
+ *
+ * Rodapé da Home. Pequeno por design — uma assinatura por linha.
+ * ───────────────────────────────────────────────────────────────── */
+
+.footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 0.85em;
+}
+
+.footer .heart {
+  color: var(--primary);
+}

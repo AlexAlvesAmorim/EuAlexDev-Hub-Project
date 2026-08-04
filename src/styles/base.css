@@ -1,0 +1,39 @@
+/* ─────────────────────────────────────────────────────────────────
+ * base.css
+ *
+ * Reset mínimo e estilos globais do `<html>` / `<body>` / `#root`.
+ * Tudo aqui se aplica ao documento inteiro, sem exceção por seção.
+ * ───────────────────────────────────────────────────────────────── */
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+/* compensa o header fixo quando navega por âncora */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body,
+#root {
+  background: transparent;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Em telas de computador, a página abre sempre em 80% (zoom-out fixo). */
+@media (min-width: 769px) {
+  :root {
+    zoom: 0.8;
+  }
+}

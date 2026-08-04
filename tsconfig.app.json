@@ -26,6 +26,6 @@
   },
   "include": [
     "src",
-    "postcss.config.js"
-, "eslint.config.js"  ]
+    "eslint.config.js"
+  ]
 }

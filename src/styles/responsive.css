@@ -1,0 +1,106 @@
+/* ─────────────────────────────────────────────────────────────────
+ * responsive.css
+ *
+ * Media queries compartilhadas. Mantidas em arquivo próprio para
+ * que cada bloco de seção não precise declarar `@media` no meio
+ * do fluxo de leitura — fica mais fácil auditar breakpoints
+ * (atualmente: 768px).
+ *
+ * No mobile o carrossel 3D é reduzido (cards menores e menor
+ * `--depth`/perspectiva) para caber na tela; o texto decorativo
+ * gigante some; e o modal vira um bottom-sheet (mais natural no
+ * celular).
+ * ───────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .background-text {
+    display: none;
+  }
+
+  .banner .center-model {
+    width: clamp(140px, 32vw, 180px);
+    height: clamp(140px, 32vw, 180px);
+  }
+
+  .banner .author {
+    bottom: 4%;
+    width: max-content;
+    max-width: calc(100% - 24px);
+    padding: 12px 20px 14px;
+    border-radius: 16px;
+    background: rgba(31, 32, 40, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  }
+
+  .banner .author h2 {
+    font-size: 1em;
+  }
+
+  .banner .author p {
+    font-size: 0.8em;
+    letter-spacing: 0.14em;
+  }
+
+  .banner .author .tech-stack {
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .banner .author .tech-stack span {
+    padding: 4px 10px;
+    font-size: 0.6em;
+    white-space: nowrap;
+  }
+
+  .project-caption {
+    display: none;
+  }
+
+  .banner .slider {
+    --card-w: 120px;
+    --card-h: 160px;
+    --perspective: 900px;
+    --depth: 300px;
+  }
+
+  .banner .slider .item {
+    border-radius: 12px;
+  }
+
+  .section {
+    padding: 90px 20px 70px;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-photo {
+    max-width: 260px;
+  }
+
+  .project-modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .project-modal__card {
+    width: 100%;
+    max-width: 100%;
+    max-height: 90vh;
+    max-height: 90dvh;
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+  }
+
+  .project-modal__body {
+    padding: 20px 20px 8px;
+  }
+
+  .project-modal__footer {
+    padding: 16px 20px 24px;
+  }
+}

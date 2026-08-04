@@ -1,19 +1,27 @@
-import { useMemo, type CSSProperties } from 'react'
+import { type CSSProperties, useCallback, useState } from 'react'
 import { projects } from '../../data/project'
 import { ProjectCard } from './ProjectCard'
+import { ProjectModal } from './ProjectModal'
 import { FloatingParticles } from '../BackgroundTexture/FloatingParticles'
 import { SiReact, SiTypescript, SiElectron } from 'react-icons/si'
-import { useProjectSlider } from '../../hooks/useProjectSlider.ts'
+import { useProjectSlider } from '../../hooks/useProjectSlider'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
+import type { Project } from '../../types/Project'
 
 export function ProjectSlider() {
 
-    const { handleMouseEnter, handleMouseLeave, selectedIndex } = useProjectSlider(projects.length)
-
-    const isMobile = useMemo(
-        () => window.matchMedia('(max-width: 768px)').matches,
-        [])
+    const { sliderRef, handleMouseEnter, handleMouseLeave, handleSelect, selectedIndex } = useProjectSlider(projects.length)
+    const isMobile = useMediaQuery('(max-width: 768px)')
 
     const currentProject = projects[selectedIndex]
+    const [openedProject, setOpenedProject] = useState<Project | null>(null)
+
+    const closeModal = useCallback(() => setOpenedProject(null), [])
+
+    const openProjectDetails = useCallback((project: Project, index: number) => {
+        handleSelect(index)
+        setOpenedProject(project)
+    }, [handleSelect])
 
     return (
         <section className="banner" id="projetos" role="region"
@@ -22,7 +30,11 @@ export function ProjectSlider() {
             <FloatingParticles count={isMobile ? 25 : 80} />
             <div className="background-text">PROJETOS</div>
 
-            <div className="slider" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+            <div
+                ref={sliderRef}
+                className="slider"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 style={
                     {
                         '--quantity': projects.length,
@@ -34,9 +46,13 @@ export function ProjectSlider() {
                         key={project.id}
                         project={project}
                         position={index + 1}
+                        active={index === selectedIndex}
+                        onOpen={openProjectDetails}
                     />
                 ))}
             </div>
+
+            <div className="carousel-glow" />
 
             <div className="center-model" />
 
@@ -55,6 +71,13 @@ export function ProjectSlider() {
                 <span className="tag">Em destaque</span>
                 <h3>{currentProject.title}</h3>
             </div>
+
+            {openedProject && (
+                <ProjectModal
+                    project={openedProject}
+                    onClose={closeModal}
+                />
+            )}
         </section>
     )
 }

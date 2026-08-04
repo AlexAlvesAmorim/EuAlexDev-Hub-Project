@@ -1,0 +1,47 @@
+/* ─────────────────────────────────────────────────────────────────
+ * tokens.css
+ *
+ * Design tokens do projeto.
+ * Define variáveis CSS (`:root`) e mapeia-as no `@theme` do Tailwind
+ * v4 para que classes utilitárias (`text-text-h`, `bg-surface`, etc.)
+ * resolvam para os mesmos valores.
+ *
+ * Qualquer nova cor / espaçamento / sombra usada em mais de um
+ * lugar deve entrar aqui — não inline em componente.
+ * ───────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-background: #16171d;
+  --color-bg: #16171d;
+  --color-surface: #1f2028;
+  --color-text: #9ca3af;
+  --color-text-h: #f3f4f6;
+  --color-primary: #c084fc;
+  --color-border: #2e303a;
+}
+
+:root {
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --surface: #1f2028;
+  --primary: #c084fc;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  --sans: 'inter', system-ui, -apple-system, sans-serif;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: dark;
+  color: var(--text);
+}

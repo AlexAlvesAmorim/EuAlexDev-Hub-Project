@@ -1,0 +1,166 @@
+/* ─────────────────────────────────────────────────────────────────
+ * sections.css
+ *
+ * Seções da Home que vivem fora do banner: Sobre, Contato e a
+ * legenda (`.project-caption`) do projeto em destaque no carrossel.
+ *
+ * Cada bloco aqui casa 1-para-1 com um `<section>` em
+ * `src/pages/home/home.tsx`. Se uma seção ganhar regras
+ * específicas (ex.: portfolio, blog), crie uma parcial nova
+ * ao lado desta.
+ * ───────────────────────────────────────────────────────────────── */
+
+/* ── Caption: projeto em destaque ───────────────────────────── */
+.project-caption {
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.project-caption .tag {
+  display: block;
+  font-size: 0.65em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.project-caption h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1em, 2.2vw, 1.4em);
+  color: var(--text-h);
+  margin: 0;
+}
+
+/* ── Seções (Sobre / Contato) ───────────────────────────────── */
+.section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 110px 24px 90px;
+}
+
+.section-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  font-weight: 700;
+  color: var(--text-h);
+  text-align: center;
+  letter-spacing: 0.04em;
+  margin: 0 0 8px;
+}
+
+.section-title .highlight {
+  color: var(--primary);
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text);
+  font-size: 0.95em;
+  max-width: 560px;
+  margin: 0 auto 48px;
+}
+
+/* Sobre */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.2fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.about-photo {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center;
+  justify-self: center;
+  border-radius: 16px;
+  border: 2px solid var(--accent-border);
+  box-shadow: 0 0 40px rgba(192, 132, 252, 0.15);
+}
+
+.about-text p {
+  margin: 0 0 14px;
+  line-height: 1.7;
+}
+
+.about-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.about-badges span {
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--text-h);
+  font-size: 0.8em;
+}
+
+/* Contato */
+.contact-card {
+  max-width: 620px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 42px 32px;
+  text-align: center;
+}
+
+.contact-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3em;
+  color: var(--text-h);
+  margin: 0 0 8px;
+}
+
+.contact-card p {
+  margin: 0 0 26px;
+  font-size: 0.95em;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--text-h);
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.contact-links a:hover {
+  background: rgba(192, 132, 252, 0.25);
+  transform: translateY(-2px);
+}
