@@ -67,10 +67,10 @@
 }
 
 .banner .slider {
-  --card-w: 180px;
-  --card-h: 240px;
+  --card-w: 150px;
+  --card-h: 200px;
   --perspective: 1000px;
-  --depth: 550px;
+  --depth: 460px;
   position: absolute;
   width: var(--card-w);
   height: var(--card-h);

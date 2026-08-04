@@ -59,10 +59,10 @@
   }
 
   .banner .slider {
-    --card-w: 120px;
-    --card-h: 160px;
+    --card-w: 100px;
+    --card-h: 135px;
     --perspective: 900px;
-    --depth: 300px;
+    --depth: 250px;
   }
 
   .banner .slider .item {
