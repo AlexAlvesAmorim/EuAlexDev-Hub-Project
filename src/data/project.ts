@@ -48,4 +48,20 @@ export const projects: Project[] = [
         technologies: ['React', 'TypeScript', 'Vite', 'Tailwind', 'React Router'],
         github: 'https://github.com/AlexAlvesAmorim',
     },
+    {
+        id: 'dev-hub',
+        title: 'Dev. de Favela Hub',
+        description: 'Este portfólio-hub: carrossel 3D, detalhes de cada projeto e uma vitrine dos projetos.',
+        story: 'Este site é o próprio projeto em destaque. Nasceu como um hub pra reunir tudo que vou construindo no caminho — com a ideia de ir lapidando cada peça conforme vou aprendendo mais. A interface gira em torno de um carrossel 3D que leva o card certo pra frente no momento certo, e cada projeto abre num modal com a história por trás dele. Feito com o capricho de "produto, não exercício".',
+        highlights: [
+            'Carrossel 3D com rotação suave e sincronizada com a legenda "Em destaque"',
+            'Modal de detalhes com a história e destaques de cada projeto',
+            'Design responsivo, partículas animadas e vidro fosco',
+            'Acessibilidade: respeita prefers-reduced-motion, navega por teclado e menu fecha no Escape',
+            'CSS modular em parciais com tokens de design',
+        ],
+        image: '/projects/EuDevProjectHubCard.png',
+        technologies: ['React', 'TypeScript', 'Vite', 'Tailwind'],
+        github: 'https://github.com/AlexAlvesAmorim/EuDevAlex-Hub-Project',
+    },
 ]
