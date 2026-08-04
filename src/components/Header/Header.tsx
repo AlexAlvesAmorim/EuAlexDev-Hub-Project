@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaXmark } from "react-icons/fa6";
+import { FaBars, FaXmark, FaFilePdf } from "react-icons/fa6";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -43,6 +43,13 @@ export function Header() {
                         <a href="#contato" className="text-text hover:text-primary transition-colors">
                             Contato
                         </a>
+                        <a
+                            href="/curriculo-alex-alves-amorim.pdf"
+                            download
+                            className="inline-flex items-center gap-1.5 text-text hover:text-primary transition-colors"
+                        >
+                            <FaFilePdf /> Currículo
+                        </a>
                     </nav>
 
                     <div className="flex items-center gap-3">
@@ -80,6 +87,14 @@ export function Header() {
                     </a>
                     <a href="#contato" className="text-text hover:text-primary transition-colors" onClick={closeMenu}>
                         Contato
+                    </a>
+                    <a
+                        href="/curriculo-alex-alves-amorim.pdf"
+                        download
+                        className="inline-flex items-center gap-1.5 text-text hover:text-primary transition-colors"
+                        onClick={closeMenu}
+                    >
+                        <FaFilePdf /> Currículo
                     </a>
                     <a
                         href="https://github.com/AlexAlvesAmorim"

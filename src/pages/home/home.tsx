@@ -1,6 +1,6 @@
 import { ProjectSlider } from "../../components/ProjectSlider/ProjectSlider.tsx";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
-import { FaGithub, FaEnvelope, FaLinkedin } from "react-icons/fa6";
+import { FaGithub, FaEnvelope, FaLinkedin, FaFilePdf } from "react-icons/fa6";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export function Home() {
@@ -79,6 +79,9 @@ export function Home() {
                             </a>
                             <a href="mailto:alex.a.amorim@outlook.com">
                                 <FaEnvelope /> E-mail
+                            </a>
+                            <a href="/curriculo-alex-alves-amorim.pdf" download>
+                                <FaFilePdf /> Currículo
                             </a>
                         </div>
                     </div>
