@@ -18,8 +18,9 @@
   }
 
   .banner .center-model {
-    width: clamp(140px, 32vw, 180px);
-    height: clamp(140px, 32vw, 180px);
+    width: clamp(154px, 35.2vw, 198px);
+    height: clamp(154px, 35.2vw, 198px);
+    top: 30%;
   }
 
   .banner .author {
