@@ -20,7 +20,7 @@
   .banner .center-model {
     width: clamp(154px, 35.2vw, 198px);
     height: clamp(154px, 35.2vw, 198px);
-    top: 30%;
+    top: 35%;
   }
 
   .banner .author {
