@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaXmark, FaFilePdf } from "react-icons/fa6";
+import { FaBars, FaXmark, FaFilePdf, FaFolderOpen, FaUser, FaEnvelope } from "react-icons/fa6";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -34,14 +34,14 @@ export function Header() {
                     </a>
 
                     <nav className="hidden md:flex items-center gap-6" aria-label="Navegação principal">
-                        <a href="#projetos" className="text-text hover:text-primary transition-colors">
-                            Projetos
+                        <a href="#projetos" className="inline-flex items-center gap-1.5 text-text hover:text-primary transition-colors">
+                            <FaFolderOpen /> Projetos
                         </a>
-                        <a href="#sobre" className="text-text hover:text-primary transition-colors">
-                            Sobre mim
+                        <a href="#sobre" className="inline-flex items-center gap-1.5 text-text hover:text-primary transition-colors">
+                            <FaUser /> Sobre mim
                         </a>
-                        <a href="#contato" className="text-text hover:text-primary transition-colors">
-                            Contato
+                        <a href="#contato" className="inline-flex items-center gap-1.5 text-text hover:text-primary transition-colors">
+                            <FaEnvelope /> Contato
                         </a>
                         <a
                             href="/curriculo-alex-alves-amorim.pdf"
@@ -79,14 +79,14 @@ export function Header() {
                     className="md:hidden bg-background/95 backdrop-blur-md border-t border-white/10 px-4 py-4 flex flex-col gap-4"
                     aria-label="Menu móvel"
                 >
-                    <a href="#projetos" className="text-text hover:text-primary transition-colors" onClick={closeMenu}>
-                        Projetos
+                    <a href="#projetos" className="inline-flex items-center gap-1.5 text-text hover:text-primary transition-colors" onClick={closeMenu}>
+                        <FaFolderOpen /> Projetos
                     </a>
-                    <a href="#sobre" className="text-text hover:text-primary transition-colors" onClick={closeMenu}>
-                        Sobre mim
+                    <a href="#sobre" className="inline-flex items-center gap-1.5 text-text hover:text-primary transition-colors" onClick={closeMenu}>
+                        <FaUser /> Sobre mim
                     </a>
-                    <a href="#contato" className="text-text hover:text-primary transition-colors" onClick={closeMenu}>
-                        Contato
+                    <a href="#contato" className="inline-flex items-center gap-1.5 text-text hover:text-primary transition-colors" onClick={closeMenu}>
+                        <FaEnvelope /> Contato
                     </a>
                     <a
                         href="/curriculo-alex-alves-amorim.pdf"
