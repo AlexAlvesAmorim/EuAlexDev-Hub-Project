@@ -1,0 +1,3 @@
+# Linguagem no GitHub: exclui o lockfile das estatísticas
+# para que a linguagem principal seja TypeScript (React).
+package-lock.json linguist-vendored
