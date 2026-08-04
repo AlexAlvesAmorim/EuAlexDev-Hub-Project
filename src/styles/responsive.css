@@ -55,7 +55,25 @@
   }
 
   .project-caption {
-    display: none;
+    top: 72px;
+    bottom: auto;
+    width: max-content;
+    max-width: calc(100% - 24px);
+    padding: 6px 14px 8px;
+    border-radius: 10px;
+    background: rgba(31, 32, 40, 0.55);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+  }
+
+  .project-caption .tag {
+    font-size: 0.55em;
+    letter-spacing: 0.22em;
+    margin-bottom: 2px;
+  }
+
+  .project-caption h3 {
+    font-size: 0.9em;
   }
 
   .banner .slider {
