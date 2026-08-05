@@ -4,32 +4,14 @@ import { FaAward } from "react-icons/fa6";
 
 const certifications = [
     {
-        title: "Curso de Informática — Formação Completa",
-        issuer: "M. J. M. Informática LTDA. (MDATA)",
-        year: "2007-2008",
-        description: "300h teóricas e práticas. Média final 9,0. Sistemas Operacionais, Pacote Office, Corel Draw, Photoshop, HTML, Dreamweaver, Flash, Hardware e Manutenção.",
-    },
-    {
-        title: "Curso de React para Iniciantes",
-        issuer: "Felipe Rocha • Full Stack Club",
-        year: "2025",
-        description: "Prática focada em desenvolvimento completo — criação de um sistema de Gestão de Treinos do zero até o deploy em 1 semana.",
-    },
-    {
-        title: "Aprendendo React do Zero",
-        issuer: "DevClub | Programação",
+        title: "React — The Complete Guide",
+        issuer: "Udemy (Academind)",
         year: "2024",
-        description: "Do básico até integração completa frontend + backend, incluindo consumo de APIs REST.",
-    },
-    {
-        title: "Curso de React",
-        issuer: "Matheus Battisti - Hora de Codar",
-        year: "2024",
-        description: "Curso estruturado passo a passo: fundamentos, create-react-app, componentes, props, estado e configuração do ambiente React.",
+        description: "Curso completo: hooks, custom hooks, Context API, React Router, Redux, testes e deploy.",
     },
     {
         title: "TypeScript para Desenvolvedores",
-        issuer: "Alura",
+        issuer: "Autodidata + Projetos Práticos",
         year: "2024",
         description: "Tipagem avançada, generics, interfaces, union types, narrowing e padrões de design em TypeScript.",
     },
@@ -37,7 +19,7 @@ const certifications = [
         title: "Electron — Desktop Apps",
         issuer: "Autodidata + Projetos Práticos",
         year: "2024-2025",
-        description: "Domínio de Electron aplicado no ALFA PDF Reader — leitor desktop com 200+ usuários, IPC, instaladores NSIS, registro de sistema e integração nativa com Windows.",
+        description: "Domínio de Electron adquirido construindo o ALFA PDF Reader — IPC, instaladores NSIS, registro de sistema e integração com Windows.",
     },
 ];
 
@@ -45,7 +27,7 @@ export function CertsSection() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     return (
-        <section id="certificados" className="section certs-section">
+        <section className="section certs-section">
             <FloatingParticles count={isMobile ? 10 : 25} />
             <div className="section-container">
                 <h2 className="section-title">
