@@ -1,16 +1,3 @@
-/* ─────────────────────────────────────────────────────────────────
- * sections.css
- *
- * Seções da Home que vivem fora do banner: Sobre, Contato e a
- * legenda (`.project-caption`) do projeto em destaque no carrossel.
- *
- * Cada bloco aqui casa 1-para-1 com um `<section>` em
- * `src/pages/home/home.tsx`. Se uma seção ganhar regras
- * específicas (ex.: portfolio, blog), crie uma parcial nova
- * ao lado desta.
- * ───────────────────────────────────────────────────────────────── */
-
-/* ── Caption: projeto em destaque ───────────────────────────── */
 .project-caption {
   position: absolute;
   top: 13%;
@@ -38,7 +25,6 @@
   margin: 0;
 }
 
-/* ── Seções (Sobre / Contato) ───────────────────────────────── */
 .section {
   position: relative;
   overflow: hidden;
@@ -75,7 +61,6 @@
   margin: 0 auto 48px;
 }
 
-/* Sobre */
 .about {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 1.2fr;
@@ -114,9 +99,15 @@
   border: 1px solid var(--accent-border);
   color: var(--text-h);
   font-size: 0.8em;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Contato */
+.about-badges span:hover {
+  background: rgba(192, 132, 252, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.15);
+}
+
 .contact-card {
   max-width: 620px;
   margin: 0 auto;
@@ -163,4 +154,318 @@
 .contact-links a:hover {
   background: rgba(192, 132, 252, 0.25);
   transform: translateY(-2px);
+}
+
+.contact-cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: rgba(52, 211, 153, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #34d399;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+}
+
+/* ─────────── Stats Section ─────────── */
+
+.stats-section {
+  background: rgba(31, 32, 40, 0.3);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(192, 132, 252, 0.15);
+}
+
+.stat-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85em;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ─────────────────── Timeline ──────────────── */
+
+.timeline-section {
+  background: rgba(22, 23, 29, 0.5);
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 0;
+}
+
+.timeline-left {
+  left: 0;
+  padding-right: 40px;
+  text-align: right;
+}
+
+.timeline-right {
+  left: 50%;
+  padding-left: 40px;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 28px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid var(--bg);
+  z-index: 2;
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.timeline-left .timeline-dot {
+  right: -7px;
+}
+
+.timeline-right .timeline-dot {
+  left: -7px;
+}
+
+.timeline-item:hover .timeline-dot {
+  box-shadow: 0 0 20px rgba(192, 132, 252, 0.7);
+}
+
+.timeline-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  transition: all 0.3s ease;
+}
+
+.timeline-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 8px 28px rgba(192, 132, 252, 0.12);
+  transform: translateX(0);
+}
+
+.timeline-left .timeline-card:hover {
+  transform: translateX(-4px);
+}
+
+.timeline-right .timeline-card:hover {
+  transform: translateX(4px);
+}
+
+.timeline-year {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--primary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.timeline-card h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 6px;
+}
+
+.timeline-card p {
+  margin: 0;
+  font-size: 0.85em;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* ───────────────────────────────── Tech Grid ──────────────── */
+
+.tech-grid-section {
+  background: rgba(31, 32, 40, 0.3);
+}
+
+.tech-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 20px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(192, 132, 252, 0.12);
+}
+
+.tech-card svg {
+  font-size: 2.4em;
+  transition: transform 0.3s ease;
+}
+
+.tech-card:hover svg {
+  transform: scale(1.15);
+}
+
+.tech-card-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9em;
+  color: var(--text-h);
+}
+
+.tech-card-level {
+  font-size: 0.75em;
+  color: var(--primary);
+  padding: 3px 12px;
+  border-radius: 12px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+}
+
+/* ───────────── Certificações ──────────── */
+
+.certs-section {
+  background: rgba(22, 23, 29, 0.5);
+}
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cert-card {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(192, 132, 252, 0.12);
+}
+
+.cert-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 1.3em;
+}
+
+.cert-info h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 4px;
+}
+
+.cert-issuer {
+  display: block;
+  font-size: 0.8em;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.cert-year {
+  display: inline-block;
+  font-size: 0.7em;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 2px 10px;
+  border-radius: 10px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  margin-bottom: 8px;
+}
+
+.cert-info p {
+  margin: 0;
+  font-size: 0.82em;
+  line-height: 1.55;
+  color: var(--text);
 }

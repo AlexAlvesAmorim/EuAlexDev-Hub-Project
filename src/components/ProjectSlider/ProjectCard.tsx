@@ -5,7 +5,6 @@ export interface ProjectCardProps {
     project: Project
     position: number
     active?: boolean
-    /** Chamado ao clicar no card: abre o modal de detalhes. */
     onOpen: (project: Project, index: number) => void
 }
 

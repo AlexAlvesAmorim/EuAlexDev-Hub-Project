@@ -1,9 +1,24 @@
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { FaGithub, FaXmark } from 'react-icons/fa6'
+import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss } from 'react-icons/si'
+import { TbRouter } from 'react-icons/tb'
+import { TbPdf } from 'react-icons/tb'
 import type { Project } from '../../types/Project'
+import type { IconType } from 'react-icons'
 
-export interface ProjectModalProps {
+const techIconMap: Record<string, { Icon: IconType; color: string }> = {
+    React: { Icon: SiReact, color: '#61dafb' },
+    TypeScript: { Icon: SiTypescript, color: '#3178c6' },
+    JavaScript: { Icon: SiJavascript, color: '#f7df1e' },
+    Electron: { Icon: SiElectron, color: '#47848f' },
+    Vite: { Icon: SiVite, color: '#bd34fe' },
+    Tailwind: { Icon: SiTailwindcss, color: '#06b6d4' },
+    'React Router': { Icon: TbRouter, color: '#f44250' },
+    'PDF.js': { Icon: TbPdf, color: '#f40' },
+}
+
+interface ProjectModalProps {
     project: Project
     onClose: () => void
 }
@@ -63,22 +78,51 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                         {project.description}
                     </p>
 
-                    {project.story && (
-                        <p className="project-modal__story">
-                            {project.story}
-                        </p>
-                    )}
+                    <div className="project-modal__case-study">
+                        {project.problem && (
+                            <div className="case-study__block">
+                                <h4 className="case-study__label case-study__label--problem">Problema</h4>
+                                <p>{project.problem}</p>
+                            </div>
+                        )}
+                        {project.solution && (
+                            <div className="case-study__block">
+                                <h4 className="case-study__label case-study__label--solution">Solução</h4>
+                                <p>{project.solution}</p>
+                            </div>
+                        )}
+                        {project.challenges && (
+                            <div className="case-study__block">
+                                <h4 className="case-study__label case-study__label--challenges">Desafios Técnicos</h4>
+                                <p>{project.challenges}</p>
+                            </div>
+                        )}
+                        {project.results && (
+                            <div className="case-study__block">
+                                <h4 className="case-study__label case-study__label--results">Resultados</h4>
+                                <p>{project.results}</p>
+                            </div>
+                        )}
+                    </div>
 
+                    <div className="project-modal__section-title">Destaques</div>
                     <ul className="project-modal__highlights">
                         {project.highlights.map((highlight) => (
                             <li key={highlight}>{highlight}</li>
                         ))}
                     </ul>
 
+                    <div className="project-modal__section-title">Tecnologias</div>
                     <div className="project-modal__techs">
-                        {project.technologies.map((tech) => (
-                            <span key={tech}>{tech}</span>
-                        ))}
+                        {project.technologies.map((tech) => {
+                            const meta = techIconMap[tech]
+                            return (
+                                <span key={tech}>
+                                    {meta ? <meta.Icon style={{ color: meta.color, fontSize: '1.1em' }} /> : null}
+                                    {tech}
+                                </span>
+                            )
+                        })}
                     </div>
                 </div>
 

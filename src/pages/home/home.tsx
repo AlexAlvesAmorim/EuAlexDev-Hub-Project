@@ -2,6 +2,10 @@ import { ProjectSlider } from "../../components/ProjectSlider/ProjectSlider.tsx"
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { FaGithub, FaEnvelope, FaLinkedin, FaFilePdf } from "react-icons/fa6";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { StatsSection } from "./StatsSection.tsx";
+import { Timeline } from "./TimelineSection.tsx";
+import { TechGrid } from "./TechGrid.tsx";
+import { CertsSection } from "./CertsSection.tsx";
 
 export function Home() {
     const isMobile = useMediaQuery('(max-width: 768px)')
@@ -19,7 +23,7 @@ export function Home() {
                         Sobre <span className="highlight">mim</span>
                     </h2>
                     <p className="section-subtitle">
-                        Front-end que gosta de transformar ideia em interface que funciona.
+                        De suporte técnico a front-end — uma jornada construída com código.
                     </p>
 
                     <div className="about">
@@ -27,18 +31,22 @@ export function Home() {
 
                         <div className="about-text">
                             <p>
-                                E aí! Sou o Alex Alves Amorim, desenvolvedor front-end. Criei este hub
-                                pra reunir os projetos que vou construindo no caminho — a ideia é ir
-                                lapidando cada um conforme vou aprendendo mais.
+                                Minha jornada com tecnologia não começou com um "Hello World". Começou em frente a
+                                pessoas frustradas com sistemas que deveriam ajudar, mas só complicavam. Passei anos
+                                em suporte técnico olhando nos olhos de quem dependia de um software pra trabalhar
+                                — e foi ali que entendi que tecnologia boa não é a que tem mais recursos, é a que
+                                resolve sem atrapalhar.
                             </p>
                             <p>
-                                Gosto de React, TypeScript e de estudar aqueles detalhes que parecem
-                                simples, mas que fazem diferença na hora de usar. Também tenho um
-                                carinho especial por Electron pra brincar com apps de desktop.
+                                Essa vivência moldou como eu programo hoje. Migrei pro Front-End quando percebi que
+                                eu podia ser a pessoa que constrói a interface que falta — a que é direta, fluida e
+                                pensada de verdade no humano do outro lado.
                             </p>
                             <p>
-                                A meta é crescer, codar todo dia e deixar tudo que eu faço com cara
-                                de produto, não de exercício.
+                                Trabalho com <strong>React</strong>, <strong>TypeScript</strong> e <strong>Electron</strong> (com um app desktop de 200+ usuários rodando) —
+                                e quanto a estudar cada detalhe que parece simples, mas faz toda a diferença
+                                na hora de usar, aprendi na prática. Cada projeto aqui foi lapidado com o cuidado de
+                                quem sabe o peso de uma experiência ruim — e escolheu entregar o oposto.
                             </p>
 
                             <div className="about-badges">
@@ -53,6 +61,14 @@ export function Home() {
                 </div>
             </section>
 
+            <StatsSection />
+
+            <Timeline />
+
+            <TechGrid />
+
+            <CertsSection />
+
             <section id="contato" className="section">
                 <FloatingParticles count={sectionParticles} />
 
@@ -65,9 +81,12 @@ export function Home() {
                     </p>
 
                     <div className="contact-card">
-                        <h3>Bora conversar?</h3>
+                        <div className="contact-cta-badge">
+                            Aberto a oportunidades
+                        </div>
+                        <h3>Vamos construir algo incrível?</h3>
                         <p>
-                            Respondo mais rápido pelo LinkedIn, mas dá pra me achar nos links abaixo.
+                            Respondo mais rápido pelo LinkedIn, mas pode me achar nos links abaixo.
                         </p>
 
                         <div className="contact-links">

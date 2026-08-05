@@ -1,16 +1,8 @@
-/* ─────────────────────────────────────────────────────────────────
- * base.css
- *
- * Reset mínimo e estilos globais do `<html>` / `<body>` / `#root`.
- * Tudo aqui se aplica ao documento inteiro, sem exceção por seção.
- * ───────────────────────────────────────────────────────────────── */
-
 html {
   background: var(--bg);
   scroll-behavior: smooth;
 }
 
-/* compensa o header fixo quando navega por âncora */
 section[id] {
   scroll-margin-top: 80px;
 }
@@ -31,7 +23,32 @@ body {
   overflow-x: hidden;
 }
 
-/* Em telas de computador, a página abre sempre em 80% (zoom-out fixo). */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (min-width: 769px) {
   :root {
     zoom: 0.8;

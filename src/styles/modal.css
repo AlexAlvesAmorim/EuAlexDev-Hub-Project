@@ -127,19 +127,113 @@
   background: var(--primary);
 }
 
+.project-modal__section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+
+.project-modal__case-study {
+    display: grid;
+    gap: 14px;
+    margin: 16px 0 8px;
+}
+
+.case-study__block {
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: rgba(22, 23, 29, 0.6);
+    border: 1px solid var(--border);
+    transition: border-color 0.3s ease;
+}
+
+.case-study__block:hover {
+    border-color: var(--accent-border);
+}
+
+.case-study__label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.case-study__label::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.case-study__label--problem {
+    color: #f87171;
+}
+.case-study__label--problem::before {
+    background: #f87171;
+}
+
+.case-study__label--solution {
+    color: #60a5fa;
+}
+.case-study__label--solution::before {
+    background: #60a5fa;
+}
+
+.case-study__label--challenges {
+    color: #fbbf24;
+}
+.case-study__label--challenges::before {
+    background: #fbbf24;
+}
+
+.case-study__label--results {
+    color: #34d399;
+}
+.case-study__label--results::before {
+    background: #34d399;
+}
+
+.case-study__block p {
+    margin: 0;
+    font-size: 0.88em;
+    line-height: 1.65;
+}
+
 .project-modal__techs {
-  display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
 .project-modal__techs span {
-  padding: 5px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  margin-bottom: 8px;
   border-radius: 20px;
   background: var(--accent-bg);
   border: 1px solid var(--accent-border);
   color: var(--text-h);
-  font-size: 0.8em;
+  font-size: 0.82em;
+  font-weight: 500;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.project-modal__techs span:hover {
+  background: rgba(192, 132, 252, 0.25);
+  border-color: var(--primary);
 }
 
 .project-modal__footer {

@@ -78,10 +78,10 @@
   }
 
   .banner .slider {
-    --card-w: 100px;
-    --card-h: 135px;
+    --card-w: 120px;
+    --card-h: 165px;
     --perspective: 900px;
-    --depth: 250px;
+    --depth: 280px;
   }
 
   .banner .slider .item {
@@ -98,7 +98,7 @@
   }
 
   .about-photo {
-    max-width: 260px;
+    max-width: 273px;
   }
 
   .project-modal {
@@ -121,5 +121,63 @@
 
   .project-modal__footer {
     padding: 16px 20px 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .stat-card {
+    padding: 24px 12px;
+  }
+
+  .stat-value {
+    font-size: 1.6em;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .timeline-left {
+    left: 0;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .timeline-right {
+    left: 0;
+    padding-left: 50px;
+  }
+
+  .timeline-left .timeline-dot {
+    right: auto;
+    left: -7px;
+  }
+
+  .timeline-right .timeline-dot {
+    left: -7px;
+  }
+
+  .tech-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .tech-card {
+    padding: 24px 16px;
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
