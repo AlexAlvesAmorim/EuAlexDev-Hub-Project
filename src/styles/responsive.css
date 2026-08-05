@@ -78,8 +78,8 @@
   }
 
   .banner .slider {
-    --card-w: 120px;
-    --card-h: 165px;
+    --card-w: 108px;
+    --card-h: 149px;
     --perspective: 900px;
     --depth: 280px;
   }
@@ -98,7 +98,7 @@
   }
 
   .about-photo {
-    max-width: 286px;
+    max-width: 305px;
   }
 
   .project-modal {
