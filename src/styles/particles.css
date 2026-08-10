@@ -1,12 +1,3 @@
-/* ─────────────────────────────────────────────────────────────────
- * particles.css
- *
- * Partículas flutuantes (`.particle`) renderizadas dentro de
- * `.particles-container`. O cálculo de posição, tamanho e timing
- * é determinístico (PRNG mulberry32) e vive no componente
- * React — o CSS só define a animação e o layout-base.
- * ───────────────────────────────────────────────────────────────── */
-
 .particles-container {
   position: absolute;
   inset: 0;

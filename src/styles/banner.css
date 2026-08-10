@@ -1,22 +1,3 @@
-/* ─────────────────────────────────────────────────────────────────
- * banner.css
- *
- * Banner/Carrossel 3D da Home. Inclui:
- *   - container `.banner` (full-viewport, com gradiente radial)
- *   - estado `.banner.scrolled` (vidro fosco quando a página rola)
- *   - texto decorativo de fundo com `text-stroke`
- *   - slider 3D (`perspective`, `rotateY`, `translateZ`)
- *
- * Rotação é React-driven: o hook `useProjectSlider` anima o ângulo
- * global do slider de forma contínua (`requestAnimationFrame`)
- * escrevendo em `--rotation`, e `--position` fixa cada item no
- * círculo. O card que está à frente do cilindro sempre coincide com
- * a legenda "Em destaque" — ambos derivam do mesmo ângulo.
- * Hover e `prefers-reduced-motion` são tratados no hook/CSS de a11y;
- * não existe `@keyframes` de auto-rotação nem `transition` aqui (o
- * movimento por frame já é suave e uma transition disputaria com ele).
- * ───────────────────────────────────────────────────────────────── */
-
 .banner {
   width: 100%;
   height: 100vh;

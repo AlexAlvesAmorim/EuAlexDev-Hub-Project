@@ -618,3 +618,219 @@
     transform: scale(1);
   }
 }
+
+/* Carousel Styles */
+.project-modal-template__tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.project-modal-template__tab {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-modal-template__tab:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+}
+
+.project-modal-template__tab.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--text-h);
+}
+
+.project-modal-template__carousel {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.project-modal-template__carousel-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  background: var(--bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.project-modal-template__carousel-image {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.project-modal-template__carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(22, 23, 29, 0.85);
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  font-size: 1.2em;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.project-modal-template__carousel-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.project-modal-template__carousel-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.project-modal-template__carousel-btn--prev {
+  left: -60px;
+}
+
+.project-modal-template__carousel-btn--next {
+  right: -60px;
+}
+
+.project-modal-template__carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.project-modal-template__indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-modal-template__indicator:hover {
+  background: var(--accent-border);
+  transform: scale(1.2);
+}
+
+.project-modal-template__indicator.active {
+  background: var(--primary);
+  transform: scale(1.3);
+}
+
+.project-modal-template__indicator:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.project-modal-template__carousel-caption {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.85em;
+  color: var(--text-h);
+  opacity: 0.7;
+}
+
+/* Comparison Table Styles */
+.project-modal-template__comparison {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+.project-modal-template__comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88em;
+}
+
+.project-modal-template__comparison-table th,
+.project-modal-template__comparison-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-modal-template__comparison-table th {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75em;
+  background: rgba(192, 132, 252, 0.1);
+  position: sticky;
+  top: 0;
+}
+
+.project-modal-template__comparison-table td {
+  color: var(--text-h);
+  line-height: 1.6;
+}
+
+.project-modal-template__comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.project-modal-template__comparison-table tr:hover td {
+  background: rgba(192, 132, 252, 0.05);
+}
+
+.comparison-v12 {
+  color: var(--text-h);
+  opacity: 0.8;
+}
+
+.comparison-v20 {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .project-modal-template__carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1em;
+  }
+  
+  .project-modal-template__carousel-btn--prev {
+    left: -50px;
+  }
+  
+  .project-modal-template__carousel-btn--next {
+    right: -50px;
+  }
+  
+  .project-modal-template__carousel-track {
+    min-height: 200px;
+  }
+  
+  .project-modal-template__carousel-image {
+    max-height: 350px;
+  }
+  
+  .project-modal-template__tabs {
+    flex-direction: column;
+  }
+}

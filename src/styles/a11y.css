@@ -1,18 +1,3 @@
-/* ─────────────────────────────────────────────────────────────────
- * a11y.css
- *
- * Acessibilidade: respeito a `prefers-reduced-motion`.
- *
- * Quando o usuário pede menos movimento no sistema operacional,
- * desligamos TODAS as animações decorativas — rotação do carrossel,
- * partículas, pulse do texto de fundo, fade-in do autor e do modelo
- * central.
- *
- * A rotação do carrossel é por `requestAnimationFrame` no hook
- * `useProjectSlider`, que espelha essa regra no JavaScript (para de
- * avançar o ângulo) — aqui só sobram as animações puramente CSS.
- * ───────────────────────────────────────────────────────────────── */
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -8,15 +8,6 @@ import { useProjectSlider } from '../../hooks/useProjectSlider'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import type { Project } from '../../types/Project'
 
-const projectV2Images: Record<string, string[]> = {
-    'alfa-pdf': [
-        '/projects/AlfaPDF-v2.0-feature1.png',
-        '/projects/AlfaPDF-v2.0-feature2.png',
-        '/projects/AlfaPDF-v2.0-feature3.png',
-        '/projects/AlfaPDF-v2.0-feature4.png',
-    ],
-}
-
 export function ProjectSlider() {
 
     const { sliderRef, handleMouseEnter, handleMouseLeave, handleSelect, selectedIndex } = useProjectSlider(projects.length)
@@ -29,8 +20,7 @@ export function ProjectSlider() {
 
     const openProjectDetails = useCallback((project: Project, index: number) => {
         handleSelect(index)
-        const v2Images = projectV2Images[project.id] || []
-        setOpenedProject({ ...project, v2Images })
+        setOpenedProject({ ...project })
     }, [handleSelect])
 
     return (
@@ -85,6 +75,8 @@ export function ProjectSlider() {
                     project={openedProject}
                     onClose={closeModal}
                     v2Images={openedProject.v2Images}
+                    v12Images={openedProject.v12Images}
+                    comparison={openedProject.comparison}
                 />
             )}
         </section>

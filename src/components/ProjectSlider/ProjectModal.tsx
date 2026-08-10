@@ -1,11 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { FaGithub, FaXmark } from 'react-icons/fa6'
+import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss } from 'react-icons/si'
 import { TbRouter } from 'react-icons/tb'
 import { TbPdf } from 'react-icons/tb'
 import type { Project } from '../../types/Project'
 import type { IconType } from 'react-icons'
+
+interface VersionComparison {
+    feature: string
+    v12: string
+    v20: string
+}
 
 const techIconMap: Record<string, { Icon: IconType; color: string }> = {
     React: { Icon: SiReact, color: '#61dafb' },
@@ -22,12 +28,17 @@ interface ProjectModalProps {
     project: Project
     onClose: () => void
     v2Images?: string[]
+    v12Images?: string[]
+    comparison?: VersionComparison[]
 }
 
-export function ProjectModal({ project, onClose, v2Images = [] }: ProjectModalProps) {
+export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], comparison = [] }: ProjectModalProps) {
     const closeButtonRef = useRef<HTMLButtonElement>(null)
     const [showV2, setShowV2] = useState(false)
     const [rotate, setRotate] = useState(false)
+    const [currentV2Index, setCurrentV2Index] = useState(0)
+    const [currentV12Index, setCurrentV12Index] = useState(0)
+    const [activeTab, setActiveTab] = useState<'v2' | 'comparison'>('v2')
 
     useEffect(() => {
         const previouslyFocused = document.activeElement as HTMLElement | null
@@ -55,7 +66,23 @@ export function ProjectModal({ project, onClose, v2Images = [] }: ProjectModalPr
         }, 500)
     }
 
-    if (showV2 && v2Images.length > 0) {
+    const goToPrevV2 = () => {
+        setCurrentV2Index((prev) => (prev === 0 ? v2Images.length - 1 : prev - 1))
+    }
+
+    const goToNextV2 = () => {
+        setCurrentV2Index((prev) => (prev === v2Images.length - 1 ? 0 : prev + 1))
+    }
+
+    const goToPrevV12 = () => {
+        setCurrentV12Index((prev) => (prev === 0 ? v12Images.length - 1 : prev - 1))
+    }
+
+    const goToNextV12 = () => {
+        setCurrentV12Index((prev) => (prev === v12Images.length - 1 ? 0 : prev + 1))
+    }
+
+    if (showV2 && (v2Images.length > 0 || v12Images.length > 0 || comparison.length > 0)) {
         return createPortal(
             <div className="project-modal-template" role="dialog" aria-modal="true" aria-labelledby="project-modal-v2-title" onClick={onClose}>
                 <div className="project-modal-template__card" onClick={(event) => event.stopPropagation()}>
@@ -79,17 +106,133 @@ export function ProjectModal({ project, onClose, v2Images = [] }: ProjectModalPr
                                 &larr; Voltar
                             </button>
                         </div>
-                        <div className="project-modal-template__gallery-grid">
-                            {v2Images.map((img, index) => (
-                                <div
-                                    key={index}
-                                    className="project-modal-template__gallery-item"
-                                    style={{ animationDelay: `${index * 0.1}s` }}
+
+                        <div className="project-modal-template__tabs">
+                            <button
+                                className={`project-modal-template__tab ${activeTab === 'v2' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('v2')}
+                                aria-selected={activeTab === 'v2'}
+                            >
+                                Novidades v2.0
+                            </button>
+                            {comparison.length > 0 && (
+                                <button
+                                    className={`project-modal-template__tab ${activeTab === 'comparison' ? 'active' : ''}`}
+                                    onClick={() => setActiveTab('comparison')}
+                                    aria-selected={activeTab === 'comparison'}
                                 >
-                                    <img src={img} alt={`${project.title} - Print ${index + 1}`} loading="lazy" />
-                                </div>
-                            ))}
+                                    Comparativo v1.2 → v2.0
+                                </button>
+                            )}
                         </div>
+
+                        {activeTab === 'v2' && v2Images.length > 0 && (
+                            <div className="project-modal-template__carousel">
+                                <button
+                                    className="project-modal-template__carousel-btn project-modal-template__carousel-btn--prev"
+                                    onClick={goToPrevV2}
+                                    aria-label="Imagem anterior"
+                                >
+                                    <FaChevronLeft />
+                                </button>
+                                <div className="project-modal-template__carousel-track">
+                                    <img
+                                        src={v2Images[currentV2Index]}
+                                        alt={`${project.title} v2.0 - Novidade ${currentV2Index + 1}`}
+                                        loading="lazy"
+                                        className="project-modal-template__carousel-image"
+                                    />
+                                </div>
+                                <button
+                                    className="project-modal-template__carousel-btn project-modal-template__carousel-btn--next"
+                                    onClick={goToNextV2}
+                                    aria-label="Próxima imagem"
+                                >
+                                    <FaChevronRight />
+                                </button>
+                                <div className="project-modal-template__carousel-indicators">
+                                    {v2Images.map((_, index) => (
+                                        <button
+                                            key={index}
+                                            className={`project-modal-template__indicator ${index === currentV2Index ? 'active' : ''}`}
+                                            onClick={() => setCurrentV2Index(index)}
+                                            aria-label={`Ir para imagem ${index + 1}`}
+                                            aria-current={index === currentV2Index ? 'true' : 'false'}
+                                        />
+                                    ))}
+                                </div>
+                                <p className="project-modal-template__carousel-caption">
+                                    {currentV2Index + 1} de {v2Images.length}
+                                </p>
+                            </div>
+                        )}
+
+                        {activeTab === 'v2' && v12Images.length > 0 && (
+                            <>
+                                <div className="project-modal-template__section-title">Versão 1.2 (Anterior)</div>
+                                <div className="project-modal-template__carousel">
+                                <button
+                                    className="project-modal-template__carousel-btn project-modal-template__carousel-btn--prev"
+                                    onClick={goToPrevV12}
+                                    aria-label="Imagem anterior v1.2"
+                                >
+                                    <FaChevronLeft />
+                                </button>
+                                <div className="project-modal-template__carousel-track">
+                                    <img
+                                        src={v12Images[currentV12Index]}
+                                        alt={`${project.title} v1.2 - Print ${currentV12Index + 1}`}
+                                        loading="lazy"
+                                        className="project-modal-template__carousel-image"
+                                    />
+                                </div>
+                                <button
+                                    className="project-modal-template__carousel-btn project-modal-template__carousel-btn--next"
+                                    onClick={goToNextV12}
+                                    aria-label="Próxima imagem v1.2"
+                                >
+                                    <FaChevronRight />
+                                </button>
+                                <div className="project-modal-template__carousel-indicators">
+                                    {v12Images.map((_, index) => (
+                                        <button
+                                            key={index}
+                                            className={`project-modal-template__indicator ${index === currentV12Index ? 'active' : ''}`}
+                                            onClick={() => setCurrentV12Index(index)}
+                                            aria-label={`Ir para imagem v1.2 ${index + 1}`}
+                                            aria-current={index === currentV12Index ? 'true' : 'false'}
+                                        />
+                                    ))}
+                                </div>
+                                <p className="project-modal-template__carousel-caption">
+                                    {currentV12Index + 1} de {v12Images.length}
+                                </p>
+                            </div>
+                            </>
+                        )}
+
+                        {activeTab === 'comparison' && comparison.length > 0 && (
+                            <div className="project-modal-template__comparison">
+                                <table className="project-modal-template__comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Recurso</th>
+                                            <th>v1.2</th>
+                                            <th>v2.0</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {comparison.map((item, index) => (
+                                            <tr key={index}>
+                                                <td>{item.feature}</td>
+                                                <td className="comparison-v12">{item.v12}</td>
+                                                <td className="comparison-v20">{item.v20}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>,
