@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { FaGithub, FaXmark } from 'react-icons/fa6'
 import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss } from 'react-icons/si'
@@ -21,10 +21,13 @@ const techIconMap: Record<string, { Icon: IconType; color: string }> = {
 interface ProjectModalProps {
     project: Project
     onClose: () => void
+    v2Images?: string[]
 }
 
-export function ProjectModal({ project, onClose }: ProjectModalProps) {
+export function ProjectModal({ project, onClose, v2Images = [] }: ProjectModalProps) {
     const closeButtonRef = useRef<HTMLButtonElement>(null)
+    const [showV2, setShowV2] = useState(false)
+    const [rotate, setRotate] = useState(false)
 
     useEffect(() => {
         const previouslyFocused = document.activeElement as HTMLElement | null
@@ -43,6 +46,56 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             previouslyFocused?.focus()
         }
     }, [onClose])
+
+    const handleUpdateClick = () => {
+        setRotate(true)
+        setTimeout(() => {
+            setShowV2(true)
+            setRotate(false)
+        }, 500)
+    }
+
+    if (showV2 && v2Images.length > 0) {
+        return createPortal(
+            <div className="project-modal-template" role="dialog" aria-modal="true" aria-labelledby="project-modal-v2-title" onClick={onClose}>
+                <div className="project-modal-template__card" onClick={(event) => event.stopPropagation()}>
+                    <button
+                        type="button"
+                        className="project-modal-template__close"
+                        aria-label="Fechar detalhes"
+                        onClick={onClose}
+                    >
+                        <FaXmark />
+                    </button>
+
+                    <div className="project-modal-template__gallery">
+                        <div className="project-modal-template__gallery-title">
+                            <h3 id="project-modal-v2-title">{project.title} v2.0</h3>
+                            <button
+                                className="project-modal-template__back-btn"
+                                onClick={() => setShowV2(false)}
+                                aria-label="Voltar às informações do projeto"
+                            >
+                                &larr; Voltar
+                            </button>
+                        </div>
+                        <div className="project-modal-template__gallery-grid">
+                            {v2Images.map((img, index) => (
+                                <div
+                                    key={index}
+                                    className="project-modal-template__gallery-item"
+                                    style={{ animationDelay: `${index * 0.1}s` }}
+                                >
+                                    <img src={img} alt={`${project.title} - Print ${index + 1}`} loading="lazy" />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>,
+            document.body,
+        )
+    }
 
     return createPortal(
         <div
@@ -77,6 +130,16 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     <p className="project-modal__description">
                         {project.description}
                     </p>
+
+                    {v2Images.length > 0 && (
+                        <button
+                            className={`project-modal-template__update-btn ${rotate ? 'rotating' : ''}`}
+                            onClick={handleUpdateClick}
+                            aria-label={`Ver novidades do ${project.title} v2.0`}
+                        >
+                            Ver novidades v2.0
+                        </button>
+                    )}
 
                     <div className="project-modal__case-study">
                         {project.problem && (

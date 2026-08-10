@@ -5,7 +5,7 @@ import { FaAward } from "react-icons/fa6";
 const certifications = [
     {
         title: "Curso de Informática — Formação Completa",
-        issuer: "M. J. M. Informática LTDA. (MDATA)",
+        issuer: "                                                                               ica LTDA. (MDATA)",
         year: "2007-2008",
         description: "300h teóricas e práticas. Média final 9,0. Sistemas Operacionais, Pacote Office, Corel Draw, Photoshop, HTML, Dreamweaver, Flash, Hardware e Manutenção.",
     },
@@ -45,7 +45,7 @@ export function CertsSection() {
     const isMobile = useMediaQuery('(max-width: 768px)');
 
     return (
-        <section className="section certs-section">
+        <section className="section certs-section" id="certificados">
             <FloatingParticles count={isMobile ? 10 : 25} />
             <div className="section-container">
                 <h2 className="section-title">

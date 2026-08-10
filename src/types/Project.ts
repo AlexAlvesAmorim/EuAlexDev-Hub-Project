@@ -12,4 +12,5 @@ export interface Project {
     solution?: string
     challenges?: string
     results?: string
+    v2Images?: string[]
 }
