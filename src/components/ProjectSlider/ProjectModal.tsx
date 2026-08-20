@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
+import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus } from 'react-icons/fa6'
 import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss } from 'react-icons/si'
 import { TbRouter } from 'react-icons/tb'
 import { TbPdf } from 'react-icons/tb'
@@ -35,6 +35,11 @@ interface ProjectModalProps {
     comparison?: VersionComparison[]
 }
 
+interface LightboxState {
+    images: string[]
+    index: number
+}
+
 export function ProjectModal({ project, onClose, v21Images = [], v12Images = [], comparison = [] }: ProjectModalProps) {
     const closeButtonRef = useRef<HTMLButtonElement>(null)
     const [showV2, setShowV2] = useState(false)
@@ -42,13 +47,24 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
     const [currentV21Index, setCurrentV21Index] = useState(0)
     const [currentV12Index, setCurrentV12Index] = useState(0)
     const [activeTab, setActiveTab] = useState<'v21' | 'comparison'>('v21')
+    const [lightbox, setLightbox] = useState<LightboxState | null>(null)
 
     useEffect(() => {
         const previouslyFocused = document.activeElement as HTMLElement | null
         closeButtonRef.current?.focus({ preventScroll: true })
 
         const onKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') onClose()
+            if (lightbox) {
+                if (event.key === 'Escape') {
+                    setLightbox(null)
+                } else if (event.key === 'ArrowLeft') {
+                    setLightbox((lb) => (lb ? { ...lb, index: (lb.index - 1 + lb.images.length) % lb.images.length } : lb))
+                } else if (event.key === 'ArrowRight') {
+                    setLightbox((lb) => (lb ? { ...lb, index: (lb.index + 1) % lb.images.length } : lb))
+                }
+            } else if (event.key === 'Escape') {
+                onClose()
+            }
         }
 
         document.addEventListener('keydown', onKeyDown)
@@ -59,7 +75,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
             document.body.style.overflow = ''
             previouslyFocused?.focus()
         }
-    }, [onClose])
+    }, [onClose, lightbox])
 
     const handleUpdateClick = () => {
         setRotate(true)
@@ -83,6 +99,22 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
 
     const goToNextV12 = () => {
         setCurrentV12Index((prev) => (prev === v12Images.length - 1 ? 0 : prev + 1))
+    }
+
+    const openLightbox = (images: string[], index: number) => {
+        setLightbox({ images, index })
+    }
+
+    const closeLightbox = () => {
+        setLightbox(null)
+    }
+
+    const goToLightboxPrev = () => {
+        setLightbox((lb) => (lb ? { ...lb, index: (lb.index - 1 + lb.images.length) % lb.images.length } : lb))
+    }
+
+    const goToLightboxNext = () => {
+        setLightbox((lb) => (lb ? { ...lb, index: (lb.index + 1) % lb.images.length } : lb))
     }
 
     if (showV2 && (v21Images.length > 0 || v12Images.length > 0 || comparison.length > 0)) {
@@ -144,7 +176,11 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                         alt={`${project.title} ${NEW_VERSION} - Novidade ${currentV21Index + 1}`}
                                         loading="lazy"
                                         className="project-modal-template__carousel-image"
+                                        onClick={() => openLightbox(v21Images, currentV21Index)}
                                     />
+                                    <span className="project-modal-template__zoom-hint" aria-hidden="true">
+                                        <FaMagnifyingGlassPlus />
+                                    </span>
                                 </div>
                                 <button
                                     className="project-modal-template__carousel-btn project-modal-template__carousel-btn--next"
@@ -187,7 +223,11 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                         alt={`${project.title} v1.2 - Print ${currentV12Index + 1}`}
                                         loading="lazy"
                                         className="project-modal-template__carousel-image"
+                                        onClick={() => openLightbox(v12Images, currentV12Index)}
                                     />
+                                    <span className="project-modal-template__zoom-hint" aria-hidden="true">
+                                        <FaMagnifyingGlassPlus />
+                                    </span>
                                 </div>
                                 <button
                                     className="project-modal-template__carousel-btn project-modal-template__carousel-btn--next"
@@ -238,6 +278,56 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                         )}
                     </div>
                 </div>
+
+                {lightbox && (
+                    <div
+                        className="project-lightbox"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Imagem ampliada"
+                        onClick={closeLightbox}
+                    >
+                        <button
+                            type="button"
+                            className="project-lightbox__close"
+                            aria-label="Fechar imagem ampliada"
+                            onClick={closeLightbox}
+                        >
+                            <FaXmark />
+                        </button>
+                        <button
+                            type="button"
+                            className="project-lightbox__nav project-lightbox__nav--prev"
+                            aria-label="Imagem anterior"
+                            onClick={(event) => {
+                                event.stopPropagation()
+                                goToLightboxPrev()
+                            }}
+                        >
+                            <FaChevronLeft />
+                        </button>
+                        <img
+                            src={lightbox.images[lightbox.index]}
+                            alt={`${project.title} - Imagem ${lightbox.index + 1} de ${lightbox.images.length}`}
+                            className="project-lightbox__image"
+                            onClick={closeLightbox}
+                        />
+                        <button
+                            type="button"
+                            className="project-lightbox__nav project-lightbox__nav--next"
+                            aria-label="Próxima imagem"
+                            onClick={(event) => {
+                                event.stopPropagation()
+                                goToLightboxNext()
+                            }}
+                        >
+                            <FaChevronRight />
+                        </button>
+                        <span className="project-lightbox__caption">
+                            {lightbox.index + 1} de {lightbox.images.length}
+                        </span>
+                    </div>
+                )}
             </div>,
             document.body,
         )
