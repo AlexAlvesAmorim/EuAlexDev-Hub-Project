@@ -5,7 +5,7 @@
 ## RESUMO PROFISSIONAL
 
 - 21+ anos em TI: comecei no suporte técnico (N1 ao N3), atendendo usuários reais todos os dias — e foi essa vivência que moldou como eu programo: tecnologia boa é a que resolve sem atrapalhar.
-- Em 2023 migrei de vez para o desenvolvimento front-end e fundei a ALVS, com a filosofia de construir **produtos, não exercícios**. Trabalho com React, TypeScript, JavaScript, Electron, Tailwind CSS e Vite.
+- Em 2023 migrei de vez para o desenvolvimento front-end e fundei a ALVS, com a filosofia de construir **produtos, não exercícios**. Trabalho com React, TypeScript, JavaScript, Electron, Tailwind CSS e Vite — e aplico back-end nos meus produtos: API REST em Node.js/Fastify, PostgreSQL com Prisma, autenticação, uploads e testes automatizados.
 - Evidências de mercado: app desktop com **200+ usuários ativos**, e-commerce **vendido em negociação B2B**, dashboards analíticos entregues e portfólio com case studies completos.
 - Foco em experiência do usuário, performance, Clean Code, componentização e arquitetura modular.
 
@@ -22,16 +22,20 @@
 > Dashboard analítico · 2025
 - Dashboard com KPIs de receita, pedidos, ticket médio e entregues para o ecossistema 99food.
 - Receita segmentada por dia e método de pagamento (Pix, crédito, débito), com insights automáticos de melhor dia e forma de pagamento.
-- Gestão de status de pedidos via Context API; grande parte do desenvolvimento realizada offline, sem dependência de consulta constante à documentação.
+- Gestão de status de pedidos via Context API; desenvolvida majoritariamente offline, sem consulta constante à documentação.
 
 ### Dev de Favela Hub — React · TypeScript · Vite · Tailwind
 > Portfólio pessoal · 2025
 - Carrossel 3D autoral em CSS puro com requestAnimationFrame — sem bibliotecas de animação 3D.
 - Modal com case study completo por projeto; acessibilidade (prefers-reduced-motion, navegação por teclado, Escape) e CSS modular em parciais.
 
-### Fabulosa E-Commerce — React · JavaScript · Vite · Tailwind
-> Loja virtual · 2023–2024 · vendida em negociação B2B
+### Fabulosa E-Commerce — React · JavaScript · Node.js · Fastify · PostgreSQL
+> Loja virtual full stack · 2023–2025 · vendida em negociação B2B
 - Loja de moda feminina e masculina vendida para uma empresa — validação real do trabalho no mercado.
+- Back-end próprio: API REST em Fastify + Prisma/PostgreSQL consumida pelo frontend, com arquitetura em camadas (controller → service → repository).
+- Autenticação JWT em cookie HttpOnly com RBAC de admin; upload otimizado com Sharp (WebP); rate-limit, helmet e CORS restrito.
+- Funil de conversão (visualização → clique de compra → WhatsApp) com dashboard de analytics no painel admin.
+- 45 testes automatizados (Vitest) + e2e com Playwright e ambiente Docker.
 - Catálogo com design responsivo e identidade visual de moda; base refatorada que originou o 99Food Analyser.
 
 ## EXPERIÊNCIA PROFISSIONAL
@@ -64,7 +68,7 @@
 
 ## COMPETÊNCIAS TÉCNICAS
 
-- Desenvolvimento: React (avançado), JavaScript (avançado), TypeScript (intermediário-avançado), Electron (avançado), Tailwind CSS (avançado), Vite, HTML5, CSS3, Git/GitHub, APIs REST, PDF.js, Context API, hooks customizados, arquitetura modular.
+- Desenvolvimento: React (avançado), JavaScript (avançado), TypeScript (intermediário-avançado), Electron (avançado), Tailwind CSS (avançado), Node.js, Fastify, PostgreSQL, Prisma ORM, Docker, Vite, HTML5, CSS3, Git/GitHub, APIs REST (consumo e criação), PDF.js, Context API, hooks customizados, arquitetura modular, testes (Vitest, Playwright).
 - Infraestrutura e Suporte: Windows, Linux, macOS, Windows Server, Active Directory, TCP/IP, DNS, DHCP, VPN, LAN/WAN, Wi-Fi, Firewall, Help Desk/ITSM.
 - Ferramentas: Microsoft Office 365, Google Workspace, Jira, GLPI, Zendesk, Photoshop, CorelDRAW.
 

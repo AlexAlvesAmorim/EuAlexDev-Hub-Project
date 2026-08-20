@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus } from 'react-icons/fa6'
-import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss } from 'react-icons/si'
+import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss, SiNodedotjs, SiFastify, SiPostgresql, SiPrisma } from 'react-icons/si'
 import { TbRouter } from 'react-icons/tb'
 import { TbPdf } from 'react-icons/tb'
 import type { Project } from '../../types/Project'
@@ -23,6 +23,10 @@ const techIconMap: Record<string, { Icon: IconType; color: string }> = {
     Electron: { Icon: SiElectron, color: '#47848f' },
     Vite: { Icon: SiVite, color: '#bd34fe' },
     Tailwind: { Icon: SiTailwindcss, color: '#06b6d4' },
+    'Node.js': { Icon: SiNodedotjs, color: '#339933' },
+    Fastify: { Icon: SiFastify, color: '#1f1f1f' },
+    PostgreSQL: { Icon: SiPostgresql, color: '#4169e1' },
+    Prisma: { Icon: SiPrisma, color: '#2d3748' },
     'React Router': { Icon: TbRouter, color: '#f44250' },
     'PDF.js': { Icon: TbPdf, color: '#f40' },
 }
