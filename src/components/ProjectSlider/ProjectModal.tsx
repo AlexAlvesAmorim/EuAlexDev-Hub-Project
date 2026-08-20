@@ -285,13 +285,19 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                         role="dialog"
                         aria-modal="true"
                         aria-label="Imagem ampliada"
-                        onClick={closeLightbox}
+                        onClick={(event) => {
+                            event.stopPropagation()
+                            closeLightbox()
+                        }}
                     >
                         <button
                             type="button"
                             className="project-lightbox__close"
                             aria-label="Fechar imagem ampliada"
-                            onClick={closeLightbox}
+                            onClick={(event) => {
+                                event.stopPropagation()
+                                closeLightbox()
+                            }}
                         >
                             <FaXmark />
                         </button>
@@ -310,7 +316,6 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                             src={lightbox.images[lightbox.index]}
                             alt={`${project.title} - Imagem ${lightbox.index + 1} de ${lightbox.images.length}`}
                             className="project-lightbox__image"
-                            onClick={closeLightbox}
                         />
                         <button
                             type="button"
