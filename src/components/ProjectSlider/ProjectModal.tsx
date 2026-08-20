@@ -48,6 +48,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
     const [currentV12Index, setCurrentV12Index] = useState(0)
     const [activeTab, setActiveTab] = useState<'v21' | 'comparison'>('v21')
     const [lightbox, setLightbox] = useState<LightboxState | null>(null)
+    const [lightboxSize, setLightboxSize] = useState<{ w: number; h: number } | null>(null)
 
     useEffect(() => {
         const previouslyFocused = document.activeElement as HTMLElement | null
@@ -58,8 +59,10 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                 if (event.key === 'Escape') {
                     setLightbox(null)
                 } else if (event.key === 'ArrowLeft') {
+                    setLightboxSize(null)
                     setLightbox((lb) => (lb ? { ...lb, index: (lb.index - 1 + lb.images.length) % lb.images.length } : lb))
                 } else if (event.key === 'ArrowRight') {
+                    setLightboxSize(null)
                     setLightbox((lb) => (lb ? { ...lb, index: (lb.index + 1) % lb.images.length } : lb))
                 }
             } else if (event.key === 'Escape') {
@@ -102,6 +105,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
     }
 
     const openLightbox = (images: string[], index: number) => {
+        setLightboxSize(null)
         setLightbox({ images, index })
     }
 
@@ -110,10 +114,12 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
     }
 
     const goToLightboxPrev = () => {
+        setLightboxSize(null)
         setLightbox((lb) => (lb ? { ...lb, index: (lb.index - 1 + lb.images.length) % lb.images.length } : lb))
     }
 
     const goToLightboxNext = () => {
+        setLightboxSize(null)
         setLightbox((lb) => (lb ? { ...lb, index: (lb.index + 1) % lb.images.length } : lb))
     }
 
@@ -316,6 +322,18 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                             src={lightbox.images[lightbox.index]}
                             alt={`${project.title} - Imagem ${lightbox.index + 1} de ${lightbox.images.length}`}
                             className="project-lightbox__image"
+                            style={
+                                lightboxSize
+                                    ? {
+                                          maxWidth: Math.min(lightboxSize.w, window.innerWidth * 0.92),
+                                          maxHeight: Math.min(lightboxSize.h, window.innerHeight * 0.86),
+                                      }
+                                    : undefined
+                            }
+                            onLoad={(event) => {
+                                const target = event.currentTarget
+                                setLightboxSize({ w: target.naturalWidth, h: target.naturalHeight })
+                            }}
                         />
                         <button
                             type="button"
