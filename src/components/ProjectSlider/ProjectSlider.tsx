@@ -74,7 +74,7 @@ export function ProjectSlider() {
                 <ProjectModal
                     project={openedProject}
                     onClose={closeModal}
-                    v2Images={openedProject.v2Images}
+                    v21Images={openedProject.v21Images}
                     v12Images={openedProject.v12Images}
                     comparison={openedProject.comparison}
                 />

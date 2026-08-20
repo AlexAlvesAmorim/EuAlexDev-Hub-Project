@@ -797,12 +797,12 @@
   background: rgba(192, 132, 252, 0.05);
 }
 
-.comparison-v12 {
+.comparison-old {
   color: var(--text-h);
   opacity: 0.8;
 }
 
-.comparison-v20 {
+.comparison-new {
   color: var(--primary);
   font-weight: 500;
 }

@@ -1,13 +1,11 @@
 import type { Project, VersionComparison } from '../types/Project'
 
 const alfaPdfComparison: VersionComparison[] = [
-    { feature: 'Auto Update', v12: '❌ Manual', v20: '✅ Automático via GitHub Releases' },
-    { feature: 'Update Notifier', v12: '❌ Não tem', v20: '✅ Notificação integrada com seleção de versão' },
-    { feature: 'Botão Opções Avançadas', v12: 'Lateral na toolbar', v20: 'No modal de impressão (organizado)' },
-    { feature: 'Pipeline de Impressão', v12: 'Básico', v20: 'Revisado com pdf-lib para filtragem de páginas' },
-    { feature: 'UI/UX', v12: 'Responsivo', v20: 'Dark theme, design system consistente' },
-    { feature: 'CI/CD', v12: 'Básico', v20: 'GitHub Actions com lint + typecheck + test' },
-    { feature: 'Tipagem', v12: 'Parcial', v20: 'TypeScript completo com tipos IPC' },
+    { feature: 'Auto Update', from: 'Automático via GitHub Releases', to: '✅ Corrigido — fim do loop de atualização (win-unpacked regenerado a cada release)' },
+    { feature: 'Tamanho do instalador', from: '~227 MB', to: '✅ 100 MB — 56% menor (pacote podado: só pdfjs-dist)' },
+    { feature: 'Runtime Electron', from: 'v30', to: '✅ v43.4.1 — atualizado' },
+    { feature: 'Pacote do app', from: 'node_modules completo', to: '✅ Apenas pdfjs-dist — main 100% bundled' },
+    { feature: 'Validação de release', from: 'Manual', to: '✅ Checklist padrão — 4 etapas (instalação limpa, update real, artefato, GitHub)' },
 ]
 
 export const projects: Project[] = [
@@ -29,12 +27,14 @@ export const projects: Project[] = [
             'Impressão silenciosa integrada ao Windows (testada com EPSON L3150)',
             'Registrado como aplicativo padrão para abrir arquivos .pdf',
             'Instalador NSIS com identidade visual própria',
+            'v2.1.1: auto-update revisado (fim do loop) e instalador 56% menor',
         ],
-        v2Images: [
-            '/projects/AlfaPDF-v2.0-feature1.png',
-            '/projects/AlfaPDF-v2.0-feature2.png',
-            '/projects/AlfaPDF-v2.0-feature3.png',
-            '/projects/AlfaPDF-v2.0-feature4.png',
+        v21Images: [
+            '/projects/AlfaPDF-v2.1.1-feature1.png',
+            '/projects/AlfaPDF-v2.1.1-feature2.png',
+            '/projects/AlfaPDF-v2.1.1-feature3.png',
+            '/projects/AlfaPDF-v2.1.1-feature4.png',
+            '/projects/AlfaPDF-v2.1.1-feature5.png',
         ],
         v12Images: [
             '/projects/AlfaPDF-v1.2-feature1.png',

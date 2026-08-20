@@ -9,9 +9,12 @@ import type { IconType } from 'react-icons'
 
 interface VersionComparison {
     feature: string
-    v12: string
-    v20: string
+    from: string
+    to: string
 }
+
+const NEW_VERSION = 'v2.1.1'
+const OLD_VERSION = 'v2.0'
 
 const techIconMap: Record<string, { Icon: IconType; color: string }> = {
     React: { Icon: SiReact, color: '#61dafb' },
@@ -27,18 +30,18 @@ const techIconMap: Record<string, { Icon: IconType; color: string }> = {
 interface ProjectModalProps {
     project: Project
     onClose: () => void
-    v2Images?: string[]
+    v21Images?: string[]
     v12Images?: string[]
     comparison?: VersionComparison[]
 }
 
-export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], comparison = [] }: ProjectModalProps) {
+export function ProjectModal({ project, onClose, v21Images = [], v12Images = [], comparison = [] }: ProjectModalProps) {
     const closeButtonRef = useRef<HTMLButtonElement>(null)
     const [showV2, setShowV2] = useState(false)
     const [rotate, setRotate] = useState(false)
-    const [currentV2Index, setCurrentV2Index] = useState(0)
+    const [currentV21Index, setCurrentV21Index] = useState(0)
     const [currentV12Index, setCurrentV12Index] = useState(0)
-    const [activeTab, setActiveTab] = useState<'v2' | 'comparison'>('v2')
+    const [activeTab, setActiveTab] = useState<'v21' | 'comparison'>('v21')
 
     useEffect(() => {
         const previouslyFocused = document.activeElement as HTMLElement | null
@@ -66,12 +69,12 @@ export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], 
         }, 500)
     }
 
-    const goToPrevV2 = () => {
-        setCurrentV2Index((prev) => (prev === 0 ? v2Images.length - 1 : prev - 1))
+    const goToPrevV21 = () => {
+        setCurrentV21Index((prev) => (prev === 0 ? v21Images.length - 1 : prev - 1))
     }
 
-    const goToNextV2 = () => {
-        setCurrentV2Index((prev) => (prev === v2Images.length - 1 ? 0 : prev + 1))
+    const goToNextV21 = () => {
+        setCurrentV21Index((prev) => (prev === v21Images.length - 1 ? 0 : prev + 1))
     }
 
     const goToPrevV12 = () => {
@@ -82,7 +85,7 @@ export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], 
         setCurrentV12Index((prev) => (prev === v12Images.length - 1 ? 0 : prev + 1))
     }
 
-    if (showV2 && (v2Images.length > 0 || v12Images.length > 0 || comparison.length > 0)) {
+    if (showV2 && (v21Images.length > 0 || v12Images.length > 0 || comparison.length > 0)) {
         return createPortal(
             <div className="project-modal-template" role="dialog" aria-modal="true" aria-labelledby="project-modal-v2-title" onClick={onClose}>
                 <div className="project-modal-template__card" onClick={(event) => event.stopPropagation()}>
@@ -97,7 +100,7 @@ export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], 
 
                     <div className="project-modal-template__gallery">
                         <div className="project-modal-template__gallery-title">
-                            <h3 id="project-modal-v2-title">{project.title} v2.0</h3>
+                            <h3 id="project-modal-v2-title">{project.title} {NEW_VERSION}</h3>
                             <button
                                 className="project-modal-template__back-btn"
                                 onClick={() => setShowV2(false)}
@@ -109,11 +112,11 @@ export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], 
 
                         <div className="project-modal-template__tabs">
                             <button
-                                className={`project-modal-template__tab ${activeTab === 'v2' ? 'active' : ''}`}
-                                onClick={() => setActiveTab('v2')}
-                                aria-selected={activeTab === 'v2'}
+                                className={`project-modal-template__tab ${activeTab === 'v21' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('v21')}
+                                aria-selected={activeTab === 'v21'}
                             >
-                                Novidades v2.0
+                                Novidades {NEW_VERSION}
                             </button>
                             {comparison.length > 0 && (
                                 <button
@@ -121,53 +124,53 @@ export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], 
                                     onClick={() => setActiveTab('comparison')}
                                     aria-selected={activeTab === 'comparison'}
                                 >
-                                    Comparativo v1.2 → v2.0
+                                    Comparativo {OLD_VERSION} → {NEW_VERSION}
                                 </button>
                             )}
                         </div>
 
-                        {activeTab === 'v2' && v2Images.length > 0 && (
+                        {activeTab === 'v21' && v21Images.length > 0 && (
                             <div className="project-modal-template__carousel">
                                 <button
                                     className="project-modal-template__carousel-btn project-modal-template__carousel-btn--prev"
-                                    onClick={goToPrevV2}
+                                    onClick={goToPrevV21}
                                     aria-label="Imagem anterior"
                                 >
                                     <FaChevronLeft />
                                 </button>
                                 <div className="project-modal-template__carousel-track">
                                     <img
-                                        src={v2Images[currentV2Index]}
-                                        alt={`${project.title} v2.0 - Novidade ${currentV2Index + 1}`}
+                                        src={v21Images[currentV21Index]}
+                                        alt={`${project.title} ${NEW_VERSION} - Novidade ${currentV21Index + 1}`}
                                         loading="lazy"
                                         className="project-modal-template__carousel-image"
                                     />
                                 </div>
                                 <button
                                     className="project-modal-template__carousel-btn project-modal-template__carousel-btn--next"
-                                    onClick={goToNextV2}
+                                    onClick={goToNextV21}
                                     aria-label="Próxima imagem"
                                 >
                                     <FaChevronRight />
                                 </button>
                                 <div className="project-modal-template__carousel-indicators">
-                                    {v2Images.map((_, index) => (
+                                    {v21Images.map((_, index) => (
                                         <button
                                             key={index}
-                                            className={`project-modal-template__indicator ${index === currentV2Index ? 'active' : ''}`}
-                                            onClick={() => setCurrentV2Index(index)}
+                                            className={`project-modal-template__indicator ${index === currentV21Index ? 'active' : ''}`}
+                                            onClick={() => setCurrentV21Index(index)}
                                             aria-label={`Ir para imagem ${index + 1}`}
-                                            aria-current={index === currentV2Index ? 'true' : 'false'}
+                                            aria-current={index === currentV21Index ? 'true' : 'false'}
                                         />
                                     ))}
                                 </div>
                                 <p className="project-modal-template__carousel-caption">
-                                    {currentV2Index + 1} de {v2Images.length}
+                                    {currentV21Index + 1} de {v21Images.length}
                                 </p>
                             </div>
                         )}
 
-                        {activeTab === 'v2' && v12Images.length > 0 && (
+                        {activeTab === 'v21' && v12Images.length > 0 && (
                             <>
                                 <div className="project-modal-template__section-title">Versão 1.2 (Anterior)</div>
                                 <div className="project-modal-template__carousel">
@@ -217,16 +220,16 @@ export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], 
                                     <thead>
                                         <tr>
                                             <th>Recurso</th>
-                                            <th>v1.2</th>
-                                            <th>v2.0</th>
+                                            <th>{OLD_VERSION}</th>
+                                            <th>{NEW_VERSION}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {comparison.map((item, index) => (
                                             <tr key={index}>
                                                 <td>{item.feature}</td>
-                                                <td className="comparison-v12">{item.v12}</td>
-                                                <td className="comparison-v20">{item.v20}</td>
+                                                <td className="comparison-old">{item.from}</td>
+                                                <td className="comparison-new">{item.to}</td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -274,13 +277,13 @@ export function ProjectModal({ project, onClose, v2Images = [], v12Images = [], 
                         {project.description}
                     </p>
 
-                    {v2Images.length > 0 && (
+                    {v21Images.length > 0 && (
                         <button
                             className={`project-modal-template__update-btn ${rotate ? 'rotating' : ''}`}
                             onClick={handleUpdateClick}
-                            aria-label={`Ver novidades do ${project.title} v2.0`}
+                            aria-label={`Ver novidades do ${project.title} ${NEW_VERSION}`}
                         >
-                            Ver novidades v2.0
+                            Ver novidades {NEW_VERSION}
                         </button>
                     )}
 

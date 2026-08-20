@@ -1,7 +1,7 @@
 export interface VersionComparison {
     feature: string
-    v12: string
-    v20: string
+    from: string
+    to: string
 }
 
 export interface Project {
@@ -18,7 +18,7 @@ export interface Project {
     solution?: string
     challenges?: string
     results?: string
-    v2Images?: string[]
+    v21Images?: string[]
     v12Images?: string[]
     comparison?: VersionComparison[]
 }
