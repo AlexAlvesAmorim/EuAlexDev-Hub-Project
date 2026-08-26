@@ -1,17 +1,16 @@
 import { type CSSProperties, useCallback, useState } from 'react'
-import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa6'
-import { SiReact, SiTypescript, SiElectron } from 'react-icons/si'
 import { projects } from '../../data/project'
 import { ProjectCard } from './ProjectCard'
 import { ProjectModal } from './ProjectModal'
 import { FloatingParticles } from '../BackgroundTexture/FloatingParticles'
+import { SiReact, SiTypescript, SiElectron } from 'react-icons/si'
 import { useProjectSlider } from '../../hooks/useProjectSlider'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import type { Project } from '../../types/Project'
 
 export function ProjectSlider() {
 
-    const { sliderRef, handleMouseEnter, handleMouseLeave, rotateBy, isPaused, togglePaused, selectedIndex } = useProjectSlider(projects.length)
+    const { sliderRef, handleMouseEnter, handleMouseLeave, handleSelect, selectedIndex } = useProjectSlider(projects.length)
     const isMobile = useMediaQuery('(max-width: 768px)')
 
     const currentProject = projects[selectedIndex]
@@ -19,21 +18,10 @@ export function ProjectSlider() {
 
     const closeModal = useCallback(() => setOpenedProject(null), [])
 
-    /** Decide o comportamento do clique no card:
-     *  - card da frente (ativo): abre o modal
-     *  - outro card: seleciona (rotação para frente) */
-    const handleCardActivate = useCallback((project: Project, index: number) => {
-        if (index === selectedIndex) {
-            setOpenedProject({ ...project })
-        } else {
-            rotateBy(1)
-        }
-    }, [rotateBy, selectedIndex])
-
     const openProjectDetails = useCallback((project: Project, index: number) => {
-        rotateBy(1)
+        handleSelect(index)
         setOpenedProject({ ...project })
-    }, [rotateBy])
+    }, [handleSelect])
 
     return (
         <section className="banner" id="projetos" role="region"
@@ -58,7 +46,6 @@ export function ProjectSlider() {
                         position={index + 1}
                         active={index === selectedIndex}
                         onOpen={openProjectDetails}
-                        onActivate={handleCardActivate}
                     />
                 ))}
             </div>
@@ -78,48 +65,20 @@ export function ProjectSlider() {
                 </div>
             </div>
 
-            <div className="project-caption" aria-live="polite">
+            <div className="project-caption">
                 <span className="tag">Em destaque</span>
                 <h3>{currentProject.title}</h3>
             </div>
 
-            {/* Controles do carrossel */}
-            <div className="slider-controls">
-                <button className="slider-arrow slider-arrow--prev" aria-label="Anterior" onClick={() => rotateBy(-1)}><FaChevronLeft /></button>
-                <button className="slider-arrow slider-arrow--next" aria-label="Próximo" onClick={() => rotateBy(1)}><FaChevronRight /></button>
-                <div className="slider-dots">
-                    {projects.map((project, i) => (
-                        <button
-                            key={i}
-                            className="slider-dot"
-                            aria-label={`Ir para ${project.title}`}
-                            aria-current={selectedIndex === i ? "true" : "false"}
-                            onClick={() => {
-                                const steps = Math.round(rotationRef.current / (360 / projects.length)) + (selectedIndex - i)
-                                // Simplified: just setSelectedIndex directly; re-applyRotation will handle modulo
-                                // Actually use selectedIndex change via a callback—simplify:
-                                rotateBy(selectedIndex - i > 0 ? -1 : 1)
-                            }}
-                        >
-                            <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            >
-                                <polyline points="5 19 12 12 19 5"></polyline>
-                            </svg>
-                        </button>
-                    ))}
-                </div>
-                <button className="slider-pause" aria-label={isPaused ? "Retomar rotação" : "Pausar rotação"} onClick={togglePaused}>
-                    {isPaused ? <FaPlay /> : <FaPause />}
-                </button>
-            </div>
+            {openedProject && (
+                <ProjectModal
+                    project={openedProject}
+                    onClose={closeModal}
+                    v21Images={openedProject.v21Images}
+                    v12Images={openedProject.v12Images}
+                    comparison={openedProject.comparison}
+                />
+            )}
         </section>
     )
 }

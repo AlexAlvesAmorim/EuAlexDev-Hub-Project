@@ -27,6 +27,7 @@ export const projects: Project[] = [
             'Impressão silenciosa integrada ao Windows (testada com EPSON L3150)',
             'Registrado como aplicativo padrão para abrir arquivos .pdf',
             'Instalador NSIS com identidade visual própria',
+            'v2.1.1: auto-update revisado (fim do loop) e instalador 56% menor',
             'v2.1.6: limpeza geral, CI verde e patch silencioso — fim do loop de atualização e instalador regenerado a cada release',
             'v2.1.5: crash da atualização resolvido, ícone do app e sino de updates corrigidos',
             'v2.1.0: abertura de PDF por duplo clique, persistência de configurações de impressão, impressão 100% offline (sem CDN externo), janela de impressão endurecida, fim da injeção de conteúdo no HTML de impressão, recent files no Windows Jump List',

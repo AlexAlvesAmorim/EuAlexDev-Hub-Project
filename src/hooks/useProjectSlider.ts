@@ -33,10 +33,9 @@ export function useProjectSlider(total: number) {
     const sliderRef = useRef<HTMLDivElement>(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [userAutoRotate, setUserAutoRotate] = useState(true);
-    const [userPaused, setUserPaused] = useState(false);
 
     const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
-    const autoRotate = userAutoRotate && !reducedMotion && !userPaused;
+    const autoRotate = userAutoRotate && !reducedMotion;
 
     const degreesPerCard = 360 / total;
     const degreesPerSecond = degreesPerCard / (AUTO_ROTATE_INTERVAL_MS / 1000);
@@ -79,37 +78,17 @@ export function useProjectSlider(total: number) {
         };
     }, [autoRotate, total, degreesPerSecond, degreesPerCard, captionLeadAngle, sliderRef]);
 
-    /** Aplica um ângulo exato e sincroniza índice/legenda. */
-    const applyRotation = useCallback((angle: number) => {
-        const el = sliderRef.current;
-        if (el) {
-            el.style.setProperty("--rotation", `${angle}deg`);
-        }
-        rotationRef.current = angle;
-        const k = Math.floor(angle / degreesPerCard);
-        const nextIndex = (((total - k) % total) + total) % total;
-        indexRef.current = nextIndex;
-        setSelectedIndex(nextIndex);
-    }, [degreesPerCard, total, sliderRef]);
-
-    /** Gira até o card `index` pelo caminho mais curto (máx. meia volta). */
     const handleSelect = useCallback((index: number) => {
         const targetK = (total - index) % total;
         const target = targetK * degreesPerCard;
-        const current = rotationRef.current;
-        const delta = (((target - current) % 360) + 540) % 360 - 180;
-        applyRotation(current + delta);
-    }, [applyRotation, degreesPerCard, total]);
-
-    /** Avança (delta 1) ou volta (delta -1) um card a partir do mais próximo. */
-    const rotateBy = useCallback((delta: number) => {
-        const steps = Math.round(rotationRef.current / degreesPerCard) + delta;
-        applyRotation(steps * degreesPerCard);
-    }, [applyRotation, degreesPerCard]);
-
-    const togglePaused = useCallback(() => {
-        setUserPaused((prev) => !prev);
-    }, []);
+        const el = sliderRef.current;
+        if (el) {
+            el.style.setProperty("--rotation", `${target}deg`);
+        }
+        rotationRef.current = target;
+        indexRef.current = index;
+        setSelectedIndex(index);
+    }, [degreesPerCard, total, sliderRef]);
 
     const handleMouseEnter = useCallback(() => {
         setUserAutoRotate(false);
@@ -123,10 +102,7 @@ export function useProjectSlider(total: number) {
         sliderRef,
         selectedIndex,
         autoRotate,
-        isPaused: userPaused,
         handleSelect,
-        rotateBy,
-        togglePaused,
         handleMouseEnter,
         handleMouseLeave,
     };

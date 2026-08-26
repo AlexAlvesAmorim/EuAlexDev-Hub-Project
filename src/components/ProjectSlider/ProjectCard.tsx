@@ -6,7 +6,6 @@ export interface ProjectCardProps {
     position: number
     active?: boolean
     onOpen: (project: Project, index: number) => void
-    onActivate?: (project: Project, index: number) => void
 }
 
 export function ProjectCard({
@@ -14,7 +13,6 @@ export function ProjectCard({
     position,
     active = false,
     onOpen,
-    onActivate,
 }: ProjectCardProps) {
 
     const classes = ["item", active ? "item--active" : ""].filter(Boolean).join(" ")
@@ -24,16 +22,18 @@ export function ProjectCard({
             className={classes}
             role="button"
             tabIndex={0}
-            onClick={() => onActivate?.(project, position - 1) || onOpen(project, position - 1)}
+            onClick={() => onOpen(project, position - 1)}
             onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault()
-                    onActivate?.(project, position - 1) || onOpen(project, position - 1)
+                    onOpen(project, position - 1)
                 }
             }}
-            style={{
-                '--position': position,
-            } as CSSProperties}
+            style={
+                {
+                    '--position': position,
+                } as CSSProperties
+            }
         >
 
             <img
@@ -44,8 +44,8 @@ export function ProjectCard({
 
             <div className="item__caption">
                 {project.title}
-                {active && <span className="item__caption-hint">Ver detalhes</span>}
             </div>
         </div>
+
     )
 }
