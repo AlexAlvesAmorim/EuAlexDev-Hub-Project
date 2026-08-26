@@ -14,7 +14,7 @@ interface VersionComparison {
 }
 
 const NEW_VERSION = 'v2.1.6'
-const OLD_VERSION = 'v2.1.5'
+const OLD_VERSION = 'v2.0'
 
 const techIconMap: Record<string, { Icon: IconType; color: string }> = {
     React: { Icon: SiReact, color: '#61dafb' },
