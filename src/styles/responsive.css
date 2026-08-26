@@ -44,7 +44,7 @@
   }
 
   .banner .author .tech-stack {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 6px;
     margin-top: 10px;
   }
@@ -82,6 +82,27 @@
     --card-h: 149px;
     --perspective: 900px;
     --depth: 280px;
+  }
+
+  .banner .slider-controls {
+    top: calc(42% + 118px);
+    gap: 10px;
+  }
+
+  .banner .slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 0.95em;
+  }
+
+  .banner .slider-pause {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75em;
+  }
+
+  .banner .slider-dots {
+    gap: 7px;
   }
 
   .banner .slider .item {

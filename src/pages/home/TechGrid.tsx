@@ -3,7 +3,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import type { IconType } from "react-icons";
 import { SiReact, SiTypescript, SiTailwindcss, SiElectron, SiVite, SiJavascript } from "react-icons/si";
 
-const technologies: { name: string; Icon: IconType; color: string; level: string }[] = [
+export const technologies: { name: string; Icon: IconType; color: string; level: string }[] = [
     { name: "React", Icon: SiReact, color: "#61dafb", level: "Avançado" },
     { name: "TypeScript", Icon: SiTypescript, color: "#3178c6", level: "Intermediário-Avançado" },
     { name: "JavaScript", Icon: SiJavascript, color: "#f7df1e", level: "Avançado" },

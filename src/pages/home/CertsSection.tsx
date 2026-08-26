@@ -5,7 +5,7 @@ import { FaAward } from "react-icons/fa6";
 const certifications = [
     {
         title: "Curso de Informática — Formação Completa",
-        issuer: "                                                                               ica LTDA. (MDATA)",
+        issuer: "MDATA Informática LTDA.",
         year: "2007-2008",
         description: "300h teóricas e práticas. Média final 9,0. Sistemas Operacionais, Pacote Office, Corel Draw, Photoshop, HTML, Dreamweaver, Flash, Hardware e Manutenção.",
     },

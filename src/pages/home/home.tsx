@@ -44,7 +44,7 @@ export function Home() {
                             </p>
                             <p>
                                 Trabalho com <strong>React</strong>, <strong>TypeScript</strong> e <strong>Electron</strong> (com um app desktop de 200+ usuários rodando) —
-                                e quanto a estudar cada detalhe que parece simples, mas faz toda a diferença
+                                e cada detalhe que parece simples, mas faz toda a diferença
                                 na hora de usar, aprendi na prática. Cada projeto aqui foi lapidado com o cuidado de
                                 quem sabe o peso de uma experiência ruim — e escolheu entregar o oposto.
                             </p>

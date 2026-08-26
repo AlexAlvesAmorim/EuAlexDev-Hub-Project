@@ -55,7 +55,7 @@
   position: absolute;
   width: var(--card-w);
   height: var(--card-h);
-  top: 46%;
+  top: 42%;
   left: 50%;
   margin-top: calc(var(--card-h) / -2);
   margin-left: calc(var(--card-w) / -2);
@@ -78,7 +78,7 @@
 
 .banner .carousel-glow {
   position: absolute;
-  bottom: 22%;
+  bottom: 26%;
   left: 50%;
   transform: translateX(-50%);
   width: 340px;
@@ -172,4 +172,118 @@
 
 .banner .slider .item:hover img {
   transform: scale(1.08);
+}
+
+/* Affordance de clique: só o card da frente abre o modal */
+.banner .slider .item__caption-hint {
+  display: none;
+  font-size: 0.82em;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-top: 3px;
+  letter-spacing: 0.02em;
+}
+
+.banner .slider .item--active .item__caption-hint {
+  display: block;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * Controles do carrossel (setas, dots, pause)
+ * Acessíveis por teclado; setas ficam fora da órbita dos cards.
+ * ───────────────────────────────────────────────────────────────── */
+.banner .slider-controls {
+  position: absolute;
+  top: calc(42% + 168px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 4;
+}
+
+.banner .slider-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(22, 23, 29, 0.7);
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  font-size: 1.05em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.banner .slider-arrow:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: scale(1.08);
+}
+
+.banner .slider-arrow:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.banner .slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.banner .slider-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.banner .slider-dot:hover {
+  background: var(--accent-border);
+  transform: scale(1.25);
+}
+
+.banner .slider-dot.active {
+  background: var(--primary);
+  transform: scale(1.35);
+}
+
+.banner .slider-dot:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.banner .slider-pause {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(22, 23, 29, 0.7);
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  font-size: 0.85em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.banner .slider-pause:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.banner .slider-pause:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }

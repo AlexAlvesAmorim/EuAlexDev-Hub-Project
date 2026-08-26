@@ -1,10 +1,15 @@
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
+import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { projects } from "../../data/project";
+import { technologies } from "../TechGrid";
+
 const stats = [
     { value: "21+", label: "Anos em TI" },
-    { value: "4", label: "Projetos no Hub" },
-    { value: "7", label: "Tecnologias Core" },
+    { value: String(projects.length), label: "Projetos no Hub" },
+    { value: String(technologies.length), label: "Tecnologias Core" },
     { value: "1", label: "E-commerce Vendido (B2B)" },
 ];
 
