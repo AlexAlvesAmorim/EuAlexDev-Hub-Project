@@ -10,7 +10,7 @@ import type { Project } from '../../types/Project'
 
 export function ProjectSlider() {
 
-    const { sliderRef, handleMouseEnter, handleMouseLeave, handleSelect, selectedIndex } = useProjectSlider(projects.length)
+    const { sliderRef, handleMouseEnter, handleMouseLeave, handleSelect, selectedIndex, handleTouchStart, handleTouchEnd } = useProjectSlider(projects.length)
     const isMobile = useMediaQuery('(max-width: 768px)')
 
     const currentProject = projects[selectedIndex]
@@ -23,11 +23,15 @@ export function ProjectSlider() {
         setOpenedProject({ ...project })
     }, [handleSelect])
 
+
     return (
         <section className="banner" id="projetos" role="region"
             aria-label="Carrossel de Projetos"
             aria-roledescription="carousel">
-            <FloatingParticles count={isMobile ? 25 : 80} />
+            <span className="sr-only" aria-live="polite" aria-atomic="true">
+                Projeto {selectedIndex + 1} de {projects.length}: {currentProject.title}
+            </span>
+            <FloatingParticles count={isMobile ? 30 : 100} />
             <div className="background-text">PROJETOS</div>
 
             <div
@@ -35,6 +39,8 @@ export function ProjectSlider() {
                 className="slider"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
                 style={{
                     '--quantity': projects.length,
                 } as CSSProperties}

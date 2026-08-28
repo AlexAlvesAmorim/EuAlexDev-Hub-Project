@@ -1,10 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { FaBars, FaXmark, FaFilePdf, FaFolderOpen, FaUser, FaEnvelope, FaGithub, FaChartSimple, FaTimeline, FaCode, FaAward } from "react-icons/fa6";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const headerRef = useRef<HTMLElement>(null);
 
     const closeMenu = () => setMenuOpen(false);
 
@@ -31,7 +30,6 @@ export function Header() {
 
     return (
         <header
-            ref={headerRef}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                 scrolled
                     ? "bg-background/70 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-white/[0.06]"
@@ -48,7 +46,7 @@ export function Header() {
                             <h1 className="text-lg sm:text-xl font-bold text-text-h leading-tight transition-colors duration-300 group-hover:text-primary">
                                 Dev. de Favela Hub
                             </h1>
-                            <p className="text-xs sm:text-sm text-text/50">Portfólio & Projetos</p>
+                            <p className="text-xs sm:text-sm text-text/70">Portfólio & Projetos</p>
                         </div>
                     </a>
 
@@ -69,7 +67,7 @@ export function Header() {
                             <FaCode className="text-xs" /> Stack
                         </a>
                         <a href="#certificados" className={navLinkClasses}>
-                            <FaAward className="text-xs" /> Certs
+                            <FaAward className="text-xs" /> Certificações
                         </a>
                         <a href="#contato" className={navLinkClasses}>
                             <FaEnvelope className="text-xs" /> Contato

@@ -9,7 +9,7 @@ import { CertsSection } from "./CertsSection.tsx";
 
 export function Home() {
     const isMobile = useMediaQuery('(max-width: 768px)')
-    const sectionParticles = isMobile ? 15 : 40
+    const sectionParticles = isMobile ? 18 : 45
 
     return (
         <main className="w-full min-h-screen">
@@ -27,7 +27,7 @@ export function Home() {
                     </p>
 
                     <div className="about">
-                        <img src="/Hero.png" alt="Foto do Alex" className="about-photo" />
+                        <img src="/Hero.png" alt="Foto do Alex" className="about-photo" width="340" height="453" loading="lazy" decoding="async" />
 
                         <div className="about-text">
                             <p>
@@ -43,7 +43,7 @@ export function Home() {
                                 pensada de verdade no humano do outro lado.
                             </p>
                             <p>
-                                Trabalho com <strong>React</strong>, <strong>TypeScript</strong> e <strong>Electron</strong> (com um app desktop de 200+ usuários rodando) —
+                                Trabalho com <strong>React</strong>, <strong>TypeScript</strong> e <strong>Electron</strong> — com um aplicativo desktop em produção para mais de 200 usuários —
                                 e quanto a estudar cada detalhe que parece simples, mas faz toda a diferença
                                 na hora de usar, aprendi na prática. Cada projeto aqui foi lapidado com o cuidado de
                                 quem sabe o peso de uma experiência ruim — e escolheu entregar o oposto.
@@ -74,19 +74,19 @@ export function Home() {
 
                 <div className="section-container">
                     <h2 className="section-title">
-                        Fala <span className="highlight">comigo</span>
+                        Entre em <span className="highlight">contato</span>
                     </h2>
                     <p className="section-subtitle">
-                        Quer trocar uma ideia sobre algum projeto ou dar um feedback? Me chama!
+                        Interessado em colaborar ou discutir um projeto? Vamos conversar.
                     </p>
 
                     <div className="contact-card">
                         <div className="contact-cta-badge">
                             Aberto a oportunidades
                         </div>
-                        <h3>Vamos construir algo incrível?</h3>
+                        <h3>Vamos construir algo relevante?</h3>
                         <p>
-                            Respondo mais rápido pelo LinkedIn, mas pode me achar nos links abaixo.
+                            Respondo com mais agilidade pelo LinkedIn. Você também pode me encontrar nos canais abaixo.
                         </p>
 
                         <div className="contact-links">

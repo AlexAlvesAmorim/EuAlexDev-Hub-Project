@@ -83,12 +83,6 @@
   opacity: 0.9;
 }
 
-.project-modal__story {
-  margin: 0 0 16px;
-  font-size: 0.92em;
-  line-height: 1.7;
-}
-
 .project-modal__highlights {
   list-style: none;
   margin: 0 0 18px;
@@ -567,11 +561,16 @@
   padding: 24px;
 }
 
+.project-modal-view[hidden] {
+  display: none !important;
+}
+
 .project-modal-template__gallery-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  padding-right: 44px;
 }
 
 .project-modal-template__gallery-title h3 {

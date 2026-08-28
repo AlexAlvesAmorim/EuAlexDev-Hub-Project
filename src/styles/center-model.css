@@ -1,8 +1,8 @@
 .banner .center-model {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   width: clamp(200px, 50vw, 400px);
   height: clamp(200px, 50vw, 400px);
   background-image: url('/Hero.png');
@@ -27,14 +27,15 @@
 }
 
 .banner .author {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 3;
-  font-family: 'Poppins', sans-serif;
-
+    position: absolute;
+    bottom: 6%;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 3;
+    font-family: 'Poppins', sans-serif;
 }
 
 .banner .author h2 {
@@ -97,12 +98,12 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(20px);
+    transform: translateY(20px);
   }
 
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 }
 

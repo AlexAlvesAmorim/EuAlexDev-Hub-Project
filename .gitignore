@@ -42,9 +42,13 @@ __pycache__/
 
 # Tooling
 .openclaw/
+.impeccable/
+.tmp/
 
 # Agent memory
 memory/
+.agents/
+.claude/
 
 # Workspace de agente (fica só local, fora do repo público)
 AGENTS.md
@@ -53,4 +57,8 @@ IDENTITY.md
 SOUL.md
 TOOLS.md
 USER.md
-.claude/
+
+# Backups locais de imagem (não vai pro deploy)
+*.bak.png
+*.bak2.png
+*.bak.bak.png

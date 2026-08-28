@@ -152,7 +152,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                             </button>
                         </div>
 
-                        <div className="project-modal-template__tabs">
+                        <div className="project-modal-template__tabs" role="tablist" aria-label="Conteúdo da galeria">
                             <button
                                 className={`project-modal-template__tab ${activeTab === 'v21' ? 'active' : ''}`}
                                 onClick={() => setActiveTab('v21')}
@@ -456,11 +456,6 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                         <FaGithub /> Ver no GitHub
                     </a>
-                    {project.demo && (
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                            Ver demo
-                        </a>
-                    )}
                 </div>
             </div>
         </div>,

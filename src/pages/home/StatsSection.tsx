@@ -1,10 +1,12 @@
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { projects } from "../../data/project";
+import { technologies } from "../../data/technologies";
 
 const stats = [
     { value: "21+", label: "Anos em TI" },
-    { value: "4", label: "Projetos no Hub" },
-    { value: "7", label: "Tecnologias Core" },
+    { value: String(projects.length), label: "Projetos no Hub" },
+    { value: String(technologies.length), label: "Tecnologias Core" },
     { value: "1", label: "E-commerce Vendido (B2B)" },
 ];
 
@@ -13,7 +15,7 @@ export function StatsSection() {
 
     return (
         <section id="estatisticas" className="section stats-section">
-            <FloatingParticles count={isMobile ? 10 : 25} />
+            <FloatingParticles count={isMobile ? 12 : 30} />
             <div className="section-container">
                 <h2 className="section-title">
                     Números que <span className="highlight">contam</span>

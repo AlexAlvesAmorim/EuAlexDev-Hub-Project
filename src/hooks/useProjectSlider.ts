@@ -92,11 +92,19 @@ export function useProjectSlider(total: number) {
 
     const handleMouseEnter = useCallback(() => {
         setUserAutoRotate(false);
-    }, []);
+    }, [])
 
     const handleMouseLeave = useCallback(() => {
         setUserAutoRotate(true);
-    }, []);
+    }, [])
+
+    const handleTouchStart = useCallback(() => {
+        setUserAutoRotate(false);
+    }, [])
+
+    const handleTouchEnd = useCallback(() => {
+        setTimeout(() => setUserAutoRotate(true), 3000);
+    }, [])
 
     return {
         sliderRef,
@@ -105,5 +113,7 @@ export function useProjectSlider(total: number) {
         handleSelect,
         handleMouseEnter,
         handleMouseLeave,
+        handleTouchStart,
+        handleTouchEnd,
     };
 }

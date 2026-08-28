@@ -49,7 +49,7 @@ export function Timeline() {
 
     return (
         <section id="jornada" className="section timeline-section">
-            <FloatingParticles count={isMobile ? 10 : 25} />
+            <FloatingParticles count={isMobile ? 12 : 30} />
             <div className="section-container">
                 <h2 className="section-title">
                     Minha <span className="highlight">jornada</span>
