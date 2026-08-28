@@ -46,6 +46,8 @@ interface LightboxState {
 
 export function ProjectModal({ project, onClose, v21Images = [], v12Images = [], comparison = [] }: ProjectModalProps) {
     const closeButtonRef = useRef<HTMLButtonElement>(null)
+    const modalRef = useRef<HTMLDivElement>(null)
+    const templateCloseRef = useRef<HTMLButtonElement>(null)
     const [showV2, setShowV2] = useState(false)
     const [rotate, setRotate] = useState(false)
     const [currentV21Index, setCurrentV21Index] = useState(0)
@@ -53,12 +55,28 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
     const [activeTab, setActiveTab] = useState<'v21' | 'comparison'>('v21')
     const [lightbox, setLightbox] = useState<LightboxState | null>(null)
     const [lightboxSize, setLightboxSize] = useState<{ w: number; h: number } | null>(null)
+    const [headerImageError, setHeaderImageError] = useState(false)
 
     useEffect(() => {
         const previouslyFocused = document.activeElement as HTMLElement | null
-        closeButtonRef.current?.focus({ preventScroll: true })
+        const targetClose = showV2 ? templateCloseRef.current : closeButtonRef.current
+        targetClose?.focus({ preventScroll: true })
 
         const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Tab' && !lightbox) {
+                const container = modalRef.current
+                if (!container) return
+                const focusable = Array.from(container.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])')).filter((el) => !el.hasAttribute('hidden') && el.getClientRects().length > 0)
+                if (focusable.length === 0) return
+                const first = focusable[0]
+                const last = focusable[focusable.length - 1]
+                if (event.shiftKey) {
+                    if (document.activeElement === first) { event.preventDefault(); last.focus() }
+                } else {
+                    if (document.activeElement === last) { event.preventDefault(); first.focus() }
+                }
+                return
+            }
             if (lightbox) {
                 if (event.key === 'Escape') {
                     setLightbox(null)
@@ -82,7 +100,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
             document.body.style.overflow = ''
             previouslyFocused?.focus()
         }
-    }, [onClose, lightbox])
+    }, [onClose, lightbox, showV2])
 
     const handleUpdateClick = () => {
         setRotate(true)
@@ -130,8 +148,9 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
     if (showV2 && (v21Images.length > 0 || v12Images.length > 0 || comparison.length > 0)) {
         return createPortal(
             <div className="project-modal-template" role="dialog" aria-modal="true" aria-labelledby="project-modal-v2-title" onClick={onClose}>
-                <div className="project-modal-template__card" onClick={(event) => event.stopPropagation()}>
+                <div ref={modalRef} className="project-modal-template__card" onClick={(event) => event.stopPropagation()}>
                     <button
+                        ref={templateCloseRef}
                         type="button"
                         className="project-modal-template__close"
                         aria-label="Fechar detalhes"
@@ -368,7 +387,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
             aria-labelledby="project-modal-title"
             onClick={onClose}
         >
-            <div className="project-modal__card" onClick={(event) => event.stopPropagation()}>
+            <div ref={modalRef} className="project-modal__card" onClick={(event) => event.stopPropagation()}>
                 <button
                     ref={closeButtonRef}
                     type="button"
@@ -379,12 +398,21 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                     <FaXmark />
                 </button>
 
-                <img
-                    src={project.image}
-                    alt=""
-                    decoding="async"
-                    className="project-modal__image"
-                />
+                {!headerImageError ? (
+                    <img
+                        src={project.image}
+                        alt=""
+                        decoding="async"
+                        className="project-modal__image"
+                        onError={() => setHeaderImageError(true)}
+                    />
+                ) : (
+                    <div className="project-modal__image-fallback" role="img" aria-label={project.title}>
+                        <span aria-hidden="true">◇</span>
+                        <span>{project.title}</span>
+                        <small>imagem indisponível</small>
+                    </div>
+                )}
 
                 <div className="project-modal__body">
                     <h3 id="project-modal-title" className="project-modal__title">

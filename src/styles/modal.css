@@ -64,6 +64,23 @@
   background: var(--bg);
 }
 
+.project-modal__image-fallback {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: radial-gradient(ellipse at 30% 20%, rgba(192,132,252,0.16) 0%, var(--bg) 65%);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-h);
+  text-align: center;
+  padding: 24px;
+}
+.project-modal__image-fallback span { font-family: 'Poppins', sans-serif; font-weight: 700; }
+.project-modal__image-fallback small { font-size: 0.82em; color: var(--text); letter-spacing: 0.06em; text-transform: uppercase; }
+
 .project-modal__body {
   padding: 24px 24px 8px;
 }

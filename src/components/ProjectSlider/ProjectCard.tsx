@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 import type { Project } from "../../types/Project";
 
 export interface ProjectCardProps {
@@ -24,6 +24,8 @@ export function ProjectCard({
 }: ProjectCardProps) {
 
     const classes = ["item", active ? "item--active" : ""].filter(Boolean).join(" ")
+    const isLCP = position === 1
+    const [imageError, setImageError] = useState(false)
 
     return (
         <div
@@ -46,17 +48,25 @@ export function ProjectCard({
         >
 
             <picture>
-                {/* WebP otimizado (23–58KB vs 480KB PNG) */}
                 <source srcSet={project.image} type="image/webp" />
-                <img
-                    src={project.image.replace(/\.webp$/i, ".png")}
-                    alt={project.title}
-                    loading="lazy"
-                    decoding="async"
-                    width={430}
-                    height={588}
-                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                />
+                {!imageError ? (
+                    <img
+                        src={project.image.replace(/\.webp$/i, ".png")}
+                        alt={project.title}
+                        loading={isLCP ? "eager" : "lazy"}
+                        fetchPriority={isLCP ? "high" : "auto"}
+                        decoding="async"
+                        width={430}
+                        height={588}
+                        onError={() => setImageError(true)}
+                    />
+                ) : (
+                    <div className="item__fallback" role="img" aria-label={project.title}>
+                        <span className="item__fallback-icon" aria-hidden="true">◇</span>
+                        <span className="item__fallback-text">{project.title}</span>
+                        <span className="item__fallback-hint">imagem indisponível</span>
+                    </div>
+                )}
             </picture>
             <div className="item__caption">
                 <span className="item__title">{project.title}</span>

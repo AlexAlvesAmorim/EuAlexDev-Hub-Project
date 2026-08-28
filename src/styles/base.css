@@ -61,3 +61,42 @@ button:focus-visible,
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
+
+/* Craft floor — Browser surfaces (cheapest signal of craft) */
+::selection {
+  background: rgba(192, 132, 252, 0.32);
+  color: #f3f4f6;
+}
+::-moz-selection {
+  background: rgba(192, 132, 252, 0.32);
+  color: #f3f4f6;
+}
+* {
+  caret-color: var(--primary);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #2e303a;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #3a3d4a;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+html {
+  text-underline-offset: 3px;
+}
+:where(p, li, dd) {
+  font-variant-numeric: tabular-nums;
+  hanging-punctuation: first allow-end;
+}

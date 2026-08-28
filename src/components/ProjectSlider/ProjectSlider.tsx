@@ -4,13 +4,14 @@ import { ProjectCard } from './ProjectCard'
 import { ProjectModal } from './ProjectModal'
 import { FloatingParticles } from '../BackgroundTexture/FloatingParticles'
 import { SiReact, SiTypescript, SiElectron } from 'react-icons/si'
+import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa6'
 import { useProjectSlider } from '../../hooks/useProjectSlider'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import type { Project } from '../../types/Project'
 
 export function ProjectSlider() {
 
-    const { sliderRef, handleMouseEnter, handleMouseLeave, handleSelect, selectedIndex, handleTouchStart, handleTouchEnd } = useProjectSlider(projects.length)
+    const { sliderRef, handleMouseEnter, handleMouseLeave, handleSelect, selectedIndex, handleTouchStart, handleTouchEnd, autoRotate, toggleAutoRotate } = useProjectSlider(projects.length)
     const isMobile = useMediaQuery('(max-width: 768px)')
 
     const currentProject = projects[selectedIndex]
@@ -23,16 +24,36 @@ export function ProjectSlider() {
         setOpenedProject({ ...project })
     }, [handleSelect])
 
+    const goPrev = useCallback(() => {
+        handleSelect((selectedIndex - 1 + projects.length) % projects.length)
+    }, [handleSelect, selectedIndex])
+
+    const goNext = useCallback(() => {
+        handleSelect((selectedIndex + 1) % projects.length)
+    }, [handleSelect, selectedIndex])
+
+    const onCarouselKeyDown = useCallback((e: React.KeyboardEvent) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault()
+            goPrev()
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault()
+            goNext()
+        }
+    }, [goPrev, goNext])
+
 
     return (
         <section className="banner" id="projetos" role="region"
             aria-label="Carrossel de Projetos"
-            aria-roledescription="carousel">
+            aria-roledescription="carousel"
+            onKeyDown={onCarouselKeyDown}
+            tabIndex={-1}>
             <span className="sr-only" aria-live="polite" aria-atomic="true">
                 Projeto {selectedIndex + 1} de {projects.length}: {currentProject.title}
             </span>
             <FloatingParticles count={isMobile ? 30 : 100} />
-            <div className="background-text">PROJETOS</div>
+            <div className="background-text" aria-hidden="true">PROJETOS</div>
 
             <div
                 ref={sliderRef}
@@ -56,9 +77,44 @@ export function ProjectSlider() {
                 ))}
             </div>
 
-            <div className="carousel-glow" />
+            <div className="carousel-glow" aria-hidden="true" />
 
-            <div className="center-model" />
+            {/* POLISH: controles antes invisíveis agora montados (P1) */}
+            <div className="carousel-controls" aria-hidden={false}>
+                <button type="button" className="carousel-btn" aria-label="Projeto anterior" onClick={goPrev}>
+                    <FaChevronLeft aria-hidden="true" />
+                </button>
+                <button type="button" className="carousel-btn" aria-label="Próximo projeto" onClick={goNext}>
+                    <FaChevronRight aria-hidden="true" />
+                </button>
+            </div>
+
+            <div className="carousel-dots" role="tablist" aria-label="Navegação do carrossel">
+                {projects.map((_, index) => (
+                    <button
+                        key={index}
+                        type="button"
+                        role="tab"
+                        aria-selected={index === selectedIndex}
+                        aria-label={`Ir para projeto ${index + 1} de ${projects.length}: ${projects[index].title}`}
+                        className={`carousel-dot ${index === selectedIndex ? 'active' : ''}`}
+                        onClick={() => handleSelect(index)}
+                    />
+                ))}
+            </div>
+
+            <button
+                type="button"
+                className="carousel-pause"
+                aria-label={autoRotate ? 'Pausar rotação automática' : 'Retomar rotação automática'}
+                aria-pressed={!autoRotate}
+                onClick={toggleAutoRotate}
+                title={autoRotate ? 'Pausar' : 'Retomar'}
+            >
+                {autoRotate ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}
+            </button>
+
+            <div className="center-model" aria-hidden="true" />
 
             <div className="author">
                 <h2>Alex Alves Amorim | Dev. de Favela</h2>
@@ -71,7 +127,7 @@ export function ProjectSlider() {
                 </div>
             </div>
 
-            <div className="project-caption">
+            <div className="project-caption" aria-live="polite" aria-atomic="true">
                 <span className="tag">Em destaque</span>
                 <h3>{currentProject.title}</h3>
             </div>

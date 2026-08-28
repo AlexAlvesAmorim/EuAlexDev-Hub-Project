@@ -106,14 +106,21 @@ export function useProjectSlider(total: number) {
         setTimeout(() => setUserAutoRotate(true), 3000);
     }, [])
 
+    const toggleAutoRotate = useCallback(() => {
+        setUserAutoRotate((v) => !v);
+    }, [])
+
     return {
         sliderRef,
         selectedIndex,
         autoRotate,
+        userAutoRotate,
         handleSelect,
         handleMouseEnter,
         handleMouseLeave,
         handleTouchStart,
         handleTouchEnd,
+        toggleAutoRotate,
+        setUserAutoRotate,
     };
 }

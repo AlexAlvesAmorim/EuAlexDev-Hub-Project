@@ -3,6 +3,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
+/* OPTIMIZE: garante swap mesmo para ICA Rubrik (cdnfonts não envia) */
+@font-face {
+  font-family: 'ICA Rubrik';
+  font-display: swap;
+  src: local('ICA Rubrik');
+}
+
 @theme {
   --color-background: #16171d;
   --color-bg: #16171d;
