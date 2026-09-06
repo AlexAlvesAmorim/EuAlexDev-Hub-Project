@@ -1,11 +1,12 @@
 import { ProjectSlider } from "../../components/ProjectSlider/ProjectSlider.tsx";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
-import { FaGithub, FaEnvelope, FaLinkedin, FaFilePdf } from "react-icons/fa6";
+import { FaGithub, FaEnvelope, FaLinkedin } from "react-icons/fa6";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { StatsSection } from "./StatsSection.tsx";
 import { Timeline } from "./TimelineSection.tsx";
 import { TechGrid } from "./TechGrid.tsx";
 import { CertsSection } from "./CertsSection.tsx";
+import { CurriculumDropdown } from "../../components/CurriculumMenu/CurriculumDropdown.tsx";
 
 export function Home() {
     const isMobile = useMediaQuery('(max-width: 768px)')
@@ -99,9 +100,9 @@ export function Home() {
                             <a href="mailto:alex.a.amorim@outlook.com">
                                 <FaEnvelope /> E-mail
                             </a>
-                            <a href="/curriculo-alex-alves-amorim.pdf" download>
-                                <FaFilePdf /> Currículo
-                            </a>
+                        </div>
+                        <div className="mt-8 pt-6 border-t border-border/60">
+                            <CurriculumDropdown variant="contact" />
                         </div>
                     </div>
                 </div>

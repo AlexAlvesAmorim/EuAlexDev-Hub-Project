@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaXmark, FaFilePdf, FaFolderOpen, FaUser, FaEnvelope, FaGithub, FaChartSimple, FaTimeline, FaCode, FaAward } from "react-icons/fa6";
+import { FaBars, FaXmark, FaFolderOpen, FaUser, FaEnvelope, FaGithub, FaChartSimple, FaTimeline, FaCode, FaAward } from "react-icons/fa6";
+import { CurriculumDropdown } from "../CurriculumMenu/CurriculumDropdown.tsx";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -72,13 +73,7 @@ export function Header() {
                         <a href="#contato" className={navLinkClasses}>
                             <FaEnvelope className="text-xs" /> Contato
                         </a>
-                        <a
-                            href="/curriculo-alex-alves-amorim.pdf"
-                            download
-                            className="inline-flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-lg border border-white/10 text-text-h/80 hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
-                        >
-                            <FaFilePdf className="text-xs" /> Currículo
-                        </a>
+                        <CurriculumDropdown variant="header" />
                     </nav>
 
                     <div className="flex items-center gap-3">
@@ -129,14 +124,7 @@ export function Header() {
                     <a href="#contato" className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
                         <FaEnvelope /> Contato
                     </a>
-                    <a
-                        href="/curriculo-alex-alves-amorim.pdf"
-                        download
-                        className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200"
-                        onClick={closeMenu}
-                    >
-                        <FaFilePdf /> Currículo
-                    </a>
+                    <CurriculumDropdown variant="header-mobile" onClose={closeMenu} />
                     <a
                         href="https://github.com/AlexAlvesAmorim"
                         target="_blank"
