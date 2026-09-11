@@ -12,6 +12,7 @@ export interface Project {
     image: string
     technologies: string[]
     github: string
+    demo?: string
     problem?: string
     solution?: string
     challenges?: string

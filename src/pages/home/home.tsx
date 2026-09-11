@@ -38,7 +38,7 @@ export function Home() {
                                 Ninguém me deu atalho. Aprendi tudo <strong>autodidata</strong>, de madrugada, entre um trampo e outro.
                             </p>
                             <p>
-                                Passei mais de 20 anos no suporte técnico, do N1 ao N3, olhando no olho de quem travava
+                                Passei 15 anos no suporte técnico, do N1 ao N3, olhando no olho de quem travava
                                 num sistema ruim. Foi ali que virou a chave: eu não queria mais só consertar a tela dos outros,
                                 eu queria construir a tela certa. Migrei pro Front-End sozinho — <strong>React</strong>, <strong>TypeScript</strong>, <strong>Electron</strong> —
                                 construindo produto de verdade, não exercício de tutorial.

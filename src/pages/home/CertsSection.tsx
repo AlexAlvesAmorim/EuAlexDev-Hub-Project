@@ -7,7 +7,7 @@ const certifications = [
         title: "CS50x: Introduction to Computer Science",
         issuer: "HarvardX (edX)",
         year: "2026",
-        description: "Curso completo de ciência da computação de Harvard — C, Python, SQL, HTML/CSS/JS e Flask; algoritmos, estruturas de dados e gerenciamento de memória. Concluído com final project.",
+        description: "Curso completo de ciência da computação de Harvard — C, Python, SQL, HTML/CSS/JS e Flask; algoritmos, estruturas de dados e gerenciamento de memória. Final Project: 99Food Analytics, com vídeo demo e banca.",
     },
     {
         title: "Curso de Informática — Formação Completa",

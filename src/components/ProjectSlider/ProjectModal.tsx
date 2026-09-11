@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus } from 'react-icons/fa6'
+import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus, FaYoutube } from 'react-icons/fa6'
 import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss, SiNodedotjs, SiFastify, SiPostgresql, SiPrisma } from 'react-icons/si'
 import { TbRouter } from 'react-icons/tb'
 import { TbPdf } from 'react-icons/tb'
@@ -481,6 +481,11 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                 </div>
 
                 <div className="project-modal__footer">
+                    {project.demo && (
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                            <FaYoutube /> Ver demo
+                        </a>
+                    )}
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                         <FaGithub /> Ver no GitHub
                     </a>

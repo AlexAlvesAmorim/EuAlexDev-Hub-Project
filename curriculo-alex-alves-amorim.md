@@ -1,10 +1,10 @@
 # ALEX ALVES AMORIM
-> Desenvolvedor Front-End · React | TypeScript | Electron
+> Desenvolvedor Full-Stack · React | TypeScript | Node.js | Electron
 > Jacarepaguá, Rio de Janeiro – RJ | alex.a.amorim@outlook.com | (21) 97680-7111 | linkedin.com/in/alex-a-amorim | github.com/AlexAlvesAmorim | eu-alex-dev-hub-project.vercel.app
 
 ## RESUMO PROFISSIONAL
 
-- 21+ anos em TI: comecei no suporte técnico (N1 ao N3), atendendo usuários reais todos os dias — e foi essa vivência que moldou como eu programo: tecnologia boa é a que resolve sem atrapalhar.
+- 20+ anos em TI: comecei no suporte técnico (N1 ao N3), atendendo usuários reais todos os dias — e foi essa vivência que moldou como eu programo: tecnologia boa é a que resolve sem atrapalhar.
 - Em 2023 migrei de vez para o desenvolvimento front-end e fundei a ALVS, com a filosofia de construir **produtos, não exercícios**. Trabalho com React, TypeScript, JavaScript, Electron, Tailwind CSS e Vite — e aplico back-end nos meus produtos: API REST em Node.js/Fastify, PostgreSQL com Prisma, autenticação, uploads e testes automatizados.
 - Evidências de mercado: app desktop com **200+ usuários ativos**, e-commerce **vendido em negociação B2B**, dashboards analíticos entregues e portfólio com case studies completos.
 - Foco em experiência do usuário, performance, Clean Code, componentização e arquitetura modular.

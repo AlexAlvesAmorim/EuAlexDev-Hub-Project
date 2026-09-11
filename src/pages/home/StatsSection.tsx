@@ -4,7 +4,7 @@ import { projects } from "../../data/project";
 import { technologies } from "../../data/technologies";
 
 const stats = [
-    { value: "21+", label: "Anos em TI" },
+    { value: "20+", label: "Anos em TI" },
     { value: String(projects.length), label: "Projetos no Hub" },
     { value: String(technologies.length), label: "Tecnologias Core" },
     { value: "1", label: "E-commerce Vendido (B2B)" },
