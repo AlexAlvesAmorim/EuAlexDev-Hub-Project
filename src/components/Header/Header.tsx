@@ -56,7 +56,7 @@ export function Header() {
                             <FaFolderOpen className="text-xs" /> Projetos
                         </a>
                         <a href="#sobre" className={navLinkClasses}>
-                            <FaUser className="text-xs" /> Sobre
+                            <FaUser className="text-xs" /> Sobre mim
                         </a>
                         <a href="#estatisticas" className={navLinkClasses}>
                             <FaChartSimple className="text-xs" /> Métricas

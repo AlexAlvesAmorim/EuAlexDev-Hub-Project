@@ -28,7 +28,7 @@ export function Home() {
                     </p>
 
                     <div className="about">
-                        <img src="/Hero.png" alt="Foto do Alex" className="about-photo" width="340" height="453" loading="lazy" decoding="async" />
+                        <img src="/Hero.webp" alt="Foto do Alex" className="about-photo" width="340" height="453" loading="lazy" decoding="async" />
 
                         <div className="about-text">
                             <p>

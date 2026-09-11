@@ -1,6 +1,6 @@
 # Dev. de Favela Hub — Portfólio do Alex
 
-Fala, sou o **Alex Alves Amorim**, de Jacarepaguá — RJ. Passei 15+ anos no suporte técnico (do N1 ao N3) ouvindo gente frustrada com sistema que deveria ajudar. Um dia cansou. Resolvi ser quem faz a interface que não atrapalha.
+Fala, sou o **Alex Alves Amorim**, de Jacarepaguá — RJ. Passei 21+ anos no suporte técnico (do N1 ao N3) ouvindo gente frustrada com sistema que deveria ajudar. Um dia cansou. Resolvi ser quem faz a interface que não atrapalha.
 
 Esse hub é minha vitrine. Não é template. O carrossel 3D ali em cima foi feito na mão, puro CSS + `requestAnimationFrame`, sem biblioteca. Cada card tem história — problema real, solução, perrengue técnico e o que de fato foi entregue.
 
