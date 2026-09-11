@@ -58,7 +58,7 @@ export function CertsSection() {
                     <span className="highlight">Certificações</span>
                 </h2>
                 <p className="section-subtitle">
-                    Cursos e formações que complementam a bagagem prática.
+                    Certificado abre porta. Produto mantém aberta.
                 </p>
 
                 <div className="certs-grid">

@@ -55,7 +55,7 @@ export function Timeline() {
                     Minha <span className="highlight">jornada</span>
                 </h2>
                 <p className="section-subtitle">
-                    Marcos importantes na transição de suporte para desenvolvimento.
+                    De lan house a produto rodando — ano a ano, sem pular etapa.
                 </p>
 
                 <div className="timeline">

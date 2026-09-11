@@ -5,9 +5,9 @@ import { technologies } from "../../data/technologies";
 
 const stats = [
     { value: "20+", label: "Anos em TI" },
-    { value: String(projects.length), label: "Projetos no Hub" },
-    { value: String(technologies.length), label: "Tecnologias Core" },
-    { value: "1", label: "E-commerce Vendido (B2B)" },
+    { value: String(projects.length), label: "Produtos entregues" },
+    { value: String(technologies.length), label: "Techs no cinto" },
+    { value: "1", label: "Venda B2B fechada" },
 ];
 
 export function StatsSection() {
@@ -21,7 +21,7 @@ export function StatsSection() {
                     Números que <span className="highlight">contam</span>
                 </h2>
                 <p className="section-subtitle">
-                    Porque métricas falam mais que currículo.
+                    Conversa convence. Número prova.
                 </p>
 
                 <div className="stats-grid">

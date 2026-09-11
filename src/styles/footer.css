@@ -11,6 +11,14 @@
   animation: heartPulse 1.4s ease-in-out infinite;
 }
 
+.footer .colophon {
+  margin: 10px auto 0;
+  max-width: 560px;
+  font-size: 0.85em;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
 @keyframes heartPulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.2); }

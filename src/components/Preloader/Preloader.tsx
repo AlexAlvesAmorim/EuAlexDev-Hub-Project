@@ -44,7 +44,7 @@ export function Preloader({ onDone }: PreloaderProps) {
         >
             <div className="preloader__logo" aria-hidden="true">A</div>
             <h2 className="preloader__title">Dev. de Favela Hub</h2>
-            <p className="preloader__subtitle">Bem-vindo ao meu Hub de Portfólio</p>
+            <p className="preloader__subtitle">calma aí que já abre</p>
             <div className="preloader__bar" aria-hidden="true">
                 <span />
             </div>

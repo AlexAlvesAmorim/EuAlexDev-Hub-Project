@@ -70,6 +70,26 @@ export function Home() {
 
             <CertsSection />
 
+            <section id="agora" className="section">
+                <FloatingParticles count={sectionParticles} />
+
+                <div className="section-container">
+                    <h2 className="section-title">
+                        O que tá pegando <span className="highlight">agora</span>
+                    </h2>
+                    <p className="section-subtitle">
+                        Sem assessoria de imprensa — atualizo quando a vida muda.
+                    </p>
+
+                    <ul className="now-list">
+                        <li><span aria-hidden="true">💼</span> Open to work: buscando minha primeira vaga CLT/PJ full-stack — RJ ou remoto.</li>
+                        <li><span aria-hidden="true">📚</span> Recém-saído do CS50x, agora tô estudando Next.js e checkout com pagamentos.</li>
+                        <li><span aria-hidden="true">🔧</span> Mantendo o ALFA PDF Reader — 200+ usuários não se largam sozinhos.</li>
+                        <li><span aria-hidden="true">🎬</span> Contando a jornada no canal @DevdeFavela, pra quem vem da quebrada também.</li>
+                    </ul>
+                </div>
+            </section>
+
             <section id="contato" className="section">
                 <FloatingParticles count={sectionParticles} />
 
@@ -78,16 +98,16 @@ export function Home() {
                         Entre em <span className="highlight">contato</span>
                     </h2>
                     <p className="section-subtitle">
-                        Interessado em colaborar ou discutir um projeto? Vamos conversar.
+                        Tem ideia, vaga ou perrengue técnico? Me chama.
                     </p>
 
                     <div className="contact-card">
                         <div className="contact-cta-badge">
                             Aberto a oportunidades
                         </div>
-                        <h3>Vamos construir algo relevante?</h3>
+                        <h3>Bora construir algo que preste?</h3>
                         <p>
-                            Respondo com mais agilidade pelo LinkedIn. Você também pode me encontrar nos canais abaixo.
+                            LinkedIn é o caminho mais rápido — mas pode chamar onde preferir.
                         </p>
 
                         <div className="contact-links">
@@ -110,6 +130,7 @@ export function Home() {
 
             <footer className="footer">
                 <p>Feito com <span className="heart">♥</span> pelo Alex — Dev de Favela</p>
+                <p className="colophon">Feito à mão com React + TypeScript — sem template, sem gerador. Foto em WebP de 36KB, café coado e teste em hardware real.</p>
             </footer>
         </main>
     )
