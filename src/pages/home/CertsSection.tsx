@@ -4,6 +4,12 @@ import { FaAward } from "react-icons/fa6";
 
 const certifications = [
     {
+        title: "CS50x: Introduction to Computer Science",
+        issuer: "HarvardX (edX)",
+        year: "2026",
+        description: "Curso completo de ciência da computação de Harvard — C, Python, SQL, HTML/CSS/JS e Flask; algoritmos, estruturas de dados e gerenciamento de memória. Concluído com final project.",
+    },
+    {
         title: "Curso de Informática — Formação Completa",
         issuer: "MDATA LTDA. (MDATA)",
         year: "2007-2008",

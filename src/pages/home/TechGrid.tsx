@@ -1,6 +1,6 @@
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { technologies } from "../../data/technologies";
+import { technologies, TECH_CATEGORIES } from "../../data/technologies";
 
 export function TechGrid() {
     const isMobile = useMediaQuery('(max-width: 768px)');
@@ -13,18 +13,25 @@ export function TechGrid() {
                     Stack & <span className="highlight">Skills</span>
                 </h2>
                 <p className="section-subtitle">
-                    Tecnologias que uso no dia a dia para construir interfaces.
+                    Do front ao back: o que uso pra tirar produto do papel — e os fundamentos que sustentam tudo.
                 </p>
 
-                <div className="tech-grid-cards">
-                    {technologies.map((tech) => (
-                        <div key={tech.name} className="tech-card">
-                            <tech.Icon style={{ color: tech.color }} />
-                            <span className="tech-card-name">{tech.name}</span>
-                            <span className="tech-card-level">{tech.level}</span>
+                {TECH_CATEGORIES.map((category) => (
+                    <div key={category} className="tech-category">
+                        <h3 className="tech-category-title">{category}</h3>
+                        <div className="tech-grid-cards">
+                            {technologies
+                                .filter((tech) => tech.category === category)
+                                .map((tech) => (
+                                    <div key={tech.name} className="tech-card">
+                                        <tech.Icon style={{ color: tech.color }} />
+                                        <span className="tech-card-name">{tech.name}</span>
+                                        <span className="tech-card-level">{tech.level}</span>
+                                    </div>
+                                ))}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </section>
     );

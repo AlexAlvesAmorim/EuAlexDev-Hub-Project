@@ -349,6 +349,23 @@
   margin: 0 auto;
 }
 
+.tech-category {
+  margin-top: 40px;
+}
+
+.tech-category:first-of-type {
+  margin-top: 8px;
+}
+
+.tech-category-title {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  color: var(--text-h);
+  margin-bottom: 18px;
+}
+
 .tech-card {
   display: flex;
   flex-direction: column;
