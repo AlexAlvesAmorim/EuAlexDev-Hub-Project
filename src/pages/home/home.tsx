@@ -24,7 +24,7 @@ export function Home() {
                         Sobre <span className="highlight">mim</span>
                     </h2>
                     <p className="section-subtitle">
-                        De suporte técnico a front-end — uma jornada construída com código.
+                        Nascido na Cidade de Deus, forjado no suporte, feito desenvolvedor na raça.
                     </p>
 
                     <div className="about">
@@ -32,22 +32,22 @@ export function Home() {
 
                         <div className="about-text">
                             <p>
-                                Minha jornada com tecnologia não começou com um "Hello World". Começou em frente a
-                                pessoas frustradas com sistemas que deveriam ajudar, mas só complicavam. Passei anos
-                                em suporte técnico olhando nos olhos de quem dependia de um software pra trabalhar
-                                — e foi ali que entendi que tecnologia boa não é a que tem mais recursos, é a que
-                                resolve sem atrapalhar.
+                                Sou <strong>nascido e criado na Cidade de Deus</strong>, favela do Rio de Janeiro.
+                                Onde eu cresci, computador não era ferramenta de estudo, era luxo dividido na lan house.
+                                Aprendi a fuçar porque precisava: desmontar, formatar, fazer voltar a funcionar.
+                                Ninguém me deu atalho. Aprendi tudo <strong>autodidata</strong>, de madrugada, entre um trampo e outro.
                             </p>
                             <p>
-                                Essa vivência moldou como eu programo hoje. Migrei pro Front-End quando percebi que
-                                eu podia ser a pessoa que constrói a interface que falta — a que é direta, fluida e
-                                pensada de verdade no humano do outro lado.
+                                Passei mais de 20 anos no suporte técnico, do N1 ao N3, olhando no olho de quem travava
+                                num sistema ruim. Foi ali que virou a chave: eu não queria mais só consertar a tela dos outros,
+                                eu queria construir a tela certa. Migrei pro Front-End sozinho — <strong>React</strong>, <strong>TypeScript</strong>, <strong>Electron</strong> —
+                                construindo produto de verdade, não exercício de tutorial.
                             </p>
                             <p>
-                                Trabalho com <strong>React</strong>, <strong>TypeScript</strong> e <strong>Electron</strong> — com um aplicativo desktop em produção para mais de 200 usuários —
-                                e quanto a estudar cada detalhe que parece simples, mas faz toda a diferença
-                                na hora de usar, aprendi na prática. Cada projeto aqui foi lapidado com o cuidado de
-                                quem sabe o peso de uma experiência ruim — e escolheu entregar o oposto.
+                                Meus projetos são a prova: o <strong>ALFA PDF Reader</strong> com 200+ usuários, a <strong>Fabulosa E-Commerce</strong> vendida
+                                em negociação B2B, o <strong>99Food Analyser</strong> feito quase todo offline, e o <strong>Alfa Curriculum Maker</strong> gratuito
+                                pra quem precisa de emprego. Sou Dev de Favela com orgulho — e o que me move é o mesmo do suporte:
+                                resolver a dor de quem tá do outro lado da tela.
                             </p>
 
                             <div className="about-badges">
