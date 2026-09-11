@@ -22,9 +22,11 @@
   .project-modal-template__update-btn.rotating,
   .preloader__logo,
   .preloader__bar span,
-  .animate-fadeIn,
-  .carousel-controls,
-  .carousel-dots {
+    .animate-fadeIn,
+    .carousel-controls,
+    .carousel-dots,
+    .tech-tab,
+    .tech-card--enter {
     animation: none !important;
     transition-duration: 0s !important;
   }
