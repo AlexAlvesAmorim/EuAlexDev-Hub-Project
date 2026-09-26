@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus, FaYoutube } from 'react-icons/fa6'
+import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus, FaYoutube, FaArrowRight } from 'react-icons/fa6'
 import type { Project } from '../../types/Project'
 import { TechIcon } from '../TechIcon'
 import { technologiesContent } from '../../content/loader'
@@ -464,6 +464,9 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                 </div>
 
                 <div className="project-modal__footer">
+                    <a href={`#/projeto/${project.id}`}>
+                        <FaArrowRight /> Ver case completo
+                    </a>
                     {project.demo && (
                         <a href={project.demo} target="_blank" rel="noopener noreferrer">
                             <FaYoutube /> Ver demo

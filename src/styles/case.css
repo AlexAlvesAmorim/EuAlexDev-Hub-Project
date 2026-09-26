@@ -1,0 +1,220 @@
+/* Página de case (#/projeto/<id>) — editorial, mesma língua do modal. */
+
+.case-page {
+  position: relative;
+  width: 100%;
+  padding: 130px 24px 90px;
+}
+
+.case-container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.case-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: var(--text);
+  font-size: 0.88em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.case-back:hover {
+  color: var(--primary);
+  transform: translateX(-3px);
+}
+
+.section-eyebrow--left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.section-eyebrow--left::after {
+  display: none;
+}
+
+.case-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--text-h);
+  margin: 0 0 14px;
+}
+
+.case-lede {
+  font-size: clamp(1.02rem, 2.4vw, 1.18rem);
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 640px;
+  margin: 0 0 26px;
+}
+
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.case-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.92em;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.case-btn--primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 8px 24px -8px rgba(var(--accent-rgb), 0.55);
+}
+
+.case-btn--primary:hover {
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .case-btn--primary {
+  color: #131511;
+}
+
+.case-btn--ghost {
+  border: 1px solid var(--border);
+  color: var(--text-h);
+}
+
+.case-btn--ghost:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.case-techs {
+  margin-bottom: 30px;
+}
+
+.case-cover {
+  display: block;
+  margin: 0 0 34px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px -24px rgba(28, 25, 23, 0.35);
+}
+
+[data-theme="dark"] .case-cover {
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
+}
+
+.case-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.case-section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 34px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.case-gallery img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.case-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.case-pager a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92em;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-pager a:last-child {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.case-pager a:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(var(--accent-rgb), 0.14);
+}
+
+.case-pager small {
+  display: block;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 2px;
+}
+
+@media (max-width: 640px) {
+  .case-page {
+    padding-top: 110px;
+  }
+
+  .case-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .case-pager {
+    grid-template-columns: 1fr;
+  }
+
+  .case-pager a:last-child {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .case-pager a:last-child svg {
+    order: -1;
+  }
+}
