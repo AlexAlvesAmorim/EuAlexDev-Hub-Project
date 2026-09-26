@@ -7,6 +7,8 @@ import { Timeline } from "./TimelineSection.tsx";
 import { TechGrid } from "./TechGrid.tsx";
 import { CertsSection } from "./CertsSection.tsx";
 import { CurriculumDropdown } from "../../components/CurriculumMenu/CurriculumDropdown.tsx";
+import { siteConfig } from "../../config/site";
+import { siteCopy } from "../../content/loader";
 
 export function Home() {
     const isMobile = useMediaQuery('(max-width: 768px)')
@@ -24,38 +26,21 @@ export function Home() {
                         Sobre <span className="highlight">mim</span>
                     </h2>
                     <p className="section-subtitle">
-                        Nascido na Cidade de Deus, forjado no suporte, feito desenvolvedor na raça.
+                        {siteCopy.about.subtitle}
                     </p>
 
                     <div className="about">
-                        <img src="/Hero.webp" alt="Foto do Alex" className="about-photo" width="340" height="453" loading="lazy" decoding="async" />
+                        <img src={siteCopy.about.photo.src} alt={siteCopy.about.photo.alt} className="about-photo" width={siteCopy.about.photo.width} height={siteCopy.about.photo.height} loading="lazy" decoding="async" />
 
                         <div className="about-text">
-                            <p>
-                                Sou <strong>nascido e criado na Cidade de Deus</strong>, favela do Rio de Janeiro.
-                                Onde eu cresci, computador não era ferramenta de estudo, era luxo dividido na lan house.
-                                Aprendi a fuçar porque precisava: desmontar, formatar, fazer voltar a funcionar.
-                                Ninguém me deu atalho. Aprendi tudo <strong>autodidata</strong>, de madrugada, entre um trampo e outro.
-                            </p>
-                            <p>
-                                Passei 15 anos no suporte técnico, do N1 ao N3, olhando no olho de quem travava
-                                num sistema ruim. Foi ali que virou a chave: eu não queria mais só consertar a tela dos outros,
-                                eu queria construir a tela certa. Migrei pro Front-End sozinho — <strong>React</strong>, <strong>TypeScript</strong>, <strong>Electron</strong> —
-                                construindo produto de verdade, não exercício de tutorial.
-                            </p>
-                            <p>
-                                Meus projetos são a prova: o <strong>ALFA PDF Reader</strong> com 200+ usuários, a <strong>Fabulosa E-Commerce</strong> vendida
-                                em negociação B2B, o <strong>99Food Analyser</strong> feito quase todo offline, e o <strong>Alfa Curriculum Maker</strong> gratuito
-                                pra quem precisa de emprego. Sou Dev de Favela com orgulho — e o que me move é o mesmo do suporte:
-                                resolver a dor de quem tá do outro lado da tela.
-                            </p>
+                            {siteCopy.about.paragraphs.map((p, i) => (
+                                <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
+                            ))}
 
                             <div className="about-badges">
-                                <span>React</span>
-                                <span>TypeScript</span>
-                                <span>Tailwind</span>
-                                <span>Electron</span>
-                                <span>Vite</span>
+                                {siteCopy.about.badges.map((b) => (
+                                    <span key={b}>{b}</span>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -78,14 +63,13 @@ export function Home() {
                         O que tá pegando <span className="highlight">agora</span>
                     </h2>
                     <p className="section-subtitle">
-                        Sem assessoria de imprensa — atualizo quando a vida muda.
+                        {siteCopy.now.subtitle}
                     </p>
 
                     <ul className="now-list">
-                        <li><span aria-hidden="true">💼</span> Open to work: buscando minha primeira vaga CLT/PJ full-stack — RJ ou remoto.</li>
-                        <li><span aria-hidden="true">📚</span> Recém-saído do CS50x, agora tô estudando Next.js e checkout com pagamentos.</li>
-                        <li><span aria-hidden="true">🔧</span> Mantendo o ALFA PDF Reader — 200+ usuários não se largam sozinhos.</li>
-                        <li><span aria-hidden="true">🎬</span> Contando a jornada no canal @DevdeFavela, pra quem vem da quebrada também.</li>
+                        {siteCopy.now.items.map((item) => (
+                            <li key={item}>{item}</li>
+                        ))}
                     </ul>
                 </div>
             </section>
@@ -98,26 +82,26 @@ export function Home() {
                         Entre em <span className="highlight">contato</span>
                     </h2>
                     <p className="section-subtitle">
-                        Tem ideia, vaga ou perrengue técnico? Me chama.
+                        {siteCopy.contact.subtitle}
                     </p>
 
                     <div className="contact-card">
                         <div className="contact-cta-badge">
-                            Aberto a oportunidades
+                            {siteCopy.contact.badge}
                         </div>
-                        <h3>Bora construir algo que preste?</h3>
+                        <h3>{siteCopy.contact.heading}</h3>
                         <p>
-                            LinkedIn é o caminho mais rápido — mas pode chamar onde preferir.
+                            {siteCopy.contact.hint}
                         </p>
 
                         <div className="contact-links">
-                            <a href="https://www.linkedin.com/in/alex-a-amorim/" target="_blank" rel="noopener noreferrer">
+                            <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">
                                 <FaLinkedin /> LinkedIn
                             </a>
-                            <a href="https://github.com/AlexAlvesAmorim" target="_blank" rel="noopener noreferrer">
+                            <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">
                                 <FaGithub /> GitHub
                             </a>
-                            <a href="mailto:alex.a.amorim@outlook.com">
+                            <a href={siteConfig.social.email}>
                                 <FaEnvelope /> E-mail
                             </a>
                         </div>
@@ -129,8 +113,19 @@ export function Home() {
             </section>
 
             <footer className="footer">
-                <p>Feito com <span className="heart">♥</span> pelo Alex — Dev de Favela</p>
-                <p className="colophon">Feito à mão com React + TypeScript — sem template, sem gerador. Foto em WebP de 36KB, café coado e teste em hardware real.</p>
+                <p>
+                    {siteCopy.footer.madeWith.split("♥").map((part, i, arr) =>
+                        i < arr.length - 1 ? (
+                            <span key={i}>
+                                {part}
+                                <span className="heart">♥</span>
+                            </span>
+                        ) : (
+                            part
+                        )
+                    )}
+                </p>
+                <p className="colophon">{siteCopy.footer.colophon}</p>
             </footer>
         </main>
     )

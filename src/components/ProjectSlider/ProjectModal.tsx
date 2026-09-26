@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus, FaYoutube } from 'react-icons/fa6'
-import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss, SiNodedotjs, SiFastify, SiPostgresql, SiPrisma } from 'react-icons/si'
-import { TbRouter } from 'react-icons/tb'
-import { TbPdf } from 'react-icons/tb'
 import type { Project } from '../../types/Project'
-import type { IconType } from 'react-icons'
+import { TechIcon } from '../TechIcon'
+import { technologiesContent } from '../../content/loader'
 
 interface VersionComparison {
     feature: string
@@ -15,21 +13,6 @@ interface VersionComparison {
 
 const NEW_VERSION = 'v2.1.6'
 const OLD_VERSION = 'v2.0'
-
-const techIconMap: Record<string, { Icon: IconType; color: string }> = {
-    React: { Icon: SiReact, color: '#61dafb' },
-    TypeScript: { Icon: SiTypescript, color: '#3178c6' },
-    JavaScript: { Icon: SiJavascript, color: '#f7df1e' },
-    Electron: { Icon: SiElectron, color: '#47848f' },
-    Vite: { Icon: SiVite, color: '#bd34fe' },
-    Tailwind: { Icon: SiTailwindcss, color: '#06b6d4' },
-    'Node.js': { Icon: SiNodedotjs, color: '#339933' },
-    Fastify: { Icon: SiFastify, color: '#1f1f1f' },
-    PostgreSQL: { Icon: SiPostgresql, color: '#4169e1' },
-    Prisma: { Icon: SiPrisma, color: '#2d3748' },
-    'React Router': { Icon: TbRouter, color: '#f44250' },
-    'PDF.js': { Icon: TbPdf, color: '#f40' },
-}
 
 interface ProjectModalProps {
     project: Project
@@ -469,10 +452,10 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                     <div className="project-modal__section-title">Tecnologias</div>
                     <div className="project-modal__techs">
                         {project.technologies.map((tech) => {
-                            const meta = techIconMap[tech]
+                            const meta = technologiesContent.find((t) => t.name === tech)
                             return (
                                 <span key={tech}>
-                                    {meta ? <meta.Icon style={{ color: meta.color, fontSize: '1.1em' }} /> : null}
+                                    <TechIcon name={meta?.icon ?? tech} color={meta?.color ?? '#c084fc'} />
                                     {tech}
                                 </span>
                             )

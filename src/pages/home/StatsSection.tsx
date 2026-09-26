@@ -1,14 +1,8 @@
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { projects } from "../../data/project";
-import { technologies } from "../../data/technologies";
+import { buildStats, siteCopy } from "../../content/loader";
 
-const stats = [
-    { value: "20+", label: "Anos em TI" },
-    { value: String(projects.length), label: "Produtos entregues" },
-    { value: String(technologies.length), label: "Techs no cinto" },
-    { value: "1", label: "Venda B2B fechada" },
-];
+const stats = buildStats();
 
 export function StatsSection() {
     const isMobile = useMediaQuery('(max-width: 768px)');
@@ -21,7 +15,7 @@ export function StatsSection() {
                     Números que <span className="highlight">contam</span>
                 </h2>
                 <p className="section-subtitle">
-                    Conversa convence. Número prova.
+                    {siteCopy.stats.subtitle}
                 </p>
 
                 <div className="stats-grid">

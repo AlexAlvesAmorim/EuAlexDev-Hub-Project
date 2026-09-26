@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
 import { FaBars, FaXmark, FaFolderOpen, FaUser, FaEnvelope, FaGithub, FaChartSimple, FaTimeline, FaCode, FaAward } from "react-icons/fa6";
 import { CurriculumDropdown } from "../CurriculumMenu/CurriculumDropdown.tsx";
+import { siteConfig } from "../../config/site";
+
+const navIcons = {
+    projects: FaFolderOpen,
+    about: FaUser,
+    metrics: FaChartSimple,
+    journey: FaTimeline,
+    stack: FaCode,
+    certs: FaAward,
+    contact: FaEnvelope,
+} as const;
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -45,40 +56,27 @@ export function Header() {
                         </div>
                         <div>
                             <h1 className="text-lg sm:text-xl font-bold text-text-h leading-tight transition-colors duration-300 group-hover:text-primary">
-                                Dev. de Favela Hub
+                                {siteConfig.name}
                             </h1>
-                            <p className="text-xs sm:text-sm text-text/70">Portfólio & Projetos</p>
+                            <p className="text-xs sm:text-sm text-text/70">{siteConfig.tagline}</p>
                         </div>
                     </a>
 
                     <nav className="hidden md:flex items-center gap-6" aria-label="Navegação principal">
-                        <a href="#projetos" className={navLinkClasses}>
-                            <FaFolderOpen className="text-xs" /> Projetos
-                        </a>
-                        <a href="#sobre" className={navLinkClasses}>
-                            <FaUser className="text-xs" /> Sobre mim
-                        </a>
-                        <a href="#estatisticas" className={navLinkClasses}>
-                            <FaChartSimple className="text-xs" /> Métricas
-                        </a>
-                        <a href="#jornada" className={navLinkClasses}>
-                            <FaTimeline className="text-xs" /> Jornada
-                        </a>
-                        <a href="#skills" className={navLinkClasses}>
-                            <FaCode className="text-xs" /> Stack
-                        </a>
-                        <a href="#certificados" className={navLinkClasses}>
-                            <FaAward className="text-xs" /> Certificações
-                        </a>
-                        <a href="#contato" className={navLinkClasses}>
-                            <FaEnvelope className="text-xs" /> Contato
-                        </a>
+                        {siteConfig.nav.map((item) => {
+                            const Icon = navIcons[item.icon];
+                            return (
+                                <a key={item.href} href={item.href} className={navLinkClasses}>
+                                    <Icon className="text-xs" /> {item.label}
+                                </a>
+                            );
+                        })}
                         <CurriculumDropdown variant="header" />
                     </nav>
 
                     <div className="flex items-center gap-3">
                         <a
-                            href="https://github.com/AlexAlvesAmorim"
+                            href={siteConfig.social.github}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 active:scale-95 transition-all duration-300"
@@ -103,30 +101,17 @@ export function Header() {
                     className="md:hidden bg-background/95 backdrop-blur-xl border-t border-white/[0.06] px-4 py-6 flex flex-col gap-1 animate-fadeIn"
                     aria-label="Menu móvel"
                 >
-                    <a href="#projetos" className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
-                        <FaFolderOpen /> Projetos
-                    </a>
-                    <a href="#sobre" className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
-                        <FaUser /> Sobre mim
-                    </a>
-                    <a href="#estatisticas" className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
-                        <FaChartSimple /> Métricas
-                    </a>
-                    <a href="#jornada" className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
-                        <FaTimeline /> Jornada
-                    </a>
-                    <a href="#skills" className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
-                        <FaCode /> Stack & Skills
-                    </a>
-                    <a href="#certificados" className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
-                        <FaAward /> Certificações
-                    </a>
-                    <a href="#contato" className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
-                        <FaEnvelope /> Contato
-                    </a>
+                    {siteConfig.nav.map((item) => {
+                        const Icon = navIcons[item.icon];
+                        return (
+                            <a key={item.href} href={item.href} className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200" onClick={closeMenu}>
+                                <Icon /> {item.label}
+                            </a>
+                        );
+                    })}
                     <CurriculumDropdown variant="header-mobile" onClose={closeMenu} />
                     <a
-                        href="https://github.com/AlexAlvesAmorim"
+                        href={siteConfig.social.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 text-text-h/80 hover:text-primary hover:bg-primary/5 rounded-lg px-4 py-3 transition-all duration-200"

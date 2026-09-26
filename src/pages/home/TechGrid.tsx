@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { technologies, TECH_CATEGORIES, type TechCategory } from "../../data/technologies";
+import { TechIcon } from "../../components/TechIcon";
+import { technologiesContent } from "../../content/loader";
+
+const TECH_CATEGORIES = [...new Set(technologiesContent.map((t) => t.category))];
 
 export function TechGrid() {
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const [active, setActive] = useState<TechCategory>("Front-end");
+    const [active, setActive] = useState<string>(TECH_CATEGORIES[0]);
 
     return (
         <section id="skills" className="section tech-grid-section">
@@ -20,7 +23,7 @@ export function TechGrid() {
 
                 <div className="tech-tabs" role="tablist" aria-label="Categorias de tecnologias">
                     {TECH_CATEGORIES.map((category) => {
-                        const count = technologies.filter((tech) => tech.category === category).length;
+                        const count = technologiesContent.filter((tech) => tech.category === category).length;
                         const selected = active === category;
                         return (
                             <button
@@ -38,7 +41,7 @@ export function TechGrid() {
                 </div>
 
                 <div key={active} className="tech-grid-cards tech-grid-cards--animate" role="tabpanel">
-                    {technologies
+                    {technologiesContent
                         .filter((tech) => tech.category === active)
                         .map((tech, index) => (
                             <div
@@ -46,7 +49,7 @@ export function TechGrid() {
                                 className="tech-card tech-card--enter"
                                 style={{ animationDelay: `${index * 60}ms` }}
                             >
-                                <tech.Icon style={{ color: tech.color }} />
+                                <TechIcon name={tech.icon} color={tech.color} />
                                 <span className="tech-card-name">{tech.name}</span>
                                 <span className="tech-card-level">{tech.level}</span>
                             </div>
