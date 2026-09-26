@@ -35,6 +35,7 @@ export const ProjectSchema = z.object({
   challenges: z.string().optional(),
   results: z.string().optional(),
   gallery: ExtendedGallerySchema.optional(),
+  featured: z.boolean().default(false),
 });
 
 export const ProjectsSchema = z.array(ProjectSchema);

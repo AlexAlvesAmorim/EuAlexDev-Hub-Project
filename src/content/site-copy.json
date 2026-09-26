@@ -10,10 +10,15 @@
     ],
     "badges": ["React", "TypeScript", "Tailwind", "Electron", "Vite"]
   },
+  "featured": {
+    "eyebrow": "Cases em destaque",
+    "titleA": "Código que",
+    "titleHighlight": "virou resultado",
+    "subtitle": "Três projetos contados como case: a dor, o perrengue e o número final."
+  },
   "stats": {
     "title": "Números que contam",
-    "subtitle": "Conversa convence. Número prova.",
-    "fixed": [
+    "subtitle": "Conversa convence. Número prova.",    "fixed": [
       { "value": "20+", "label": "Anos em TI" },
       { "value": "1", "label": "Venda B2B fechada" }
     ],

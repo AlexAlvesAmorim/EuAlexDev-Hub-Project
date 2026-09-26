@@ -1,4 +1,5 @@
 import { ProjectSlider } from "../../components/ProjectSlider/ProjectSlider.tsx";
+import { FeaturedCases } from "./FeaturedCases.tsx";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { FaGithub, FaEnvelope, FaLinkedin } from "react-icons/fa6";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -23,6 +24,8 @@ export function Home() {
     return (
         <main className="w-full min-h-screen">
             <ProjectSlider />
+
+            <FeaturedCases />
 
             <section id="sobre" className="section">
                 <FloatingParticles count={sectionParticles} />

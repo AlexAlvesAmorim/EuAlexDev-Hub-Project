@@ -55,6 +55,7 @@ export const siteConfig = {
   /** Kickers acima dos títulos — uma fonte só, sem espalhar copy no JSX. */
   sectionEyebrow: {
     sobre: "Quem sou",
+    destaques: "Cases em destaque",
     stats: "Prova em números",
     journey: "A jornada",
     stack: "A stack",
