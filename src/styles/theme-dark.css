@@ -1,0 +1,117 @@
+/* ─────────────────────────────────────────────────────────────
+ * Tema "Noite carioca" — dark alternativo ao papel e tinta (padrão).
+ * Ativado via [data-theme="dark"] no <html> (ver ThemeToggle).
+ * Todos os glows/tints seguem --accent-rgb, então a troca é 1 linha.
+ * ───────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-background: #131511;
+  --color-bg: #131511;
+  --color-surface: #1d2019;
+  --color-text: #a8a29e;
+  --color-text-h: #f3efe6;
+  --color-primary: #f59e0b;
+  --color-border: #2b2f24;
+
+  --bg: #131511;
+  --surface: #1d2019;
+  --text: #a8a29e;
+  --text-h: #f3efe6;
+  --primary: #f59e0b;
+  --border: #2b2f24;
+  --code-bg: #1d2019;
+  --accent: #f59e0b;
+  --accent-rgb: 245, 158, 11;
+  --accent-bg: rgba(var(--accent-rgb), 0.14);
+  --accent-border: rgba(var(--accent-rgb), 0.45);
+  --social-bg: rgba(245, 158, 11, 0.07);
+  --shadow: rgba(0, 0, 0, 0.5) 0 18px 40px -18px, rgba(0, 0, 0, 0.35) 0 4px 12px -4px;
+}
+
+/* Texto decorativo gigante — contorno tinta no papel, giz na noite. */
+[data-theme="dark"] .banner .background-text {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
+}
+
+/* Vidros: papel de dia, fumaça de noite. */
+[data-theme="dark"] .carousel-pause,
+[data-theme="dark"] .carousel-btn {
+  background: rgba(29, 25, 21, 0.7);
+}
+
+@media (max-width: 768px) {
+  [data-theme="dark"] .banner .author {
+    background: rgba(29, 25, 21, 0.6);
+  }
+
+  [data-theme="dark"] .project-caption {
+    background: rgba(29, 25, 21, 0.55);
+  }
+}
+
+[data-theme="dark"] .carousel-pause:hover {
+  color: #131511;
+}
+
+[data-theme="dark"] .carousel-dot {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .project-modal__close,
+[data-theme="dark"] .project-modal-template__close {
+  background: rgba(29, 25, 21, 0.7);
+}
+
+[data-theme="dark"] .case-study__block,
+[data-theme="dark"] .case-study__block-template {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Faixas alternadas: wash tinta no papel, véu claro na noite. */
+[data-theme="dark"] .stats-section,
+[data-theme="dark"] .timeline-section,
+[data-theme="dark"] .tech-grid-section,
+[data-theme="dark"] .certs-section {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Badge de disponibilidade: esmeralda escura no papel, menta na noite. */
+[data-theme="dark"] .contact-cta-badge {
+  background: rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #34d399;
+}
+
+/* Seleção e scrollbar acompanham o tema. */
+[data-theme="dark"] ::selection,
+[data-theme="dark"] ::-moz-selection {
+  color: #f3efe6;
+}
+
+[data-theme="dark"] * {
+  scrollbar-color: #2e303a transparent;
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb {
+  background: #2e303a;
+  background-clip: content-box;
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb:hover {
+  background: #3a3d4a;
+  background-clip: content-box;
+}
+
+/* Ícone sobre o tile âmbar precisa de tinta escura, não branca. */
+[data-theme="dark"] .preloader__logo {
+  color: #131511;
+}
+
+/* Cores de tech calibradas pro papel ganham um boost na noite. */
+[data-theme="dark"] .tech-card svg,
+[data-theme="dark"] .project-modal__techs svg {
+  filter: brightness(1.25);
+}

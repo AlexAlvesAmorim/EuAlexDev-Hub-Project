@@ -455,7 +455,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                             const meta = technologiesContent.find((t) => t.name === tech)
                             return (
                                 <span key={tech}>
-                                    <TechIcon name={meta?.icon ?? tech} color={meta?.color ?? '#c084fc'} />
+                                    <TechIcon name={meta?.icon ?? tech} color={meta?.color ?? '#b45309'} />
                                     {tech}
                                 </span>
                             )

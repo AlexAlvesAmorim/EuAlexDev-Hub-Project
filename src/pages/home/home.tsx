@@ -2,6 +2,8 @@ import { ProjectSlider } from "../../components/ProjectSlider/ProjectSlider.tsx"
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { FaGithub, FaEnvelope, FaLinkedin } from "react-icons/fa6";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useReveal } from "../../hooks/useReveal";
+import { useSpotlight } from "../../hooks/useSpotlight";
 import { StatsSection } from "./StatsSection.tsx";
 import { Timeline } from "./TimelineSection.tsx";
 import { TechGrid } from "./TechGrid.tsx";
@@ -13,6 +15,10 @@ import { siteCopy } from "../../content/loader";
 export function Home() {
     const isMobile = useMediaQuery('(max-width: 768px)')
     const sectionParticles = isMobile ? 18 : 45
+    const [sobreRef, sobreVisible] = useReveal();
+    const [agoraRef, agoraVisible] = useReveal();
+    const [contatoRef, contatoVisible] = useReveal();
+    const onSpotlight = useSpotlight();
 
     return (
         <main className="w-full min-h-screen">
@@ -21,7 +27,8 @@ export function Home() {
             <section id="sobre" className="section">
                 <FloatingParticles count={sectionParticles} />
 
-                <div className="section-container">
+                <div ref={sobreRef} className={`section-container reveal${sobreVisible ? " is-visible" : ""}`}>
+                    <p className="section-eyebrow">{siteConfig.sectionEyebrow.sobre}</p>
                     <h2 className="section-title">
                         Sobre <span className="highlight">mim</span>
                     </h2>
@@ -58,7 +65,8 @@ export function Home() {
             <section id="agora" className="section">
                 <FloatingParticles count={sectionParticles} />
 
-                <div className="section-container">
+                <div ref={agoraRef} className={`section-container reveal${agoraVisible ? " is-visible" : ""}`}>
+                    <p className="section-eyebrow">{siteConfig.sectionEyebrow.now}</p>
                     <h2 className="section-title">
                         O que tá pegando <span className="highlight">agora</span>
                     </h2>
@@ -77,7 +85,8 @@ export function Home() {
             <section id="contato" className="section">
                 <FloatingParticles count={sectionParticles} />
 
-                <div className="section-container">
+                <div ref={contatoRef} className={`section-container reveal${contatoVisible ? " is-visible" : ""}`}>
+                    <p className="section-eyebrow">{siteConfig.sectionEyebrow.contact}</p>
                     <h2 className="section-title">
                         Entre em <span className="highlight">contato</span>
                     </h2>
@@ -85,7 +94,7 @@ export function Home() {
                         {siteCopy.contact.subtitle}
                     </p>
 
-                    <div className="contact-card">
+                    <div className="contact-card spotlight" onPointerMove={onSpotlight}>
                         <div className="contact-cta-badge">
                             {siteCopy.contact.badge}
                         </div>

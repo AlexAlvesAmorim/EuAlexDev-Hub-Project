@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaBars, FaXmark, FaFolderOpen, FaUser, FaEnvelope, FaGithub, FaChartSimple, FaTimeline, FaCode, FaAward } from "react-icons/fa6";
 import { CurriculumDropdown } from "../CurriculumMenu/CurriculumDropdown.tsx";
+import { ThemeToggle } from "../ThemeToggle/ThemeToggle.tsx";
 import { siteConfig } from "../../config/site";
 
 const navIcons = {
@@ -44,7 +45,7 @@ export function Header() {
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                 scrolled
-                    ? "bg-background/70 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-white/[0.06]"
+                    ? "bg-background/70 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-black/[0.08] dark:border-white/[0.06]"
                     : "bg-transparent border-b border-transparent"
             }`}
         >
@@ -52,7 +53,7 @@ export function Header() {
                 <div className={`flex justify-between items-center transition-all duration-500 ${scrolled ? "py-2.5" : "py-4"}`}>
                     <a href="#projetos" className="flex items-center gap-3 group" onClick={closeMenu}>
                         <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shrink-0 shadow-lg shadow-primary/25 transition-all duration-300 group-hover:shadow-primary/40 group-hover:scale-105">
-                            <span className="text-white font-bold text-lg">A</span>
+                            <span className="text-white dark:text-[#131511] font-bold text-lg">A</span>
                         </div>
                         <div>
                             <h1 className="text-lg sm:text-xl font-bold text-text-h leading-tight transition-colors duration-300 group-hover:text-primary">
@@ -75,11 +76,12 @@ export function Header() {
                     </nav>
 
                     <div className="flex items-center gap-3">
+                        <ThemeToggle />
                         <a
                             href={siteConfig.social.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 active:scale-95 transition-all duration-300"
+                            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white dark:text-[#131511] rounded-lg font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 active:scale-95 transition-all duration-300"
                         >
                             <FaGithub className="text-lg" /> GitHub
                         </a>
@@ -98,7 +100,7 @@ export function Header() {
 
             {menuOpen && (
                 <nav
-                    className="md:hidden bg-background/95 backdrop-blur-xl border-t border-white/[0.06] px-4 py-6 flex flex-col gap-1 animate-fadeIn"
+                    className="md:hidden bg-background/95 backdrop-blur-xl border-t border-black/[0.08] dark:border-white/[0.06] px-4 py-6 flex flex-col gap-1 animate-fadeIn"
                     aria-label="Menu móvel"
                 >
                     {siteConfig.nav.map((item) => {
