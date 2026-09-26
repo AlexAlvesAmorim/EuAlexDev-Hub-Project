@@ -22,7 +22,7 @@ export const siteConfig = {
   author: "Alex Alves Amorim",
   role: "Desenvolvedor Front-End",
   locale: "pt-BR",
-  url: "https://eualexdev.vercel.app",
+  url: "https://eu-alex-dev-hub-project.vercel.app",
   heroProjectId: "alfa-pdf",
   themeColor: "#f7f4ed",
   seo: {
@@ -31,8 +31,8 @@ export const siteConfig = {
       "Portfólio de Alex Alves Amorim (Dev de Favela) — Desenvolvedor Full-Stack com 20+ anos em TI. Projetos com React, TypeScript, Node.js, Electron. Carrossel 3D interativo.",
     keywords:
       "desenvolvedor full-stack, react, typescript, node.js, electron, portfólio, dev de favela",
-    ogImage: "/Hero.webp",
-    twitterImage: "/Hero.png",
+    ogImage: "https://eu-alex-dev-hub-project.vercel.app/Hero.webp",
+    twitterImage: "https://eu-alex-dev-hub-project.vercel.app/Hero.webp",
   },
   social: {
     github: "https://github.com/AlexAlvesAmorim",

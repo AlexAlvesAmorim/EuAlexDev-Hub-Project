@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPA com hash router: crawlers indexam a home; os cases vivem em
+     #/projeto/<id> e ganham title + meta + canonical via useRouteMeta.
+     URLs separadas por case virão com a migração SSR (roadmap Q3). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://eu-alex-dev-hub-project.vercel.app/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
