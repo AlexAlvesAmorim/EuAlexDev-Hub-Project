@@ -24,13 +24,15 @@ export function App() {
         }
     }, [route]);
 
+    const routeKey = route.name === "project" ? `project:${route.id}` : "home";
+
     return (
         <>
             <a href="#projetos" className="skip-link">Pular para o conteudo</a>
             <ScrollProgress />
             {!booted && <Preloader onDone={() => setBooted(true)} />}
             <Header />
-            <div className="relative z-10 min-h-screen text-text">
+            <div key={routeKey} className="page-enter relative z-10 min-h-screen text-text">
                 {route.name === "project" ? <CasePage key={route.id} id={route.id} /> : <Home />}
             </div>
             <BackToTop />

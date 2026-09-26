@@ -110,13 +110,13 @@ def build_completo(path):
     story.append(Spacer(1,3))
 
     t3 = Table([
-        [Paragraph('<b><font color="#0f3ab8">EuAlexDev Hub (Dev. de Favela)</font></b> <font color="#0f3ab8">React 19 | TypeScript | Vite | Tailwind 4 | react-icons | Portfólio Hub Autoral</font>', s_project)]
+        [Paragraph('<b><font color="#0f3ab8">EuAlexDev Hub (Dev. de Favela)</font></b> <font color="#0f3ab8">React 19 | TypeScript | Vite | Tailwind 4 | Zod | Portfólio Hub Autoral v2.0</font>', s_project)]
     ], colWidths=[510])
     story.append(t3)
     for b in [
-        "Hub de portfólio como produto: carrossel 3D autoral com CSS puro + requestAnimationFrame (sem libs 3D), 10 arquivos CSS modulares e 2 hooks customizados; cada projeto com case study próprio.",
-        "Componentização reutilizável, 100% navegável por teclado, prefers-reduced-motion, foco visível e testes de acessibilidade; deploy estático com Vite e roteamento tipado.",
-        "Vitrine viva que centraliza todos os produtos, currículo em PDF e links para GitHub/LinkedIn — prova de consistência de design system pessoal."
+        "Portfólio tratado como produto (v2.0 data-driven): conteúdo 100% em JSON validado com Zod e config central — projeto novo vira dado, não código; cada case com rota própria (#/projeto/:id), título por rota e sumário com progresso de leitura.",
+        "Carrossel 3D autoral em CSS puro + requestAnimationFrame, dois temas com cross-fade, comparador antes/depois arrastável e trilhos de skills/certificações com scroll-snap via hook custom (useScrollRail); bundle -24% com remoção do framer-motion.",
+        "Acessibilidade de verdade: 100% navegável por teclado, prefers-reduced-motion, foco visível e papéis ARIA de carrossel; deploy estático com Vite — vitrine viva dos produtos, CV em PDF e links GitHub/LinkedIn."
     ]:
         story.append(Paragraph(f'<font color="#222">•</font> {b}', s_body2))
     story.append(Spacer(1,3))
@@ -148,7 +148,7 @@ def build_completo(path):
     # Competencias
     story.append(Paragraph("COMPETÊNCIAS TÉCNICAS", s_section))
     story.append(hr(NAVY, 1.2))
-    story.append(Paragraph('<b>Desenvolvimento:</b> React.js, TypeScript, JavaScript (ES6+), Electron, Node.js, HTML5, CSS3, Tailwind CSS, Vite, React Router, PDF.js, Git/GitHub, APIs REST, hooks customizados, arquitetura modular.', s_body))
+    story.append(Paragraph('<b>Desenvolvimento:</b> React.js, TypeScript, JavaScript (ES6+), Electron, Node.js, HTML5, CSS3, Tailwind CSS, Vite, React Router, Zod, Redis, Git/GitHub, APIs REST (consumo e criação), PDF.js, hooks customizados, arquitetura modular, testes (Vitest, Playwright).', s_body))
     story.append(Paragraph('<b>Qualidade & DevOps:</b> Vitest, Testing Library, Playwright (e2e), Husky, ESLint, Prettier, Docker, docker-compose, electron-updater, GitHub Releases, typecheck 100%.', s_body))
     story.append(Paragraph('<b>Complementar (15a suporte):</b> Troubleshooting avançado, Windows, Linux, macOS, Redes TCP/IP, Hardware, manutenção de placas lógicas — diferencial para debug e performance.', s_body))
     story.append(Paragraph('<b>Ferramentas & Design:</b> Jira, GLPI, Zendesk, Figma/Photoshop (básico), CorelDRAW, Microsoft 365, Google Workspace.', s_body))
@@ -246,9 +246,9 @@ def build_minimal(path):
         "Dashboard SaaS para delivery com KPIs (receita, pedidos, ticket médio) calculados em <b>useMemo</b> sem backend e insights automáticos (melhor dia/forma de pagamento).",
         "Visualização em CSS puro e acessibilidade (ARIA, progressbar, modal com ESC/scroll-lock) via Context API. Arquitetura desacoplada pronta para REST com mocks, types e Error Boundary."
     ])
-    proj_min("EuAlexDev Hub - Portfólio como Produto", "React 19 | TypeScript | Vite | Tailwind 4", "eu-alex-dev-hub-project.vercel.app", [
-        "Hub autoral com carrossel 3D em CSS puro + requestAnimationFrame (sem libs 3D), 10 módulos CSS e 2 hooks custom. Cada projeto com case study próprio.",
-        "100% navegável por teclado, prefers-reduced-motion e foco visível. Prova de consistência de design system pessoal."
+    proj_min("EuAlexDev Hub - Portfólio como Produto v2.0", "React 19 | TypeScript | Vite | Tailwind 4 | Zod", "eu-alex-dev-hub-project.vercel.app", [
+        "Portfólio data-driven: JSON validado com Zod, rotas próprias por case, 2 temas com cross-fade e trilhos com scroll-snap (hook useScrollRail); bundle -24% sem framer-motion.",
+        "Carrossel 3D autoral em CSS puro + rAF, comparador antes/depois e 100% navegação por teclado com reduced-motion - design system pessoal consistente."
     ])
     proj_min("Fabulosa E-Commerce - Projeto B2B VENDIDO", "React 19 | Node.js | Fastify | Prisma | Docker | Vitest | Playwright", "base profissional", [
         "E-commerce de moda com catálogo completo e identidade visual, <b>vendido para empresa real</b> - marco da transição de estudo para receita.",
@@ -266,7 +266,7 @@ def build_minimal(path):
     header_style = ParagraphStyle('HeaderCell', parent=s_table_cell, fontName='Helvetica-Bold', textColor=HexColor("#333"), fontSize=6.5)
     def hp(txt): return Paragraph(txt, header_style)
     data = [
-        [hp("Desenvolvimento"), p("React.js, TypeScript, JavaScript (ES6+), Electron, Node.js, HTML5, CSS3, Tailwind CSS, Vite, React Router, PDF.js, APIs REST, Hooks Customizados, Arquitetura Modular")],
+        [hp("Desenvolvimento"), p("React.js, TypeScript, JavaScript (ES6+), Electron, Node.js, HTML5, CSS3, Tailwind CSS, Vite, React Router, Zod, Redis, PDF.js, APIs REST, Hooks Customizados, Arquitetura Modular")],
         [hp("Qualidade & DevOps"), p("Vitest, Testing Library, Playwright (e2e), Husky, ESLint, Prettier, Docker, docker-compose, electron-updater, GitHub Releases, TypeCheck 100%")],
         [hp("Diferencial Suporte"), p("15 anos Troubleshooting Nível 3 - Windows / Linux / macOS - Redes TCP/IP - Hardware e manutenção de placas lógicas - acelera debug e performance no front-end")],
         [hp("Ferramentas"), p("Git/GitHub, Jira, GLPI, Zendesk, Figma (básico), Microsoft 365 / Google Workspace")],

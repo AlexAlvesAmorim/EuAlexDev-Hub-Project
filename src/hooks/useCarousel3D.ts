@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useReducedMotion } from "framer-motion";
 import { useMediaQuery } from "./useMediaQuery";
 import { carouselConfig } from "../config/carousel";
 
@@ -8,16 +7,14 @@ import { carouselConfig } from "../config/carousel";
  * - Mesma matemática do cilindro (fonte única = ângulo, índice derivado).
  * - Números vêm de config/carousel.ts, não mais mágicos.
  * - Cleanup correto do timeout de touch + drag manual por pointer.
- * - Respeita prefers-reduced-motion via framer-motion + media query.
+ * - Respeita prefers-reduced-motion via media query (sem lib externa).
  */
 export function useCarousel3D(total: number) {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [userAutoRotate, setUserAutoRotate] = useState(true);
 
-  const mqReduced = useMediaQuery("(prefers-reduced-motion: reduce)");
-  const fmReduced = useReducedMotion();
-  const reducedMotion = mqReduced || fmReduced === true;
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   const autoRotate = userAutoRotate && !reducedMotion;
 
   const degreesPerCard = 360 / Math.max(total, 1);

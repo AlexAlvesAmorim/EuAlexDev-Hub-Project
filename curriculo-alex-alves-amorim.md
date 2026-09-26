@@ -24,10 +24,11 @@
 - Receita segmentada por dia e método de pagamento (Pix, crédito, débito), com insights automáticos de melhor dia e forma de pagamento.
 - Gestão de status de pedidos via Context API; desenvolvida majoritariamente offline, sem consulta constante à documentação.
 
-### Dev de Favela Hub — React · TypeScript · Vite · Tailwind
-> Portfólio pessoal · 2025
-- Carrossel 3D autoral em CSS puro com requestAnimationFrame — sem bibliotecas de animação 3D.
-- Modal com case study completo por projeto; acessibilidade (prefers-reduced-motion, navegação por teclado, Escape) e CSS modular em parciais.
+### Dev de Favela Hub — React · TypeScript · Vite · Tailwind · Zod
+> Portfólio pessoal v2.0 data-driven · 2025–atual
+- Conteúdo 100% em JSON validado com Zod e config central — projeto novo vira dado, não código; cada case com rota própria (`#/projeto/:id`), título por rota e sumário com progresso de leitura.
+- Carrossel 3D autoral em CSS puro com requestAnimationFrame, dois temas com cross-fade, comparador antes/depois arrastável e trilhos de skills/certificações com scroll-snap via hook custom (`useScrollRail`); bundle −24% com remoção do framer-motion.
+- Acessibilidade de verdade: 100% navegável por teclado, prefers-reduced-motion, foco visível e papéis ARIA de carrossel.
 
 ### Fabulosa E-Commerce — React · JavaScript · Node.js · Fastify · PostgreSQL
 > Loja virtual full stack · 2023–2025 · vendida em negociação B2B
@@ -68,12 +69,13 @@
 
 ## COMPETÊNCIAS TÉCNICAS
 
-- Desenvolvimento: React (avançado), JavaScript (avançado), TypeScript (intermediário-avançado), Electron (avançado), Tailwind CSS (avançado), Node.js, Fastify, PostgreSQL, Prisma ORM, Docker, Vite, HTML5, CSS3, Git/GitHub, APIs REST (consumo e criação), PDF.js, Context API, hooks customizados, arquitetura modular, testes (Vitest, Playwright).
+- Desenvolvimento: React (avançado), JavaScript (avançado), TypeScript (intermediário-avançado), Electron (avançado), Tailwind CSS (avançado), Node.js, Fastify, PostgreSQL, Prisma ORM, Redis, Zod, React Router, Docker, Vite, HTML5, CSS3, Git/GitHub, APIs REST (consumo e criação), PDF.js, Context API, hooks customizados, arquitetura modular, testes (Vitest, Playwright).
 - Infraestrutura e Suporte: Windows, Linux, macOS, Windows Server, Active Directory, TCP/IP, DNS, DHCP, VPN, LAN/WAN, Wi-Fi, Firewall, Help Desk/ITSM.
 - Ferramentas: Microsoft Office 365, Google Workspace, Jira, GLPI, Zendesk, Photoshop, CorelDRAW.
 
 ## CERTIFICAÇÕES
 
+- CS50x: Introduction to Computer Science (HarvardX · edX, 2026) — C, Python, SQL, HTML/CSS/JS e Flask; algoritmos, estruturas de dados e gerenciamento de memória. Final Project: 99Food Analyser, com vídeo demo e banca.
 - Curso de Informática — Formação Completa (MDATA, 2007–2008) — 300h, média final 9,0: Sistemas Operacionais, Pacote Office, Corel Draw, Photoshop, HTML, Dreamweaver, Flash, Hardware e Manutenção.
 - Curso de React para Iniciantes (Felipe Rocha · Full Stack Club, 2025) — sistema de Gestão de Treinos do zero ao deploy em 1 semana.
 - Aprendendo React do Zero (DevClub · Programação, 2024) — do básico à integração frontend + backend com consumo de APIs REST.

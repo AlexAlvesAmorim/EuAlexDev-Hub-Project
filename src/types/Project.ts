@@ -20,4 +20,6 @@ export interface Project {
     v21Images?: string[]
     v12Images?: string[]
     comparison?: VersionComparison[]
+    newVersion?: string
+    oldVersion?: string
 }

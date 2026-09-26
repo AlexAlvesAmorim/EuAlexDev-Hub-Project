@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaBars, FaXmark, FaFolderOpen, FaUser, FaEnvelope, FaGithub, FaChartSimple, FaTimeline, FaCode, FaAward } from "react-icons/fa6";
 import { CurriculumDropdown } from "../CurriculumMenu/CurriculumDropdown.tsx";
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle.tsx";
+import { useActiveSection } from "../../hooks/useActiveSection.ts";
 import { siteConfig } from "../../config/site";
 
 const navIcons = {
@@ -17,6 +18,7 @@ const navIcons = {
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const activeSection = useActiveSection();
 
     const closeMenu = () => setMenuOpen(false);
 
@@ -66,8 +68,14 @@ export function Header() {
                     <nav className="hidden md:flex items-center gap-6" aria-label="Navegação principal">
                         {siteConfig.nav.map((item) => {
                             const Icon = navIcons[item.icon];
+                            const isActive = activeSection === item.href;
                             return (
-                                <a key={item.href} href={item.href} className={navLinkClasses}>
+                                <a
+                                    key={item.href}
+                                    href={item.href}
+                                    aria-current={isActive ? "true" : undefined}
+                                    className={`${navLinkClasses}${isActive ? " nav-link-active" : ""}`}
+                                >
                                     <Icon className="text-xs" /> {item.label}
                                 </a>
                             );

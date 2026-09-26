@@ -1,3 +1,4 @@
+import { type CSSProperties } from "react";
 import { ProjectSlider } from "../../components/ProjectSlider/ProjectSlider.tsx";
 import { FeaturedCases } from "./FeaturedCases.tsx";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
@@ -68,7 +69,7 @@ export function Home() {
             <section id="agora" className="section">
                 <FloatingParticles count={sectionParticles} />
 
-                <div ref={agoraRef} className={`section-container reveal${agoraVisible ? " is-visible" : ""}`}>
+                <div ref={agoraRef} className={`section-container reveal reveal-stagger${agoraVisible ? " is-visible" : ""}`}>
                     <p className="section-eyebrow">{siteConfig.sectionEyebrow.now}</p>
                     <h2 className="section-title">
                         O que tá pegando <span className="highlight">agora</span>
@@ -78,8 +79,14 @@ export function Home() {
                     </p>
 
                     <ul className="now-list">
-                        {siteCopy.now.items.map((item) => (
-                            <li key={item}>{item}</li>
+                        {siteCopy.now.items.map((item, index) => (
+                            <li
+                                key={item}
+                                className="reveal-child"
+                                style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
+                            >
+                                {item}
+                            </li>
                         ))}
                     </ul>
                 </div>

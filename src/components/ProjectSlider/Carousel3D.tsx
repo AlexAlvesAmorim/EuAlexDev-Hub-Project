@@ -1,5 +1,4 @@
 import { type CSSProperties, useCallback, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FloatingParticles } from "../BackgroundTexture/FloatingParticles";
 import { SiReact, SiTypescript, SiElectron } from "react-icons/si";
 import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from "react-icons/fa6";
@@ -177,17 +176,9 @@ export function Carousel3D() {
 
       <div className="project-caption" aria-live="polite" aria-atomic="true">
         <span className="tag">Em destaque</span>
-        <AnimatePresence mode="wait">
-          <motion.h3
-            key={current.id}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ type: "spring", stiffness: 380, damping: 32 }}
-          >
-            {current.title}
-          </motion.h3>
-        </AnimatePresence>
+        <h3 key={current.id} className="caption-swap">
+          {current.title}
+        </h3>
       </div>
 
       {openedProject && (

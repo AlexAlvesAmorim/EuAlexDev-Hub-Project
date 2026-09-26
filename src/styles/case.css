@@ -11,6 +11,104 @@
   margin: 0 auto;
 }
 
+.case-article section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* ── Layout imersivo: artigo + sumário sticky ─────────────── */
+
+.case-layout {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.case-toc {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .case-layout {
+    max-width: 1160px;
+    display: grid;
+    grid-template-columns: minmax(0, 860px) 200px;
+    gap: 56px;
+    justify-content: center;
+  }
+
+  .case-layout .case-container {
+    margin: 0;
+    max-width: none;
+  }
+
+  .case-toc {
+    display: block;
+    position: sticky;
+    top: 110px;
+    align-self: start;
+    padding-left: 20px;
+  }
+
+  .case-toc__rail {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .case-toc__rail::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--primary);
+    transform: scaleY(var(--toc-progress, 0));
+    transform-origin: top;
+  }
+
+  .case-toc__title {
+    margin: 0 0 10px;
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .case-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .case-toc__link {
+    display: block;
+    padding: 6px 0;
+    font-size: 0.86em;
+    color: var(--text);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -20px;
+    padding-left: 18px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .case-toc__link:hover {
+    color: var(--text-h);
+  }
+
+  .case-toc__link--active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    font-weight: 600;
+  }
+}
+
 .case-back {
   display: inline-flex;
   align-items: center;
@@ -217,6 +315,146 @@
   .case-pager a:last-child svg {
     order: -1;
   }
+}
+
+/* ── Comparador antes/depois ─────────────────────────── */
+
+.compare {
+  margin: 0 0 8px;
+}
+
+.compare__stage {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px -24px rgba(28, 25, 23, 0.35);
+  aspect-ratio: 16 / 10;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+[data-theme="dark"] .compare__stage {
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
+}
+
+.compare__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+}
+
+.compare__img--before {
+  clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+}
+
+.compare__tag {
+  position: absolute;
+  top: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(19, 21, 17, 0.72);
+  color: #f3efe6;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+.compare__tag--before {
+  left: 12px;
+}
+
+.compare__tag--after {
+  right: 12px;
+}
+
+.compare__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos, 50%);
+  width: 2px;
+  background: var(--primary);
+  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.6);
+  pointer-events: none;
+}
+
+.compare__line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 4px 16px rgba(var(--accent-rgb), 0.5);
+}
+
+.compare__line svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 0.85em;
+}
+
+[data-theme="dark"] .compare__line svg {
+  color: #131511;
+}
+
+.compare__range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.compare__range:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+  background: transparent;
+}
+
+.compare__pairs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.compare__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-border);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.compare__dot:hover {
+  transform: scale(1.2);
+}
+
+.compare__dot.active {
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
 /* ── Teaser editorial na home ─────────────────────────────── */

@@ -1,3 +1,4 @@
+import { type CSSProperties } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -19,7 +20,7 @@ export function FeaturedCases() {
     return (
         <section id="destaques" className="section featured-section">
             <FloatingParticles count={isMobile ? 12 : 30} />
-            <div ref={revealRef} className={`section-container reveal${visible ? " is-visible" : ""}`}>
+            <div ref={revealRef} className={`section-container reveal reveal-stagger${visible ? " is-visible" : ""}`}>
                 <p className="section-eyebrow">{siteConfig.sectionEyebrow.destaques}</p>
                 <h2 className="section-title">
                     {siteCopy.featured.titleA} <span className="highlight">{siteCopy.featured.titleHighlight}</span>
@@ -30,7 +31,8 @@ export function FeaturedCases() {
                     {featured.map((project, index) => (
                         <article
                             key={project.id}
-                            className={`featured-row${index % 2 === 1 ? " featured-row--flip" : ""}`}
+                            className={`featured-row reveal-child${index % 2 === 1 ? " featured-row--flip" : ""}`}
+                            style={{ "--reveal-delay": `${index * 110}ms` } as CSSProperties}
                         >
                             <a
                                 className="featured-media"

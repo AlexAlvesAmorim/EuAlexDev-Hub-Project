@@ -43,6 +43,8 @@ export function toLegacyProject(p: (typeof projectsParsed)[number]): Project {
     v21Images: p.gallery?.v21Images,
     v12Images: p.gallery?.v12Images,
     comparison: p.gallery?.comparison,
+    newVersion: p.gallery?.newVersion,
+    oldVersion: p.gallery?.oldVersion,
   };
 }
 

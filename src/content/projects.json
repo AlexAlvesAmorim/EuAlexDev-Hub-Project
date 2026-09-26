@@ -118,21 +118,50 @@
   {
     "id": "dev-hub",
     "title": "Dev. de Favela Hub",
-    "subtitle": "Portfólio • Carrossel 3D",
-    "description": "Portfólio interativo com carrossel 3D autoral — vitrine de projetos desenvolvida como produto.",
+    "subtitle": "Portfólio • v2.0 data-driven",
+    "featured": true,
+    "description": "Meu portfólio tratado como produto: cada release conta uma história — e a v2.0 reescreveu tudo por dentro.",
     "problem": "Portfólio de dev é tudo igual: lista com thumbnail. Eu queria que o recrutador lembrasse do meu 3 segundos depois de abrir a página.",
-    "solution": "Carrossel 3D feito na mão — CSS puro com requestAnimationFrame, zero lib de animação. Cada card abre o case completo do projeto.",
-    "challenges": "Performance lisa sem biblioteca, legenda sincronizada com o card da frente, teclado e prefers-reduced-motion de verdade — e um bug safado onde o backdrop-filter quebrava os cards, resolvido com overlay ::after em vez de filter.",
-    "results": "10 arquivos CSS modulares, 2 hooks meus, acessibilidade de verdade. E o principal: recrutador elogia antes mesmo de ver o código.",
+    "solution": "Primeiro o carrossel 3D autoral em CSS puro. Depois a v2.0: conteúdo 100% em JSON validado com Zod, uma página com rota própria pra cada case, dois temas e zero string solta no JSX — projeto novo agora é dado, não código.",
+    "challenges": "Manter o bundle sob controle enquanto o site crescia (adeus, framer-motion — CSS + rAF resolve), fazer o tema claro e o escuro dividirem as mesmas variáveis sem quebrar nada, e trocar o modal pelo case com URL própria sem perder o que já funcionava.",
+    "results": "V2 no ar: 5 cases com rota e título próprios, Papel e tinta + Noite carioca com cross-fade, sumário com progresso de leitura e comparador antes/depois. E o principal continua valendo: recrutador elogia antes mesmo de ver o código.",
     "image": { "webp": "/projects/EuDevProjectHubCard.webp", "png": "/projects/EuDevProjectHubCard.png", "alt": "Dev. de Favela Hub" },
-    "technologies": ["React", "TypeScript", "Vite", "Tailwind"],
+    "technologies": ["React", "TypeScript", "Vite", "Tailwind", "Zod"],
     "github": "https://github.com/AlexAlvesAmorim/EuDevAlex-Hub-Project",
     "highlights": [
-      "Carrossel 3D com rotação suave e sincronizada com a legenda \"Em destaque\"",
-      "Modal de detalhes com a história e destaques de cada projeto",
-      "Design responsivo, partículas animadas e vidro fosco",
+      "Rotas por projeto: cada case tem URL própria (#/projeto/<id>) com título por rota",
+      "Cases em destaque na home contados como história: a dor, o perrengue e o número final",
+      "Sumário sticky com seção ativa e fio de progresso de leitura em cada case",
+      "Comparador antes/depois arrastável pra mostrar evolução visual com dado real",
+      "Design responsivo, partículas com seed fixa e vidro fosco nos dois temas",
       "Acessibilidade: respeita prefers-reduced-motion, navega por teclado e menu fecha no Escape",
-      "CSS modular em parciais com tokens de design"
-    ]
+      "v2.0.0: migração data-driven — conteúdo em JSON com Zod, config central, zero string hardcoded",
+      "v2.0.0: dois temas (Papel e tinta + Noite carioca) com cross-fade e preferência salva",
+      "v2.0.0: bundle podado — framer-motion removido, legenda do carrossel em CSS puro",
+      "v1.0: carrossel 3D com rotação suave e sincronizada com a legenda \"Em destaque\"",
+      "v1.0: modal de detalhes com a história e destaques de cada projeto"
+    ],
+    "gallery": {
+      "newVersion": "v2.0",
+      "oldVersion": "v1.0",
+      "v21Images": [
+        "/projects/hub-v2-topo.webp",
+        "/projects/hub-v2-sobre.webp",
+        "/projects/hub-v2-contato.webp"
+      ],
+      "v12Images": [
+        "/projects/hub-v1-topo.webp",
+        "/projects/hub-v1-sobre.webp",
+        "/projects/hub-v1-contato.webp"
+      ],
+      "comparison": [
+        { "feature": "Conteúdo", "from": "Espalhado no JSX", "to": "✅ JSON validado com Zod — projeto novo é dado, não código" },
+        { "feature": "Página do case", "from": "Só modal", "to": "✅ Rota própria por projeto, com título e sumário" },
+        { "feature": "Temas", "from": "Dark roxo único", "to": "✅ Papel e tinta + Noite carioca, com toggle e cross-fade" },
+        { "feature": "Navegação", "from": "Só âncoras", "to": "✅ Link ativo por seção + progresso de leitura nos cases" },
+        { "feature": "Evolução visual", "from": "Prints soltos", "to": "✅ Comparador antes/depois arrastável" },
+        { "feature": "Bundle", "from": "framer-motion no pacote", "to": "✅ Removido — CSS + rAF, legenda em keyframe puro" }
+      ]
+    }
   }
 ]

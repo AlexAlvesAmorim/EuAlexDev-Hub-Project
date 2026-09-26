@@ -14,7 +14,7 @@
     "eyebrow": "Cases em destaque",
     "titleA": "Código que",
     "titleHighlight": "virou resultado",
-    "subtitle": "Três projetos contados como case: a dor, o perrengue e o número final."
+    "subtitle": "Projetos contados como case: a dor, o perrengue e o número final."
   },
   "stats": {
     "title": "Números que contam",
@@ -44,8 +44,80 @@
     "heading": "Bora construir algo que preste?",
     "hint": "LinkedIn é o caminho mais rápido — mas pode chamar onde preferir."
   },
+  "stack": {
+    "subtitle": "Do front ao back: o que uso pra tirar produto do papel — e os fundamentos que sustentam tudo.",
+    "prev": "Página anterior de tecnologias",
+    "next": "Próxima página de tecnologias",
+    "goTo": "Ir para a página",
+    "region": "Carrossel de tecnologias",
+    "hint": "Arraste ou use as setas"
+  },
+  "certs": {
+    "subtitle": "Certificado abre porta. Produto mantém aberta.",
+    "prev": "Certificações anteriores",
+    "next": "Próximas certificações",
+    "goTo": "Ir para a página",
+    "region": "Carrossel de certificações",
+    "hint": "Arraste ou use as setas"
+  },
   "footer": {
     "madeWith": "Feito com ♥ pelo Alex — Dev de Favela",
     "colophon": "Feito à mão com React + TypeScript — sem template, sem gerador. Foto em WebP de 36KB, café coado e teste em hardware real."
+  },
+  "case": {
+    "back": "Todos os projetos",
+    "notFound": {
+      "eyebrow": "404",
+      "title": "Projeto não encontrado",
+      "lede": "Esse case não existe (ou mudou de nome). Volta pra vitrine que tem coisa boa lá.",
+      "cta": "Ver projetos"
+    },
+    "actions": { "github": "Ver no GitHub", "demo": "Ver demo" },
+    "storyLabels": {
+      "problem": "Problema",
+      "solution": "Solução",
+      "challenges": "Perrengues",
+      "results": "Resultado"
+    },
+    "sections": {
+      "story": "A história",
+      "highlights": "Destaques",
+      "evolution": "Evolução visual",
+      "gallery": "Galeria",
+      "previous": "Versão anterior",
+      "changes": "O que mudou"
+    },
+    "toc": { "title": "Neste case" },
+    "compare": {
+      "before": "Antes",
+      "after": "Depois",
+      "hint": "Arrasta pra comparar",
+      "pair": "Tela",
+      "of": "de"
+    },
+    "pager": { "prev": "Anterior", "next": "Próximo" },
+    "modal": {
+      "close": "Fechar detalhes",
+      "back": "Voltar",
+      "backLabel": "Voltar às informações do projeto",
+      "viewNews": "Ver novidades",
+      "news": "Novidades",
+      "compare": "Comparativo",
+      "unavailable": "imagem indisponível",
+      "labels": {
+        "problem": "Problema",
+        "solution": "Solução",
+        "challenges": "Desafios Técnicos",
+        "results": "Resultados"
+      },
+      "highlights": "Destaques",
+      "technologies": "Tecnologias",
+      "fullCase": "Ver case completo",
+      "prevImage": "Imagem anterior",
+      "nextImage": "Próxima imagem",
+      "goToImage": "Ir para imagem",
+      "enlarged": "Imagem ampliada",
+      "closeEnlarged": "Fechar imagem ampliada"
+    }
   }
 }
