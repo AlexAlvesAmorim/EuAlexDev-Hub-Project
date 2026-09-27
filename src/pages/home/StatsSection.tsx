@@ -1,35 +1,54 @@
+import { type CSSProperties } from "react";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { projects } from "../../data/project";
-import { technologies } from "../../data/technologies";
+import { useCountUp } from "../../hooks/useCountUp";
+import { useReveal } from "../../hooks/useReveal";
+import { useSpotlight } from "../../hooks/useSpotlight";
+import { siteConfig } from "../../config/site";
+import { buildStats, siteCopy } from "../../content/loader";
 
-const stats = [
-    { value: "20+", label: "Anos em TI" },
-    { value: String(projects.length), label: "Produtos entregues" },
-    { value: String(technologies.length), label: "Techs no cinto" },
-    { value: "1", label: "Venda B2B fechada" },
-];
+const stats = buildStats();
+
+function parseStat(value: string) {
+    const match = value.match(/^(\d+)(.*)$/);
+    return { target: match ? Number(match[1]) : 0, suffix: match ? match[2] : "" };
+}
+
+function StatCard({ value, label, active, index }: { value: string; label: string; active: boolean; index: number }) {
+    const { target, suffix } = parseStat(value);
+    const current = useCountUp(target, active);
+    const onPointerMove = useSpotlight();
+    return (
+        <div
+            className="stat-card reveal-child spotlight"
+            onPointerMove={onPointerMove}
+            style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
+        >
+            <span className="stat-value">{current}{suffix}</span>
+            <span className="stat-label">{label}</span>
+        </div>
+    );
+}
 
 export function StatsSection() {
     const isMobile = useMediaQuery('(max-width: 768px)');
+    const [revealRef, visible] = useReveal();
 
     return (
         <section id="estatisticas" className="section stats-section">
             <FloatingParticles count={isMobile ? 12 : 30} />
-            <div className="section-container">
+            <div ref={revealRef} className={`section-container reveal reveal-stagger${visible ? " is-visible" : ""}`}>
+                <p className="section-eyebrow">{siteConfig.sectionEyebrow.stats}</p>
                 <h2 className="section-title">
                     Números que <span className="highlight">contam</span>
                 </h2>
                 <p className="section-subtitle">
-                    Conversa convence. Número prova.
+                    {siteCopy.stats.subtitle}
                 </p>
 
                 <div className="stats-grid">
-                    {stats.map((stat) => (
-                        <div key={stat.label} className="stat-card">
-                            <span className="stat-value">{stat.value}</span>
-                            <span className="stat-label">{stat.label}</span>
-                        </div>
+                    {stats.map((stat, index) => (
+                        <StatCard key={stat.label} value={stat.value} label={stat.label} active={visible} index={index} />
                     ))}
                 </div>
             </div>

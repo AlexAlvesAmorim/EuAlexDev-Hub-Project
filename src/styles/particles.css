@@ -10,7 +10,7 @@
   position: absolute;
   bottom: -10px;
   border-radius: 50%;
-  background: rgba(192, 132, 252, 0.35);
+  background: rgba(var(--accent-rgb), 0.35);
   animation: floatUp linear infinite;
 }
 

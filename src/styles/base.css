@@ -3,6 +3,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Troca de tema com fundido (vale pro fallback sem View Transitions). */
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    transition: background-color 0.45s ease, color 0.45s ease;
+  }
+}
+
 section[id] {
   scroll-margin-top: 80px;
 }
@@ -64,30 +71,30 @@ button:focus-visible,
 
 /* Craft floor — Browser surfaces (cheapest signal of craft) */
 ::selection {
-  background: rgba(192, 132, 252, 0.32);
-  color: #f3f4f6;
+  background: rgba(194, 65, 12, 0.22);
+  color: #1c1917;
 }
 ::-moz-selection {
-  background: rgba(192, 132, 252, 0.32);
-  color: #f3f4f6;
+  background: rgba(194, 65, 12, 0.22);
+  color: #1c1917;
 }
 * {
   caret-color: var(--primary);
   scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
+  scrollbar-color: #d8d0bf transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: #2e303a;
+  background: #d8d0bf;
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #3a3d4a;
+  background: #c4b9a4;
   background-clip: content-box;
 }
 *::-webkit-scrollbar-track {

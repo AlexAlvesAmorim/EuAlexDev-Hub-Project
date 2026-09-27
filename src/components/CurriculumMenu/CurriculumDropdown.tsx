@@ -47,7 +47,7 @@ export function CurriculumDropdown({ variant = "header", onClose }: { variant?: 
                     <FaChevronDown className={`ml-auto text-xs transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} />
                 </button>
                 {expanded && (
-                    <div className="ml-4 pl-4 border-l border-white/10 flex flex-col gap-1 mt-1">
+                    <div className="ml-4 pl-4 border-l border-black/10 dark:border-white/10 flex flex-col gap-1 mt-1">
                         {OPTIONS.map((opt) => (
                             <a
                                 key={opt.label}
@@ -103,7 +103,7 @@ export function CurriculumDropdown({ variant = "header", onClose }: { variant?: 
                 onClick={() => setOpen((v) => !v)}
                 aria-haspopup="menu"
                 aria-expanded={open}
-                className="inline-flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-lg border border-white/10 text-text-h/80 hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
+                className="inline-flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-lg border border-black/10 dark:border-white/10 text-text-h/80 hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
             >
                 <FaFilePdf className="text-xs" /> Currículo
                 <FaChevronDown className={`text-[10px] ml-1 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
@@ -111,7 +111,7 @@ export function CurriculumDropdown({ variant = "header", onClose }: { variant?: 
             {open && (
                 <div
                     role="menu"
-                    className="absolute right-0 top-[calc(100%+10px)] w-64 rounded-xl bg-[#1f2028] border border-white/10 shadow-xl shadow-black/30 overflow-hidden animate-fadeIn z-50"
+                    className="absolute right-0 top-[calc(100%+10px)] w-64 rounded-xl bg-surface border border-black/10 dark:border-white/10 shadow-xl shadow-black/20 overflow-hidden animate-fadeIn z-50"
                 >
                     <div className="px-3 pt-3 pb-1">
                         <p className="text-[11px] font-bold tracking-widest uppercase text-text/40">Selecione o formato</p>
@@ -132,12 +132,12 @@ export function CurriculumDropdown({ variant = "header", onClose }: { variant?: 
                                 <span className="text-sm font-semibold text-text-h group-hover:text-primary transition-colors">{opt.label}</span>
                                 <span className="text-xs text-text/60">{opt.subtitle}</span>
                             </span>
-                            <span className="ml-auto text-[11px] font-bold px-2 py-1 rounded-full bg-white/5 border border-white/10 text-text/60 group-hover:bg-primary/15 group-hover:text-primary group-hover:border-primary/20 transition-colors">
+                            <span className="ml-auto text-[11px] font-bold px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-text/60 group-hover:bg-primary/15 group-hover:text-primary group-hover:border-primary/20 transition-colors">
                                 {opt.pages}
                             </span>
                         </a>
                     ))}
-                    <div className="px-3 py-2 bg-white/[0.02] border-t border-white/5 text-center">
+                    <div className="px-3 py-2 bg-black/[0.03] dark:bg-white/[0.02] border-t border-black/5 dark:border-white/5 text-center">
                         <span className="text-[11px] text-text/40">PDF • download direto</span>
                     </div>
                 </div>

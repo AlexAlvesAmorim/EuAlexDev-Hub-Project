@@ -1,34 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus, FaYoutube } from 'react-icons/fa6'
-import { SiReact, SiTypescript, SiJavascript, SiElectron, SiVite, SiTailwindcss, SiNodedotjs, SiFastify, SiPostgresql, SiPrisma } from 'react-icons/si'
-import { TbRouter } from 'react-icons/tb'
-import { TbPdf } from 'react-icons/tb'
+import { FaGithub, FaXmark, FaChevronLeft, FaChevronRight, FaMagnifyingGlassPlus, FaYoutube, FaArrowRight } from 'react-icons/fa6'
 import type { Project } from '../../types/Project'
-import type { IconType } from 'react-icons'
+import { TechIcon } from '../TechIcon'
+import { technologiesContent, siteCopy } from '../../content/loader'
 
 interface VersionComparison {
     feature: string
     from: string
     to: string
-}
-
-const NEW_VERSION = 'v2.1.6'
-const OLD_VERSION = 'v2.0'
-
-const techIconMap: Record<string, { Icon: IconType; color: string }> = {
-    React: { Icon: SiReact, color: '#61dafb' },
-    TypeScript: { Icon: SiTypescript, color: '#3178c6' },
-    JavaScript: { Icon: SiJavascript, color: '#f7df1e' },
-    Electron: { Icon: SiElectron, color: '#47848f' },
-    Vite: { Icon: SiVite, color: '#bd34fe' },
-    Tailwind: { Icon: SiTailwindcss, color: '#06b6d4' },
-    'Node.js': { Icon: SiNodedotjs, color: '#339933' },
-    Fastify: { Icon: SiFastify, color: '#1f1f1f' },
-    PostgreSQL: { Icon: SiPostgresql, color: '#4169e1' },
-    Prisma: { Icon: SiPrisma, color: '#2d3748' },
-    'React Router': { Icon: TbRouter, color: '#f44250' },
-    'PDF.js': { Icon: TbPdf, color: '#f40' },
 }
 
 interface ProjectModalProps {
@@ -45,6 +25,9 @@ interface LightboxState {
 }
 
 export function ProjectModal({ project, onClose, v21Images = [], v12Images = [], comparison = [] }: ProjectModalProps) {
+    const modalCopy = siteCopy.case.modal
+    const newVersion = project.newVersion ?? ''
+    const oldVersion = project.oldVersion ?? ''
     const closeButtonRef = useRef<HTMLButtonElement>(null)
     const modalRef = useRef<HTMLDivElement>(null)
     const templateCloseRef = useRef<HTMLButtonElement>(null)
@@ -153,7 +136,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                         ref={templateCloseRef}
                         type="button"
                         className="project-modal-template__close"
-                        aria-label="Fechar detalhes"
+                        aria-label={modalCopy.close}
                         onClick={onClose}
                     >
                         <FaXmark />
@@ -161,13 +144,13 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
 
                     <div className="project-modal-template__gallery">
                         <div className="project-modal-template__gallery-title">
-                            <h3 id="project-modal-v2-title">{project.title} {NEW_VERSION}</h3>
+                            <h3 id="project-modal-v2-title">{project.title}{newVersion ? ` ${newVersion}` : ''}</h3>
                             <button
                                 className="project-modal-template__back-btn"
                                 onClick={() => setShowV2(false)}
-                                aria-label="Voltar às informações do projeto"
+                                aria-label={modalCopy.backLabel}
                             >
-                                &larr; Voltar
+                                &larr; {modalCopy.back}
                             </button>
                         </div>
 
@@ -177,7 +160,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                 onClick={() => setActiveTab('v21')}
                                 aria-selected={activeTab === 'v21'}
                             >
-                                Novidades {NEW_VERSION}
+                                {modalCopy.news}{newVersion ? ` ${newVersion}` : ''}
                             </button>
                             {comparison.length > 0 && (
                                 <button
@@ -185,7 +168,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                     onClick={() => setActiveTab('comparison')}
                                     aria-selected={activeTab === 'comparison'}
                                 >
-                                    Comparativo {OLD_VERSION} → {NEW_VERSION}
+                                    {modalCopy.compare}{oldVersion && newVersion ? ` ${oldVersion} → ${newVersion}` : ''}
                                 </button>
                             )}
                         </div>
@@ -195,14 +178,14 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                 <button
                                     className="project-modal-template__carousel-btn project-modal-template__carousel-btn--prev"
                                     onClick={goToPrevV21}
-                                    aria-label="Imagem anterior"
+                                    aria-label={modalCopy.prevImage}
                                 >
                                     <FaChevronLeft />
                                 </button>
                                 <div className="project-modal-template__carousel-track">
                                     <img
                                         src={v21Images[currentV21Index]}
-                                        alt={`${project.title} ${NEW_VERSION} - Novidade ${currentV21Index + 1}`}
+                                        alt={`${project.title}${newVersion ? ` ${newVersion}` : ''} - ${modalCopy.news} ${currentV21Index + 1}`}
                                         loading="lazy"
                                         className="project-modal-template__carousel-image"
                                         onClick={() => openLightbox(v21Images, currentV21Index)}
@@ -214,7 +197,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                 <button
                                     className="project-modal-template__carousel-btn project-modal-template__carousel-btn--next"
                                     onClick={goToNextV21}
-                                    aria-label="Próxima imagem"
+                                    aria-label={modalCopy.nextImage}
                                 >
                                     <FaChevronRight />
                                 </button>
@@ -224,7 +207,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                             key={index}
                                             className={`project-modal-template__indicator ${index === currentV21Index ? 'active' : ''}`}
                                             onClick={() => setCurrentV21Index(index)}
-                                            aria-label={`Ir para imagem ${index + 1}`}
+                                            aria-label={`${modalCopy.goToImage} ${index + 1}`}
                                             aria-current={index === currentV21Index ? 'true' : 'false'}
                                         />
                                     ))}
@@ -237,19 +220,19 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
 
                         {activeTab === 'v21' && v12Images.length > 0 && (
                             <>
-                                <div className="project-modal-template__section-title">Versão 1.2 (Anterior)</div>
+                                <div className="project-modal-template__section-title">{siteCopy.case.sections.previous}{oldVersion ? ` — ${oldVersion}` : ''}</div>
                                 <div className="project-modal-template__carousel">
                                 <button
                                     className="project-modal-template__carousel-btn project-modal-template__carousel-btn--prev"
                                     onClick={goToPrevV12}
-                                    aria-label="Imagem anterior v1.2"
+                                    aria-label={`${modalCopy.prevImage}${oldVersion ? ` ${oldVersion}` : ''}`}
                                 >
                                     <FaChevronLeft />
                                 </button>
                                 <div className="project-modal-template__carousel-track">
                                     <img
                                         src={v12Images[currentV12Index]}
-                                        alt={`${project.title} v1.2 - Print ${currentV12Index + 1}`}
+                                        alt={`${project.title}${oldVersion ? ` ${oldVersion}` : ''} - Print ${currentV12Index + 1}`}
                                         loading="lazy"
                                         className="project-modal-template__carousel-image"
                                         onClick={() => openLightbox(v12Images, currentV12Index)}
@@ -261,7 +244,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                 <button
                                     className="project-modal-template__carousel-btn project-modal-template__carousel-btn--next"
                                     onClick={goToNextV12}
-                                    aria-label="Próxima imagem v1.2"
+                                    aria-label={`${modalCopy.nextImage}${oldVersion ? ` ${oldVersion}` : ''}`}
                                 >
                                     <FaChevronRight />
                                 </button>
@@ -271,7 +254,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                             key={index}
                                             className={`project-modal-template__indicator ${index === currentV12Index ? 'active' : ''}`}
                                             onClick={() => setCurrentV12Index(index)}
-                                            aria-label={`Ir para imagem v1.2 ${index + 1}`}
+                                            aria-label={`${modalCopy.goToImage}${oldVersion ? ` ${oldVersion}` : ''} ${index + 1}`}
                                             aria-current={index === currentV12Index ? 'true' : 'false'}
                                         />
                                     ))}
@@ -289,8 +272,8 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                                     <thead>
                                         <tr>
                                             <th>Recurso</th>
-                                            <th>{OLD_VERSION}</th>
-                                            <th>{NEW_VERSION}</th>
+                                            <th>{oldVersion || siteCopy.case.compare.before}</th>
+                                            <th>{newVersion || siteCopy.case.compare.after}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -313,7 +296,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                         className="project-lightbox"
                         role="dialog"
                         aria-modal="true"
-                        aria-label="Imagem ampliada"
+                        aria-label={modalCopy.enlarged}
                         onClick={(event) => {
                             event.stopPropagation()
                             closeLightbox()
@@ -322,7 +305,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                         <button
                             type="button"
                             className="project-lightbox__close"
-                            aria-label="Fechar imagem ampliada"
+                            aria-label={modalCopy.closeEnlarged}
                             onClick={(event) => {
                                 event.stopPropagation()
                                 closeLightbox()
@@ -333,7 +316,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                         <button
                             type="button"
                             className="project-lightbox__nav project-lightbox__nav--prev"
-                            aria-label="Imagem anterior"
+                            aria-label={modalCopy.prevImage}
                             onClick={(event) => {
                                 event.stopPropagation()
                                 goToLightboxPrev()
@@ -361,7 +344,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                         <button
                             type="button"
                             className="project-lightbox__nav project-lightbox__nav--next"
-                            aria-label="Próxima imagem"
+                            aria-label={modalCopy.nextImage}
                             onClick={(event) => {
                                 event.stopPropagation()
                                 goToLightboxNext()
@@ -392,7 +375,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                     ref={closeButtonRef}
                     type="button"
                     className="project-modal__close"
-                    aria-label="Fechar detalhes"
+                    aria-label={modalCopy.close}
                     onClick={onClose}
                 >
                     <FaXmark />
@@ -410,7 +393,7 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                     <div className="project-modal__image-fallback" role="img" aria-label={project.title}>
                         <span aria-hidden="true">◇</span>
                         <span>{project.title}</span>
-                        <small>imagem indisponível</small>
+                        <small>{modalCopy.unavailable}</small>
                     </div>
                 )}
 
@@ -426,53 +409,53 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                         <button
                             className={`project-modal-template__update-btn ${rotate ? 'rotating' : ''}`}
                             onClick={handleUpdateClick}
-                            aria-label={`Ver novidades do ${project.title} ${NEW_VERSION}`}
+                            aria-label={`${modalCopy.viewNews} ${project.title}${newVersion ? ` ${newVersion}` : ''}`}
                         >
-                            Ver novidades {NEW_VERSION}
+                            {modalCopy.viewNews}{newVersion ? ` ${newVersion}` : ''}
                         </button>
                     )}
 
                     <div className="project-modal__case-study">
                         {project.problem && (
                             <div className="case-study__block">
-                                <h4 className="case-study__label case-study__label--problem">Problema</h4>
+                                <h4 className="case-study__label case-study__label--problem">{modalCopy.labels.problem}</h4>
                                 <p>{project.problem}</p>
                             </div>
                         )}
                         {project.solution && (
                             <div className="case-study__block">
-                                <h4 className="case-study__label case-study__label--solution">Solução</h4>
+                                <h4 className="case-study__label case-study__label--solution">{modalCopy.labels.solution}</h4>
                                 <p>{project.solution}</p>
                             </div>
                         )}
                         {project.challenges && (
                             <div className="case-study__block">
-                                <h4 className="case-study__label case-study__label--challenges">Desafios Técnicos</h4>
+                                <h4 className="case-study__label case-study__label--challenges">{modalCopy.labels.challenges}</h4>
                                 <p>{project.challenges}</p>
                             </div>
                         )}
                         {project.results && (
                             <div className="case-study__block">
-                                <h4 className="case-study__label case-study__label--results">Resultados</h4>
+                                <h4 className="case-study__label case-study__label--results">{modalCopy.labels.results}</h4>
                                 <p>{project.results}</p>
                             </div>
                         )}
                     </div>
 
-                    <div className="project-modal__section-title">Destaques</div>
+                    <div className="project-modal__section-title">{modalCopy.highlights}</div>
                     <ul className="project-modal__highlights">
                         {project.highlights.map((highlight) => (
                             <li key={highlight}>{highlight}</li>
                         ))}
                     </ul>
 
-                    <div className="project-modal__section-title">Tecnologias</div>
+                    <div className="project-modal__section-title">{modalCopy.technologies}</div>
                     <div className="project-modal__techs">
                         {project.technologies.map((tech) => {
-                            const meta = techIconMap[tech]
+                            const meta = technologiesContent.find((t) => t.name === tech)
                             return (
                                 <span key={tech}>
-                                    {meta ? <meta.Icon style={{ color: meta.color, fontSize: '1.1em' }} /> : null}
+                                    <TechIcon name={meta?.icon ?? tech} color={meta?.color ?? '#b45309'} />
                                     {tech}
                                 </span>
                             )
@@ -481,13 +464,16 @@ export function ProjectModal({ project, onClose, v21Images = [], v12Images = [],
                 </div>
 
                 <div className="project-modal__footer">
+                    <a href={`#/projeto/${project.id}`}>
+                        <FaArrowRight /> {modalCopy.fullCase}
+                    </a>
                     {project.demo && (
                         <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                            <FaYoutube /> Ver demo
+                            <FaYoutube /> {siteCopy.case.actions.demo}
                         </a>
                     )}
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <FaGithub /> Ver no GitHub
+                        <FaGithub /> {siteCopy.case.actions.github}
                     </a>
                 </div>
             </div>

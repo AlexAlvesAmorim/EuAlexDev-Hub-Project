@@ -1,0 +1,123 @@
+{
+  "about": {
+    "title": "Sobre mim",
+    "subtitle": "Nascido na Cidade de Deus, forjado no suporte, feito desenvolvedor na raça.",
+    "photo": { "src": "/Hero.webp", "alt": "Foto do Alex", "width": 340, "height": 453 },
+    "paragraphs": [
+      "Sou <strong>nascido e criado na Cidade de Deus</strong>, favela do Rio de Janeiro. Onde eu cresci, computador não era ferramenta de estudo, era luxo dividido na lan house. Aprendi a fuçar porque precisava: desmontar, formatar, fazer voltar a funcionar. Ninguém me deu atalho. Aprendi tudo <strong>autodidata</strong>, de madrugada, entre um trampo e outro.",
+      "Passei 15 anos no suporte técnico, do N1 ao N3, olhando no olho de quem travava num sistema ruim. Foi ali que virou a chave: eu não queria mais só consertar a tela dos outros, eu queria construir a tela certa. Migrei pro Front-End sozinho — <strong>React</strong>, <strong>TypeScript</strong>, <strong>Electron</strong> — construindo produto de verdade, não exercício de tutorial.",
+      "Meus projetos são a prova: o <strong>ALFA PDF Reader</strong> com 200+ usuários, a <strong>Fabulosa E-Commerce</strong> vendida em negociação B2B, o <strong>99Food Analyser</strong> feito quase todo offline, e o <strong>Alfa Curriculum Maker</strong> gratuito pra quem precisa de emprego. Sou Dev de Favela com orgulho — e o que me move é o mesmo do suporte: resolver a dor de quem tá do outro lado da tela."
+    ],
+    "badges": ["React", "TypeScript", "Tailwind", "Electron", "Vite"]
+  },
+  "featured": {
+    "eyebrow": "Cases em destaque",
+    "titleA": "Código que",
+    "titleHighlight": "virou resultado",
+    "subtitle": "Projetos contados como case: a dor, o perrengue e o número final."
+  },
+  "stats": {
+    "title": "Números que contam",
+    "subtitle": "Conversa convence. Número prova.",    "fixed": [
+      { "value": "20+", "label": "Anos em TI" },
+      { "value": "1", "label": "Venda B2B fechada" }
+    ],
+    "derived": [
+      { "from": "projects", "label": "Produtos entregues" },
+      { "from": "technologies", "label": "Techs no cinto" }
+    ]
+  },
+  "now": {
+    "title": "O que tá pegando agora",
+    "subtitle": "Sem assessoria de imprensa — atualizo quando a vida muda.",
+    "items": [
+      "💼 Open to work: buscando minha primeira vaga CLT/PJ full-stack — RJ ou remoto.",
+      "📚 Recém-saído do CS50x, agora tô estudando Next.js e checkout com pagamentos.",
+      "🔧 Mantendo o ALFA PDF Reader — 200+ usuários não se largam sozinhos.",
+      "🎬 Contando a jornada no canal @DevdeFavela, pra quem vem da quebrada também."
+    ]
+  },
+  "contact": {
+    "title": "Entre em contato",
+    "subtitle": "Tem ideia, vaga ou perrengue técnico? Me chama.",
+    "badge": "Aberto a oportunidades",
+    "heading": "Bora construir algo que preste?",
+    "hint": "LinkedIn é o caminho mais rápido — mas pode chamar onde preferir."
+  },
+  "stack": {
+    "subtitle": "Do front ao back: o que uso pra tirar produto do papel — e os fundamentos que sustentam tudo.",
+    "prev": "Página anterior de tecnologias",
+    "next": "Próxima página de tecnologias",
+    "goTo": "Ir para a página",
+    "region": "Carrossel de tecnologias",
+    "hint": "Arraste ou use as setas"
+  },
+  "certs": {
+    "subtitle": "Certificado abre porta. Produto mantém aberta.",
+    "prev": "Certificações anteriores",
+    "next": "Próximas certificações",
+    "goTo": "Ir para a página",
+    "region": "Carrossel de certificações",
+    "hint": "Arraste ou use as setas"
+  },
+  "footer": {
+    "madeWith": "Feito com ♥ pelo Alex — Dev de Favela",
+    "colophon": "Feito à mão com React + TypeScript — sem template, sem gerador. Foto em WebP de 36KB, café coado e teste em hardware real."
+  },
+  "case": {
+    "back": "Todos os projetos",
+    "notFound": {
+      "eyebrow": "404",
+      "title": "Projeto não encontrado",
+      "lede": "Esse case não existe (ou mudou de nome). Volta pra vitrine que tem coisa boa lá.",
+      "cta": "Ver projetos"
+    },
+    "actions": { "github": "Ver no GitHub", "demo": "Ver demo" },
+    "storyLabels": {
+      "problem": "Problema",
+      "solution": "Solução",
+      "challenges": "Perrengues",
+      "results": "Resultado"
+    },
+    "sections": {
+      "story": "A história",
+      "highlights": "Destaques",
+      "evolution": "Evolução visual",
+      "gallery": "Galeria",
+      "previous": "Versão anterior",
+      "changes": "O que mudou"
+    },
+    "toc": { "title": "Neste case" },
+    "compare": {
+      "before": "Antes",
+      "after": "Depois",
+      "hint": "Arrasta pra comparar",
+      "pair": "Tela",
+      "of": "de"
+    },
+    "pager": { "prev": "Anterior", "next": "Próximo" },
+    "modal": {
+      "close": "Fechar detalhes",
+      "back": "Voltar",
+      "backLabel": "Voltar às informações do projeto",
+      "viewNews": "Ver novidades",
+      "news": "Novidades",
+      "compare": "Comparativo",
+      "unavailable": "imagem indisponível",
+      "labels": {
+        "problem": "Problema",
+        "solution": "Solução",
+        "challenges": "Desafios Técnicos",
+        "results": "Resultados"
+      },
+      "highlights": "Destaques",
+      "technologies": "Tecnologias",
+      "fullCase": "Ver case completo",
+      "prevImage": "Imagem anterior",
+      "nextImage": "Próxima imagem",
+      "goToImage": "Ir para imagem",
+      "enlarged": "Imagem ampliada",
+      "closeEnlarged": "Fechar imagem ampliada"
+    }
+  }
+}

@@ -22,7 +22,7 @@
   border-radius: 16px;
   box-shadow:
     var(--shadow),
-    0 0 60px rgba(192, 132, 252, 0.15);
+    0 0 60px rgba(var(--accent-rgb), 0.15);
   animation: modalSlideUp 0.25s ease;
 }
 
@@ -37,7 +37,7 @@
   height: 36px;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: rgba(22, 23, 29, 0.7);
+  background: rgba(255, 253, 249, 0.85);
   color: var(--text-h);
   font-size: 1.05em;
   cursor: pointer;
@@ -72,7 +72,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: radial-gradient(ellipse at 30% 20%, rgba(192,132,252,0.16) 0%, var(--bg) 65%);
+  background: radial-gradient(ellipse at 30% 20%, rgba(var(--accent-rgb),0.16) 0%, var(--bg) 65%);
   border-bottom: 1px solid var(--border);
   color: var(--text-h);
   text-align: center;
@@ -146,7 +146,7 @@
 .case-study__block {
     padding: 14px 16px;
     border-radius: 10px;
-    background: rgba(22, 23, 29, 0.6);
+    background: rgba(28, 25, 23, 0.05);
     border: 1px solid var(--border);
     transition: border-color 0.3s ease;
 }
@@ -230,7 +230,7 @@
 }
 
 .project-modal__techs span:hover {
-  background: rgba(192, 132, 252, 0.25);
+  background: rgba(var(--accent-rgb), 0.25);
   border-color: var(--primary);
 }
 
@@ -256,7 +256,7 @@
 }
 
 .project-modal__footer a:hover {
-  background: rgba(192, 132, 252, 0.25);
+  background: rgba(var(--accent-rgb), 0.25);
   transform: translateY(-2px);
 }
 
@@ -306,7 +306,7 @@
   border-radius: 16px;
   box-shadow:
     var(--shadow),
-    0 0 60px rgba(192, 132, 252, 0.15);
+    0 0 60px rgba(var(--accent-rgb), 0.15);
   animation: modalSlideUp 0.25s ease;
 }
 
@@ -321,7 +321,7 @@
   height: 36px;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: rgba(22, 23, 29, 0.7);
+  background: rgba(255, 253, 249, 0.85);
   color: var(--text-h);
   font-size: 1.05em;
   cursor: pointer;
@@ -385,7 +385,7 @@
 
 .project-modal-template__update-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(192, 132, 252, 0.3);
+  box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
 }
 
 .project-modal-template__update-btn.rotating {
@@ -423,7 +423,7 @@
 .case-study__block-template {
   padding: 14px 16px;
   border-radius: 10px;
-  background: rgba(22, 23, 29, 0.6);
+  background: rgba(28, 25, 23, 0.05);
   border: 1px solid var(--border);
   transition: border-color 0.3s ease;
 }
@@ -533,7 +533,7 @@
 }
 
 .project-modal-template__techs span:hover {
-  background: rgba(192, 132, 252, 0.25);
+  background: rgba(var(--accent-rgb), 0.25);
   border-color: var(--primary);
 }
 
@@ -570,7 +570,7 @@
 }
 
 .project-modal-template__footer a:hover {
-  background: rgba(192, 132, 252, 0.25);
+  background: rgba(var(--accent-rgb), 0.25);
   transform: translateY(-2px);
 }
 
@@ -694,8 +694,8 @@
   height: 34px;
   border-radius: 50%;
   background: rgba(22, 23, 29, 0.8);
-  border: 1px solid var(--border);
-  color: var(--text-h);
+  border: 1px solid rgba(255, 253, 249, 0.25);
+  color: #f5f1e8;
   font-size: 0.9em;
   pointer-events: none;
   z-index: 2;
@@ -726,8 +726,8 @@
   height: 44px;
   border-radius: 50%;
   background: rgba(22, 23, 29, 0.85);
-  border: 1px solid var(--border);
-  color: var(--text-h);
+  border: 1px solid rgba(255, 253, 249, 0.25);
+  color: #f5f1e8;
   font-size: 1.2em;
   cursor: pointer;
   z-index: 2;
@@ -820,7 +820,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.75em;
-  background: rgba(192, 132, 252, 0.1);
+  background: rgba(var(--accent-rgb), 0.1);
   position: sticky;
   top: 0;
 }
@@ -835,7 +835,7 @@
 }
 
 .project-modal-template__comparison-table tr:hover td {
-  background: rgba(192, 132, 252, 0.05);
+  background: rgba(var(--accent-rgb), 0.05);
 }
 
 .comparison-old {
@@ -918,8 +918,8 @@
   height: 44px;
   border-radius: 50%;
   background: rgba(22, 23, 29, 0.85);
-  border: 1px solid var(--border);
-  color: var(--text-h);
+  border: 1px solid rgba(255, 253, 249, 0.25);
+  color: #f5f1e8;
   font-size: 1.3em;
   cursor: pointer;
   display: inline-flex;
@@ -944,8 +944,8 @@
   height: 52px;
   border-radius: 50%;
   background: rgba(22, 23, 29, 0.85);
-  border: 1px solid var(--border);
-  color: var(--text-h);
+  border: 1px solid rgba(255, 253, 249, 0.25);
+  color: #f5f1e8;
   font-size: 1.3em;
   cursor: pointer;
   display: inline-flex;

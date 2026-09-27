@@ -29,7 +29,7 @@
     max-width: calc(100% - 24px);
     padding: 12px 20px 14px;
     border-radius: 16px;
-    background: rgba(31, 32, 40, 0.6);
+    background: rgba(255, 253, 249, 0.82);
     backdrop-filter: blur(12px);
     border: 1px solid var(--border);
   }
@@ -62,7 +62,7 @@
     max-width: calc(100% - 24px);
     padding: 6px 14px 8px;
     border-radius: 10px;
-    background: rgba(31, 32, 40, 0.55);
+    background: rgba(255, 253, 249, 0.85);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border);
   }
@@ -167,17 +167,7 @@
     left: -7px;
   }
 
-  .tech-grid-cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
   .tech-card {
     padding: 24px 16px;
-  }
-
-  .certs-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
   }
 }

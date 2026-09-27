@@ -1,0 +1,100 @@
+/* Delight calmo: reveal, spotlight, progresso e voltar-ao-topo. */
+
+/* ── Reveal on scroll ─────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Spotlight que segue o mouse ──────────────────── */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(var(--accent-rgb), 0.13),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* ── Fio de progresso de leitura ──────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 60;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ── Voltar ao topo ───────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 55;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(28, 25, 23, 0.14);
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  animation: backToTopIn 0.3s ease;
+}
+
+.back-to-top:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(var(--accent-rgb), 0.35);
+}
+
+[data-theme="dark"] .back-to-top:hover {
+  color: #131511;
+}
+
+[data-theme="dark"] .back-to-top {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes backToTopIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

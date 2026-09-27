@@ -1,26 +1,56 @@
-import { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import { technologies, TECH_CATEGORIES, type TechCategory } from "../../data/technologies";
+import { useReveal } from "../../hooks/useReveal";
+import { useSpotlight } from "../../hooks/useSpotlight";
+import { useScrollRail } from "../../hooks/useScrollRail";
+import { TechIcon } from "../../components/TechIcon";
+import { siteConfig } from "../../config/site";
+import { siteCopy, technologiesContent } from "../../content/loader";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+
+const TECH_CATEGORIES = [...new Set(technologiesContent.map((t) => t.category))];
+const railCopy = siteCopy.stack;
 
 export function TechGrid() {
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const [active, setActive] = useState<TechCategory>("Front-end");
+    const [active, setActive] = useState<string>(TECH_CATEGORIES[0]);
+    const [revealRef, visible] = useReveal();
+    const onSpotlight = useSpotlight();
+    const { trackRef, page, pageCount, canPrev, canNext, prev, next, goTo, reset } =
+        useScrollRail<HTMLDivElement>();
+
+    const items = technologiesContent.filter((tech) => tech.category === active);
+    const showControls = pageCount > 1;
+
+    const selectCategory = (category: string) => {
+        setActive(category);
+        reset();
+    };
+
+    const onTrackKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            prev();
+        } else if (event.key === "ArrowRight") {
+            event.preventDefault();
+            next();
+        }
+    };
 
     return (
         <section id="skills" className="section tech-grid-section">
             <FloatingParticles count={isMobile ? 12 : 30} />
-            <div className="section-container">
+            <div ref={revealRef} className={`section-container reveal${visible ? " is-visible" : ""}`}>
+                <p className="section-eyebrow">{siteConfig.sectionEyebrow.stack}</p>
                 <h2 className="section-title">
                     Stack & <span className="highlight">Skills</span>
                 </h2>
-                <p className="section-subtitle">
-                    Do front ao back: o que uso pra tirar produto do papel — e os fundamentos que sustentam tudo.
-                </p>
+                <p className="section-subtitle">{railCopy.subtitle}</p>
 
                 <div className="tech-tabs" role="tablist" aria-label="Categorias de tecnologias">
                     {TECH_CATEGORIES.map((category) => {
-                        const count = technologies.filter((tech) => tech.category === category).length;
+                        const count = technologiesContent.filter((tech) => tech.category === category).length;
                         const selected = active === category;
                         return (
                             <button
@@ -29,7 +59,7 @@ export function TechGrid() {
                                 role="tab"
                                 aria-selected={selected}
                                 className={`tech-tab${selected ? " active" : ""}`}
-                                onClick={() => setActive(category)}
+                                onClick={() => selectCategory(category)}
                             >
                                 {category} <span className="tech-tab-count">{count}</span>
                             </button>
@@ -37,20 +67,75 @@ export function TechGrid() {
                     })}
                 </div>
 
-                <div key={active} className="tech-grid-cards tech-grid-cards--animate" role="tabpanel">
-                    {technologies
-                        .filter((tech) => tech.category === active)
-                        .map((tech, index) => (
-                            <div
-                                key={tech.name}
-                                className="tech-card tech-card--enter"
-                                style={{ animationDelay: `${index * 60}ms` }}
+                <div className="rail">
+                    <div
+                        ref={trackRef}
+                        className="rail-track tech-rail-track"
+                        role="region"
+                        aria-roledescription="carousel"
+                        aria-label={railCopy.region}
+                        tabIndex={0}
+                        onKeyDown={onTrackKeyDown}
+                    >
+                        <div key={active} className="rail-page" role="tabpanel">
+                            {items.map((tech, index) => (
+                                <div
+                                    key={tech.name}
+                                    className="rail-item tech-card tech-card--enter spotlight"
+                                    onPointerMove={onSpotlight}
+                                    style={{ animationDelay: `${index * 60}ms` }}
+                                >
+                                    <span
+                                        className="tech-card-icon"
+                                        style={{
+                                            background: `color-mix(in srgb, ${tech.color} 12%, transparent)`,
+                                            borderColor: `color-mix(in srgb, ${tech.color} 38%, transparent)`,
+                                        }}
+                                    >
+                                        <TechIcon name={tech.icon} color={tech.color} />
+                                    </span>
+                                    <span className="tech-card-name">{tech.name}</span>
+                                    <span className="tech-card-level">{tech.level}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {showControls && (
+                        <div className="rail-controls">
+                            <button
+                                type="button"
+                                className="rail-btn"
+                                onClick={prev}
+                                disabled={!canPrev}
+                                aria-label={railCopy.prev}
                             >
-                                <tech.Icon style={{ color: tech.color }} />
-                                <span className="tech-card-name">{tech.name}</span>
-                                <span className="tech-card-level">{tech.level}</span>
+                                <FaChevronLeft aria-hidden="true" />
+                            </button>
+                            <div className="rail-dots">
+                                {Array.from({ length: pageCount }).map((_, index) => (
+                                    <button
+                                        key={index}
+                                        type="button"
+                                        className={`rail-dot${index === page ? " active" : ""}`}
+                                        onClick={() => goTo(index)}
+                                        aria-label={`${railCopy.goTo} ${index + 1}`}
+                                        aria-current={index === page ? true : undefined}
+                                    />
+                                ))}
                             </div>
-                        ))}
+                            <button
+                                type="button"
+                                className="rail-btn"
+                                onClick={next}
+                                disabled={!canNext}
+                                aria-label={railCopy.next}
+                            >
+                                <FaChevronRight aria-hidden="true" />
+                            </button>
+                        </div>
+                    )}
+                    <p className="rail-hint" aria-hidden="true">{railCopy.hint}</p>
                 </div>
             </div>
         </section>

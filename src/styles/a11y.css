@@ -26,7 +26,20 @@
     .carousel-controls,
     .carousel-dots,
     .tech-tab,
-    .tech-card--enter {
+    .tech-card--enter,
+    .reveal,
+    .reveal-stagger .reveal-child,
+    .page-enter,
+    .caption-swap,
+    .timeline-dot::after,
+    .contact-cta-badge::before,
+    .compare__dot,
+    .case-toc__link,
+    .rail-track,
+    .rail-btn,
+    .rail-dot,
+    .rail-progress span,
+    .back-to-top {
     animation: none !important;
     transition-duration: 0s !important;
   }
