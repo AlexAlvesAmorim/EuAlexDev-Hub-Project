@@ -43,7 +43,7 @@
 
 /* ── Stack: 3 por vista no desktop, 2 no mobile ── */
 .tech-rail-track {
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -112,11 +112,12 @@
   background: transparent;
   border: 1px solid var(--accent-border);
   cursor: pointer;
-  transition: width 0.25s ease, background 0.25s ease;
+  transform-origin: left center;
+  transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .rail-dot.active {
-  width: 24px;
+  transform: scaleX(3);
   background: var(--primary);
   border-color: var(--primary);
 }

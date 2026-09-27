@@ -3,7 +3,6 @@ import { FaArrowRight } from "react-icons/fa6";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useReveal } from "../../hooks/useReveal";
-import { siteConfig } from "../../config/site";
 import { projectsContent, siteCopy } from "../../content/loader";
 
 /**
@@ -20,8 +19,7 @@ export function FeaturedCases() {
     return (
         <section id="destaques" className="section featured-section">
             <FloatingParticles count={isMobile ? 12 : 30} />
-            <div ref={revealRef} className={`section-container reveal reveal-stagger${visible ? " is-visible" : ""}`}>
-                <p className="section-eyebrow">{siteConfig.sectionEyebrow.destaques}</p>
+            <div ref={revealRef} className={`section-container section-head--left reveal reveal-stagger${visible ? " is-visible" : ""}`}>
                 <h2 className="section-title">
                     {siteCopy.featured.titleA} <span className="highlight">{siteCopy.featured.titleHighlight}</span>
                 </h2>

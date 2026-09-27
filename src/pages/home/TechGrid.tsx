@@ -1,11 +1,10 @@
-import { useState, type KeyboardEvent } from "react";
+import { useState, type CSSProperties, type KeyboardEvent } from "react";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useReveal } from "../../hooks/useReveal";
 import { useSpotlight } from "../../hooks/useSpotlight";
 import { useScrollRail } from "../../hooks/useScrollRail";
 import { TechIcon } from "../../components/TechIcon";
-import { siteConfig } from "../../config/site";
 import { siteCopy, technologiesContent } from "../../content/loader";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
@@ -42,8 +41,7 @@ export function TechGrid() {
         <section id="skills" className="section tech-grid-section">
             <FloatingParticles count={isMobile ? 12 : 30} />
             <div ref={revealRef} className={`section-container reveal${visible ? " is-visible" : ""}`}>
-                <p className="section-eyebrow">{siteConfig.sectionEyebrow.stack}</p>
-                <h2 className="section-title">
+                <h2 className="section-title tech-grid-heading">
                     Stack & <span className="highlight">Skills</span>
                 </h2>
                 <p className="section-subtitle">{railCopy.subtitle}</p>
@@ -83,13 +81,16 @@ export function TechGrid() {
                                     key={tech.name}
                                     className="rail-item tech-card tech-card--enter spotlight"
                                     onPointerMove={onSpotlight}
-                                    style={{ animationDelay: `${index * 60}ms` }}
+                                    style={{
+                                        animationDelay: `${index * 60}ms`,
+                                        '--tech-color': tech.color,
+                                    } as CSSProperties}
                                 >
                                     <span
                                         className="tech-card-icon"
                                         style={{
-                                            background: `color-mix(in srgb, ${tech.color} 12%, transparent)`,
-                                            borderColor: `color-mix(in srgb, ${tech.color} 38%, transparent)`,
+                                            background: `color-mix(in srgb, ${tech.color} 18%, transparent)`,
+                                            borderColor: `color-mix(in srgb, ${tech.color} 45%, transparent)`,
                                         }}
                                     >
                                         <TechIcon name={tech.icon} color={tech.color} />

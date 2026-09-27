@@ -31,8 +31,7 @@ export function Home() {
             <section id="sobre" className="section">
                 <FloatingParticles count={sectionParticles} />
 
-                <div ref={sobreRef} className={`section-container reveal${sobreVisible ? " is-visible" : ""}`}>
-                    <p className="section-eyebrow">{siteConfig.sectionEyebrow.sobre}</p>
+                <div ref={sobreRef} className={`section-container section-head--left reveal reveal-left${sobreVisible ? " is-visible" : ""}`}>
                     <h2 className="section-title">
                         Sobre <span className="highlight">mim</span>
                     </h2>
@@ -70,7 +69,6 @@ export function Home() {
                 <FloatingParticles count={sectionParticles} />
 
                 <div ref={agoraRef} className={`section-container reveal reveal-stagger${agoraVisible ? " is-visible" : ""}`}>
-                    <p className="section-eyebrow">{siteConfig.sectionEyebrow.now}</p>
                     <h2 className="section-title">
                         O que tá pegando <span className="highlight">agora</span>
                     </h2>
@@ -92,11 +90,10 @@ export function Home() {
                 </div>
             </section>
 
-            <section id="contato" className="section">
+            <section id="contato" className="section contact-section">
                 <FloatingParticles count={sectionParticles} />
 
                 <div ref={contatoRef} className={`section-container reveal${contatoVisible ? " is-visible" : ""}`}>
-                    <p className="section-eyebrow">{siteConfig.sectionEyebrow.contact}</p>
                     <h2 className="section-title">
                         Entre em <span className="highlight">contato</span>
                     </h2>

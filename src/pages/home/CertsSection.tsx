@@ -4,7 +4,6 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useReveal } from "../../hooks/useReveal";
 import { useSpotlight } from "../../hooks/useSpotlight";
 import { useScrollRail } from "../../hooks/useScrollRail";
-import { siteConfig } from "../../config/site";
 import { certsContent, siteCopy } from "../../content/loader";
 import { FaAward, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
@@ -34,7 +33,6 @@ export function CertsSection() {
         <section className="section certs-section" id="certificados">
             <FloatingParticles count={isMobile ? 12 : 30} />
             <div ref={revealRef} className={`section-container reveal reveal-stagger${visible ? " is-visible" : ""}`}>
-                <p className="section-eyebrow">{siteConfig.sectionEyebrow.certs}</p>
                 <h2 className="section-title">
                     <span className="highlight">Certificações</span>
                 </h2>

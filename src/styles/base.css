@@ -66,35 +66,36 @@ a:focus-visible,
 button:focus-visible,
 [role="button"]:focus-visible {
   outline: 2px solid var(--primary);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
-/* Craft floor — Browser surfaces (cheapest signal of craft) */
+/* Craft floor — Browser surfaces (cheapest signal of craft).
+   Cores por variável: cada tema ajusta; dark/noite/roxo sobrescrevem. */
 ::selection {
-  background: rgba(194, 65, 12, 0.22);
-  color: #1c1917;
+  background: rgba(var(--accent-rgb), 0.25);
+  color: var(--text-h);
 }
 ::-moz-selection {
-  background: rgba(194, 65, 12, 0.22);
-  color: #1c1917;
+  background: rgba(var(--accent-rgb), 0.25);
+  color: var(--text-h);
 }
 * {
   caret-color: var(--primary);
   scrollbar-width: thin;
-  scrollbar-color: #d8d0bf transparent;
+  scrollbar-color: var(--border) transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 *::-webkit-scrollbar-thumb {
-  background: #d8d0bf;
+  background: var(--border);
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #c4b9a4;
+  background: rgba(var(--accent-rgb), 0.5);
   background-clip: content-box;
 }
 *::-webkit-scrollbar-track {

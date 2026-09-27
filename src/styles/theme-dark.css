@@ -106,7 +106,9 @@
 }
 
 /* Ícone sobre o tile âmbar precisa de tinta escura, não branca. */
-[data-theme="dark"] .preloader__logo {
+[data-theme="dark"] .project-modal-template__update-btn,
+[data-theme="dark"] .preloader__logo,
+[data-theme="dark"] .on-primary-ink {
   color: #131511;
 }
 

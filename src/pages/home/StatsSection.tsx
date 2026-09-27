@@ -3,8 +3,6 @@ import { FloatingParticles } from "../../components/BackgroundTexture/FloatingPa
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useCountUp } from "../../hooks/useCountUp";
 import { useReveal } from "../../hooks/useReveal";
-import { useSpotlight } from "../../hooks/useSpotlight";
-import { siteConfig } from "../../config/site";
 import { buildStats, siteCopy } from "../../content/loader";
 
 const stats = buildStats();
@@ -14,14 +12,12 @@ function parseStat(value: string) {
     return { target: match ? Number(match[1]) : 0, suffix: match ? match[2] : "" };
 }
 
-function StatCard({ value, label, active, index }: { value: string; label: string; active: boolean; index: number }) {
+function StatMetric({ value, label, active, index }: { value: string; label: string; active: boolean; index: number }) {
     const { target, suffix } = parseStat(value);
     const current = useCountUp(target, active);
-    const onPointerMove = useSpotlight();
     return (
         <div
-            className="stat-card reveal-child spotlight"
-            onPointerMove={onPointerMove}
+            className="stat-metric reveal-child"
             style={{ "--reveal-delay": `${index * 90}ms` } as CSSProperties}
         >
             <span className="stat-value">{current}{suffix}</span>
@@ -38,7 +34,6 @@ export function StatsSection() {
         <section id="estatisticas" className="section stats-section">
             <FloatingParticles count={isMobile ? 12 : 30} />
             <div ref={revealRef} className={`section-container reveal reveal-stagger${visible ? " is-visible" : ""}`}>
-                <p className="section-eyebrow">{siteConfig.sectionEyebrow.stats}</p>
                 <h2 className="section-title">
                     Números que <span className="highlight">contam</span>
                 </h2>
@@ -46,9 +41,9 @@ export function StatsSection() {
                     {siteCopy.stats.subtitle}
                 </p>
 
-                <div className="stats-grid">
+                <div className="stats-strip">
                     {stats.map((stat, index) => (
-                        <StatCard key={stat.label} value={stat.value} label={stat.label} active={visible} index={index} />
+                        <StatMetric key={stat.label} value={stat.value} label={stat.label} active={visible} index={index} />
                     ))}
                 </div>
             </div>

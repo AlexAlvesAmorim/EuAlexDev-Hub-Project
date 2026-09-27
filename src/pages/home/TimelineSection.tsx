@@ -2,7 +2,6 @@ import { type CSSProperties } from "react";
 import { FloatingParticles } from "../../components/BackgroundTexture/FloatingParticles";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { useReveal } from "../../hooks/useReveal";
-import { siteConfig } from "../../config/site";
 import { timelineContent } from "../../content/loader";
 
 const milestones = timelineContent;
@@ -14,8 +13,7 @@ export function Timeline() {
     return (
         <section id="jornada" className="section timeline-section">
             <FloatingParticles count={isMobile ? 12 : 30} />
-            <div ref={revealRef} className={`section-container reveal reveal-stagger${visible ? " is-visible" : ""}`}>
-                <p className="section-eyebrow">{siteConfig.sectionEyebrow.journey}</p>
+            <div ref={revealRef} className={`section-container section-head--left reveal reveal-stagger reveal-right${visible ? " is-visible" : ""}`}>
                 <h2 className="section-title">
                     Minha <span className="highlight">jornada</span>
                 </h2>

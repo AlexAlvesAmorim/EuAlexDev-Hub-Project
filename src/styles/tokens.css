@@ -3,8 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
-/* Tema escuro = atributo no <html>, não prefers-color-scheme. */
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+/* Tema padrão = roxo (cor da master). Papel e tinta vive em
+   theme-light.css ([data-theme="light"]), noite carioca em
+   theme-dark.css ([data-theme="dark"]). data-theme é sempre explícito. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, [data-theme="roxo"], [data-theme="roxo"] *));
 
 /* OPTIMIZE: garante swap mesmo para ICA Rubrik (cdnfonts não envia) */
 @font-face {
@@ -13,34 +15,43 @@
   src: local('ICA Rubrik');
 }
 
+/* @theme padrão (SEM inline): as utilities referenciam var(--color-*),
+   então cada [data-theme] que sobrescreve --color-* troca o Tailwind junto.
+   (inline congelaria os valores do :root e quebraria os temas.) */
 @theme {
-  --color-background: #f7f4ed;
-  --color-bg: #f7f4ed;
-  --color-surface: #fffdf9;
-  --color-text: #57534e;
-  --color-text-h: #1c1917;
-  --color-primary: #c2410c;
-  --color-border: #e5ddcf;
+  --color-background: #16171d;
+  --color-bg: #16171d;
+  --color-surface: #1f2028;
+  --color-text: #9ca3af;
+  --color-text-h: #f3f4f6;
+  --color-primary: #c084fc;
+  --color-border: #2e303a;
 }
 
 :root {
-  --text: #57534e;
-  --text-h: #1c1917;
-  --bg: #f7f4ed;
-  --border: #e5ddcf;
-  --surface: #fffdf9;
-  --primary: #c2410c;
-  --code-bg: #efe9db;
-  --accent: #c2410c;
-  --accent-rgb: 194, 65, 12;
-  --accent-bg: rgba(var(--accent-rgb), 0.08);
-  --accent-border: rgba(var(--accent-rgb), 0.35);
-  --social-bg: rgba(28, 25, 23, 0.05);
-  --shadow: rgba(62, 40, 20, 0.12) 0 18px 40px -18px, rgba(62, 40, 20, 0.08) 0 4px 12px -4px;
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --surface: #1f2028;
+  --primary: #c084fc;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-rgb: 192, 132, 252;
+  --accent-bg: rgba(var(--accent-rgb), 0.15);
+  --accent-border: rgba(var(--accent-rgb), 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   --sans: 'Archivo', system-ui, -apple-system, sans-serif;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light;
+  color-scheme: dark;
   color: var(--text);
+}
+
+/* Tinta sobre o tile primary: branca no roxo e no papel, escura só na
+   noite (âmbar). Override do dark vive em theme-dark.css. */
+.on-primary-ink {
+  color: #fff;
 }

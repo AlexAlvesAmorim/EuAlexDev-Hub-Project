@@ -50,6 +50,20 @@
   transform: none;
 }
 
+/* ── Reveal direcional: varia a entrada entre seções densas ── */
+.reveal-left {
+  transform: translateX(-26px);
+}
+
+.reveal-right {
+  transform: translateX(26px);
+}
+
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  transform: none;
+}
+
 /* ── Timeline viva: dot com halo que respira (calmo, 2.8s) ── */
 .timeline-dot::after {
   content: '';

@@ -1,0 +1,90 @@
+/* ─────────────────────────────────────────────────────────────
+ * Tema "Roxo" — cor da master, agora padrão (:root em tokens.css).
+ * Este arquivo só tem os ajustes por componente (fumaça fria no lugar
+ * da fumaça quente da noite, giz, boost das techs). Espelha a estrutura
+ * do theme-dark.css de propósito: diff entre os dois é revisão visual.
+ * ───────────────────────────────────────────────────────────── */
+
+[data-theme="roxo"] {
+  color-scheme: dark;
+}
+
+/* Texto decorativo gigante — giz no roxo. */
+[data-theme="roxo"] .banner .background-text {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
+}
+
+/* Vidros: fumaça fria no roxo. */
+[data-theme="roxo"] .carousel-pause,
+[data-theme="roxo"] .carousel-btn {
+  background: rgba(22, 23, 29, 0.7);
+}
+
+@media (max-width: 768px) {
+  [data-theme="roxo"] .banner .author {
+    background: rgba(22, 23, 29, 0.6);
+  }
+
+  [data-theme="roxo"] .project-caption {
+    background: rgba(22, 23, 29, 0.55);
+  }
+}
+
+[data-theme="roxo"] .carousel-dot {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="roxo"] .project-modal__close,
+[data-theme="roxo"] .project-modal-template__close {
+  background: rgba(22, 23, 29, 0.7);
+}
+
+[data-theme="roxo"] .case-study__block,
+[data-theme="roxo"] .case-study__block-template {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Faixas alternadas: véu claro no roxo. */
+[data-theme="roxo"] .stats-section,
+[data-theme="roxo"] .timeline-section,
+[data-theme="roxo"] .tech-grid-section,
+[data-theme="roxo"] .certs-section {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Badge de disponibilidade: menta no roxo. */
+[data-theme="roxo"] .contact-cta-badge {
+  background: rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #34d399;
+}
+
+/* Seleção e scrollbar acompanham o tema. */
+[data-theme="roxo"] ::selection,
+[data-theme="roxo"] ::-moz-selection {
+  color: #f3f4f6;
+}
+
+[data-theme="roxo"] * {
+  scrollbar-color: #2e303a transparent;
+}
+
+[data-theme="roxo"] *::-webkit-scrollbar-thumb {
+  background: #2e303a;
+  background-clip: content-box;
+}
+
+[data-theme="roxo"] *::-webkit-scrollbar-thumb:hover {
+  background: #3a3d4a;
+  background-clip: content-box;
+}
+
+/* Ícone sobre o tile roxo usa tinta branca (base .on-primary-ink);
+   só a noite (âmbar) precisa de tinta escura — ver theme-dark.css. */
+
+/* Cores de tech calibradas pro papel ganham um boost no roxo. */
+[data-theme="roxo"] .tech-card svg,
+[data-theme="roxo"] .project-modal__techs svg {
+  filter: brightness(1.25);
+}

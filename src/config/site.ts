@@ -24,7 +24,7 @@ export const siteConfig = {
   locale: "pt-BR",
   url: "https://eu-alex-dev-hub-project.vercel.app",
   heroProjectId: "alfa-pdf",
-  themeColor: "#f7f4ed",
+  themeColor: "#16171d",
   seo: {
     title: "Alex Alves Amorim — Desenvolvedor Full-Stack | Dev. de Favela Hub",
     description:
@@ -52,17 +52,6 @@ export const siteConfig = {
     { id: "minimal", label: "Currículo Minimal", file: "/curriculo-minimal.pdf" },
     { id: "full", label: "Currículo Completo", file: "/curriculo-completo.pdf" },
   ] as CurriculumOption[],
-  /** Kickers acima dos títulos — uma fonte só, sem espalhar copy no JSX. */
-  sectionEyebrow: {
-    sobre: "Quem sou",
-    destaques: "Cases em destaque",
-    stats: "Prova em números",
-    journey: "A jornada",
-    stack: "A stack",
-    certs: "Estudo contínuo",
-    now: "Agora",
-    contact: "Contato",
-  },
 } as const;
 
 export type SiteConfig = typeof siteConfig;

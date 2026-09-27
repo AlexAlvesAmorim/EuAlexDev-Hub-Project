@@ -4,7 +4,7 @@
 
 ## RESUMO PROFISSIONAL
 
-- 20+ anos em TI: comecei no suporte técnico (N1 ao N3), atendendo usuários reais todos os dias — e foi essa vivência que moldou como eu programo: tecnologia boa é a que resolve sem atrapalhar.
+- 20+ anos em TI: comecei no suporte técnico (N1 ao N3), atendendo usuários reais todos os dias, e foi essa vivência que moldou como eu programo: tecnologia boa é a que resolve sem atrapalhar.
 - Em 2023 migrei de vez para o desenvolvimento front-end e fundei a ALVS, com a filosofia de construir **produtos, não exercícios**. Trabalho com React, TypeScript, JavaScript, Electron, Tailwind CSS e Vite — e aplico back-end nos meus produtos: API REST em Node.js/Fastify, PostgreSQL com Prisma, autenticação, uploads e testes automatizados.
 - Evidências de mercado: app desktop com **200+ usuários ativos**, e-commerce **vendido em negociação B2B**, dashboards analíticos entregues e portfólio com case studies completos.
 - Foco em experiência do usuário, performance, Clean Code, componentização e arquitetura modular.
@@ -77,7 +77,7 @@
 
 - CS50x: Introduction to Computer Science (HarvardX · edX, 2026) — C, Python, SQL, HTML/CSS/JS e Flask; algoritmos, estruturas de dados e gerenciamento de memória. Final Project: 99Food Analyser, com vídeo demo e banca.
 - Curso de Informática — Formação Completa (MDATA, 2007–2008) — 300h, média final 9,0: Sistemas Operacionais, Pacote Office, Corel Draw, Photoshop, HTML, Dreamweaver, Flash, Hardware e Manutenção.
-- Curso de React para Iniciantes (Felipe Rocha · Full Stack Club, 2025) — sistema de Gestão de Treinos do zero ao deploy em 1 semana.
+- Curso de React para Iniciantes (Felipe Rocha · Full Stack Club, 2025): sistema de Gestão de Treinos do zero ao deploy em 1 semana.
 - Aprendendo React do Zero (DevClub · Programação, 2024) — do básico à integração frontend + backend com consumo de APIs REST.
 - Curso de React (Matheus Battisti · Hora de Codar, 2024) — fundamentos, componentes, props, estado e configuração de ambiente.
 - TypeScript para Desenvolvedores (Alura, 2024) — tipagem avançada, generics, interfaces, union types e narrowing.

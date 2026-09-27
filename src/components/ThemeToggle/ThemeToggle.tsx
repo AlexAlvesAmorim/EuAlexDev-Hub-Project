@@ -1,39 +1,39 @@
 import { useCallback, useEffect, useState } from "react";
-import { FaMoon, FaSun } from "react-icons/fa6";
-
-type Theme = "light" | "dark";
+import { FaMoon, FaPalette, FaSun } from "react-icons/fa6";
+import { DEFAULT_THEME, nextTheme, parseTheme, THEME_META, type ThemeId } from "../../config/themes";
+import { siteCopy } from "../../content/loader";
 
 const STORAGE_KEY = "hub-theme";
 
-function currentTheme(): Theme {
-    if (typeof document !== "undefined") {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved === "light" || saved === "dark") return saved;
-    }
-    return "light";
-}
+const ICONS = {
+    roxo: FaPalette,
+    light: FaSun,
+    dark: FaMoon,
+} as const;
 
-function applyTheme(theme: Theme) {
+function applyTheme(theme: ThemeId) {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem(STORAGE_KEY, theme);
     document
         .querySelector('meta[name="theme-color"]')
-        ?.setAttribute("content", theme === "dark" ? "#131511" : "#f7f4ed");
+        ?.setAttribute("content", THEME_META[theme].themeColor);
 }
 
 /**
- * Alterna papel e tinta ↔ noite carioca. Padrão: claro (sem FOUC,
- * pois o claro é o :root). Escolha persiste em localStorage.
+ * Ciclo roxo → papel e tinta → noite carioca. Padrão: roxo (é o :root,
+ * sem FOUC). Escolha persiste em localStorage (ids antigos continuam válidos).
  */
 export function ThemeToggle() {
-    const [theme, setTheme] = useState<Theme>(() => currentTheme());
+    const [theme, setTheme] = useState<ThemeId>(() =>
+        typeof document === "undefined" ? DEFAULT_THEME : parseTheme(localStorage.getItem(STORAGE_KEY))
+    );
 
     useEffect(() => {
         applyTheme(theme);
     }, [theme]);
 
-    const toggle = useCallback(() => {
-        const next: Theme = theme === "dark" ? "light" : "dark";
+    const cycle = useCallback(() => {
+        const next = nextTheme(theme);
         const doc = document as Document & {
             startViewTransition?: (callback: () => void) => void;
         };
@@ -45,18 +45,20 @@ export function ThemeToggle() {
         }
     }, [theme]);
 
-    const dark = theme === "dark";
+    const following = nextTheme(theme);
+    const Icon = ICONS[theme];
+    const copy = siteCopy.theme;
 
     return (
         <button
             type="button"
-            onClick={toggle}
-            aria-pressed={dark}
-            aria-label={dark ? "Mudar para tema claro" : "Mudar para tema escuro"}
-            title={dark ? "Tema claro" : "Tema escuro"}
+            onClick={cycle}
+            aria-pressed={theme !== DEFAULT_THEME}
+            aria-label={`${copy.current}: ${copy[theme]}. ${copy.switchTo} ${copy[following]}`}
+            title={`${copy.switchTo} ${copy[following]}`}
             className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-black/10 dark:border-white/10 text-text-h/80 hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
         >
-            {dark ? <FaSun aria-hidden="true" /> : <FaMoon aria-hidden="true" />}
+            <Icon aria-hidden="true" />
         </button>
     );
 }
