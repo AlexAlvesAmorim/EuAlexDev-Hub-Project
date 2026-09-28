@@ -14,7 +14,8 @@
 
 .banner .background-text {
   position: absolute;
-  top: 50%;
+  /* Mesmo ponto vertical da foto (.center-model: 42%) — o texto é o fundo dela. */
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'ICA Rubrik', sans-serif;
