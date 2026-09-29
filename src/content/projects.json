@@ -28,17 +28,17 @@
       "newVersion": "v2.1.6",
       "oldVersion": "v2.0",
       "v21Images": [
-        "/projects/AlfaPDF-v2.1.1-feature1.png",
-        "/projects/AlfaPDF-v2.1.1-feature2.png",
-        "/projects/AlfaPDF-v2.1.1-feature3.png",
-        "/projects/AlfaPDF-v2.1.1-feature4.png",
-        "/projects/AlfaPDF-v2.1.1-feature5.png"
+        "/projects/AlfaPDF-v2.1.1-feature1.webp",
+        "/projects/AlfaPDF-v2.1.1-feature2.webp",
+        "/projects/AlfaPDF-v2.1.1-feature3.webp",
+        "/projects/AlfaPDF-v2.1.1-feature4.webp",
+        "/projects/AlfaPDF-v2.1.1-feature5.webp"
       ],
       "v12Images": [
-        "/projects/AlfaPDF-v1.2-feature1.png",
-        "/projects/AlfaPDF-v1.2-feature2.png",
-        "/projects/AlfaPDF-v1.2-feature3.png",
-        "/projects/AlfaPDF-v1.2-feature4.png"
+        "/projects/AlfaPDF-v1.2-feature1.webp",
+        "/projects/AlfaPDF-v1.2-feature2.webp",
+        "/projects/AlfaPDF-v1.2-feature3.webp",
+        "/projects/AlfaPDF-v1.2-feature4.webp"
       ],
       "comparison": [
         { "feature": "Auto Update", "from": "Automático via GitHub Releases", "to": "✅ Corrigido: fim do loop de atualização (win-unpacked regenerado a cada release)" },
